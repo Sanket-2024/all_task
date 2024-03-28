@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .col{
+                width: 50%;
+                font-weight: bold;
+                
+            }
+            .row{
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                padding: 0 10px;
+            }
+            .col button{
+                padding: 5 10px;
+                font-size: larger;
+                font-weight: bold;
+            }
+            body{
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            #col2{
+                float: right;
+            }
+            #col1{
+                float: left;
+            }
+        </style>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="row">
+                <div class="col" id="col1">
+                    Total Number Of Entries: 100000
+                    <form action="/?page=1" method="get">
+                        <select name="select" id="sort">
+                            <option value="stuid">Id</option>
+                            <option value="name">First Name</option>
+                            <option value="lastname">Last Name</option>
+                            <option value="dob">Date of Birth</option>
+                            <option value="contact">Contact</option>
+                            <option value="email">Email Address</option>
+                            <option value="address1">Permanent Address</option>
+                            <option value="address2">Current Address</option>
+                            <option value="age">Age</option>
+                            <option value="created_date">Created Date</option>
+                        </select>
+                        <br>
+                        ASC<input type="radio" name="sort" value="asc">
+                        DESC<input type="radio" name="sort" value="desc"><br>
+                        
+                        <input type="submit" value="sort">
+                    </form>
+                    <!-- <base href="?page=2&select=stuid">
+                    <a href="&sort=<%=order%>">Sort</a> -->
+                </div>
+                <div class="col" id="col2">
+                    <a href="?page=1&select=<%=order_by%>&sort=<%=order%>"<%if(Number(p==1)){%>onclick='return false;'<%}%>><i class="fa-solid fa-angles-left"></i></a>
+                    <a href="?page=<%=Number(p)-1%>&select=<%=order_by%>&sort=<%=order%>" <%if(Number(p==1)){%> onclick='return false;'<%}%>><i class="fa-solid fa-angle-left"></i></a>
+
+                    <span class="pages"><%=p%></span>
+
+                    <a href="?page=<%=Number(p)+1%>&select=<%=order_by%>&sort=<%=order%>" <%if(Number(p==lastpage)){%> onclick='return false;'<%}%>><i class="fa-solid fa-angle-right"></i></a>
+                    <a href="?page=<%=lastpage%>&select=<%=order_by%>&sort=<%=order%>" <%if(Number(p==lastpage)){%> onclick='return false;'<%}%>><i class="fa-solid fa-angles-right"></i></a>
+
+                    
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+        Game Sanket Patel 
+        </title>
+        <style>
+            table,tr{
+                border: 3pt solid black;
+                background: linear-gradient(grey, white);
+            }
+            body{
+                background-color: cadetblue;
+            }
+            
+            td{
+                height: 50px;
+                width: 50px;
+                border: 1pt solid black;
+            }
+            tr:nth-of-type(odd) td:nth-of-type(odd), tr:nth-of-type(even) td:nth-of-type(even){
+                background-color: grey;
+                
+            }
+            td[a]{
+                background-color:grey ;
+                opacity: 0.8;
+            }
+        </style>
+    </head>
+    <body onload="handleBox()"><br><br>
+        <center>
+            <p> Sanket Patel 24DEV087 Date: 02/02/2024</p>
+        <h3>Score: <span id="score"></span></h3>
+        <h3 id="time"><span id="count"></span></h3>
+            <table>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+            </table><br>
+            <div class="table">
+                <div>
+                    <!-- <input type="button" id="addrow" name="addrow" value="Add Row" onclick="addRow()">
+                    <input type="button" id="removerow" name="removerow" value="Remove Row" onclick="removeRow()"> -->
+                </div><br>
+                <div>
+                    <!-- <input type="button" id="button" name="add" value="+" onclick="addRowCol()"> -->
+                    <!-- <input type="button" id="addcolumn" name="addcolumn" value="Add Column" onclick="addColumn()" >
+                    <input type="button" id="removecolumn" name="removecolumn" value="Remove Column" onclick="removeColumn()" > -->
+                </div>
+            </div>
+        </center>
+       
+        <script>
+            count=5;
+            function fun(){
+                table=document.getElementsByTagName("table");
+                tr=table[0].getElementsByTagName("tr");
+                td=tr[0].getElementsByTagName("td");
+                
+                var a=tr.length*td.length;
+                var random=Math.floor(Math.random()*td.length);
+                td[random].style.backgroundColor="yellow";
+                // td[random].addEventListener("click",addRowCol);
+
+                for(i=0;i<td.length;i++){
+                    if(i==random){
+                        td[i].style.backgroundColor="brown";
+                        td[i].addEventListener("click",addRowCol);
+                    }
+                    else{
+                        td[i].style.backgroundColor="yellow";
+                        td[i].removeEventListener("click",addRowCol,true)
+                    }
+                }
+
+                function call(){
+                    addRowCol();
+                    fun();
+                    count++;
+                }
+                
+                function addRowCol(){
+                    table= document.getElementsByTagName("table")
+                    tr=table[0].getElementsByTagName("tr")
+                    for(i=0;i<tr.length;i++){
+                        tr[i].appendChild(document.createElement("td"))
+                    }
+                    td=tr[0].getElementsByTagName("td")
+                    table[0].appendChild(document.createElement("tr"))
+                    for(i=0;i<td.length;i++){
+                        table[0].lastChild.appendChild(document.createElement("td"))
+                    }
+                }
+                
+            }
+
+            
+
+            // function funB(){
+            //     table=document.getElementsByTagName("table");
+            //     tr=table[0].getElementsByTagName("tr");
+            //     td=tr[0].getElementsByTagName("td");
+
+            //     random= math.floor(Math.random()*(td.length-0+1));
+            //     td[random].style.backgroundColor="yellow";
+            //     td[random].addEventListner("click",()=>{
+
+            //         addRowCol();
+            //         // funB();
+            //     })
+            // }
+
+            // t=document.getElementsByTagName("td");
+            // for(i=0;i<t.length;i++){
+            //     t[0].setAttribute("class","tdtag");
+            // }
+            // c= document.getElementsByClassName("tdtag")
+            // for(i=0;i<c.length;i++){
+            //     c[0].addEventLitener("click",addRowCol);
+            // }
+
+            // table=document.getElementsByTagName("table");
+            //     tr=table[0].getElementsByTagName("tr");
+            //     td=tr[0].getElementsByTagName("td");
+            //     for(i=0;i<td.length;i++){
+            //         if(td[i].style.backgroundColor=="yellow"){
+            //             td[i].addEventLitener("click", function(){
+            //     table= document.getElementsByTagName("table")
+            //     tr=table[0].getElementsByTagName("tr")
+            //     for(i=0;i<tr.length;i++){
+            //         tr[i].appendChild(document.createElement("td"))
+            //     }
+            //     td=tr[0].getElementsByTagName("td")
+            //     table[0].appendChild(document.createElement("tr"))
+            //     for(i=0;i<td.length;i++){
+            //         table[0].lastChild.appendChild(document.createElement("td"))
+            //     }})
+            //         }
+            //     }
+
+            
+
+            // function addRowCol(){
+            //     table= document.getElementsByTagName("table")
+            //     tr=table[0].getElementsByTagName("tr")
+            //     for(i=0;i<tr.length;i++){
+            //         tr[i].appendChild(document.createElement("td"))
+            //     }
+            //     td=tr[0].getElementsByTagName("td")
+            //     table[0].appendChild(document.createElement("tr"))
+            //     for(i=0;i<td.length;i++){
+            //         table[0].lastChild.appendChild(document.createElement("td"))
+            //     }
+            // }
+            
+        </script>
+        <script>
+           
+            var count =10;
+            var timer = setInterval(function(){
+                if (count<=0){
+                    clearInterval(timer);
+                    document.getElementById("count").innerHTML="finish";
+                    document.getElementsByTagName("body")[0].innerHTML=`<h2 style="margin: 300px 0 0 500px;">Score is: ${value}</h2>`;
+                    const button=document.createElement("button");
+                    button.innerHTML="Play";
+                    button.style.fontSize="20px"
+                    button.style.margin="15px 0 0 550px"
+                    button.addEventListener("click", function(){
+                        window.location.reload();
+                    })
+                    document.body.appendChild(button);
+                }else{
+                    document.getElementById("count").innerHTML= count+" : Time";
+                }
+                count--;
+            },1000);
+            console.log(timer);
+            function handleBox(){
+                val1= generateColor().red;
+                val2= generateColor().green;
+                val3=generateColor().blue;
+                table= document.getElementsByTagName("table");
+                td=table[0].getElementsByTagName("td");
+                var randomBox = Math.floor(Math.random()*(td.length - 0));
+                for(let i=0;i<td.length;i++){
+                    if(i == randomBox){
+                        td[i].style.backgroundColor="rgba("+val1+","+val2+","+val3+",0.6)";
+                        
+                    }else{
+                        td[i].style.backgroundColor="rgba("+val1+","+val2+","+val3+")";
+                        
+                        td[i].removeEventListener("click",handleInsert)
+                    }
+                }
+                td[randomBox].addEventListener("click",handleInsert);
+            }
+            var value = 0;
+            function handleInsert(){
+                rowAdd();
+                columnAdd();
+                handleBox();
+                value++;
+                console.log(value);
+                document.getElementById("score").innerHTML=value;
+            }
+            function rowAdd(){
+                table=document.getElementsByTagName("table");
+                tr=table[0].getElementsByTagName("tr");
+                td=tr[0].getElementsByTagName("td");
+                table[0].appendChild(document.createElement("tr"))
+                for(i=0;i<td.length;i++){
+                    table[0].lastChild.appendChild(document.createElement("td"))
+                }
+            }
+            function columnAdd(){
+                table= document.getElementsByTagName("table")
+                tr=table[0].getElementsByTagName("tr")
+                for(i=0;i<tr.length;i++){
+                    tr[i].appendChild(document.createElement("td"))
+                }
+            }
+            function generateColor(){
+                red = Math.floor(Math.random()*(255+1));
+                green = Math.floor(Math.random()*(255+1));
+                blue = Math.floor(Math.random()*(255+1));
+                return{red,green,blue};
+            }
+          
+
+        </script>
+
+    </body>
+</html>

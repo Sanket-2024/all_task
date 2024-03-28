@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registration</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            color: whitesmoke;
+            background-color: #0B0C10;
+        }
+
+        .section {
+            padding-top: 50px;
+        }
+
+        .container {
+            margin: auto;
+            max-width: 1170px;
+            padding: 0 25%;
+        }
+
+        .form {
+            justify-content: center;
+            align-items: center;
+            background-color: #45A29E;
+            padding: 50px;
+            margin: 100px 0;
+            width: 450px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+        }
+
+        form {
+            align-items: center;
+
+        }
+
+        input {
+            width: 350px;
+            padding: 5px 2px;
+            margin-bottom: 10px;
+            margin-top: 5px;
+            border-radius: 7px;
+            align-items: center;
+        }
+
+        #submitbtn {
+            border: none;
+            font-size: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            color: black;
+            background-color: orange;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        span {
+            text-align: right;
+            color: red;
+            font-size: 14px;
+        }
+
+        #reg {
+            font-size: 35px;
+            color: whitesmoke;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <section class="section">
+        <div class="container">
+            <div class="form">
+
+                <center>
+                    <div id="reg">Login</div>
+                </center><br><br>
+                <%if(!username && !password){%>
+                    <form id="form_2" method="POST" onsubmit="return sub()">
+
+                    <label for="fname_id">User Name/ Email : </label><br>
+                    <input type="text" id="user_id" name="username" value="" tabindex="1"><br><br>
+
+                    <label for="lname_id">Password : </label><br>
+                    <input type="text" id="passowrd_id" name="password" value=""><span id=""></span><br>
+                    <!-- <a href="/forget/<%=id%>?email=<%=username%>">Forget password?</a> -->
+
+                    <input type="submit" name="Login" value="Login" id="submitbtn">
+                    
+
+                    </form>
+
+                    <%}%>
+
+                        <%if(username || password){%>
+                            <form id="form_2" method="POST" onsubmit="return sub()">
+
+                                <span>Invalid Username or Password !</span><br><br>
+
+                                <label for="user_id">User Name/ Email : </label><br>
+                                <input type="text" id="user_id" name="username" value="<%=username%>"
+                                    tabindex="1"><br><br>
+
+                                <label for="password_id">Password : </label><br>
+                                <input type="text" id="passowrd_id" name="password" value="<%=password%>"><span
+                                    id=""></span><br>
+                                <a href="/forget/<%=id%>?email=<%=username%>">Forget password?</a>
+
+                                <input type="submit" name="Login" value="Login" id="submitbtn">
+                            </form>
+
+                            <%}%>
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function sub() {
+            return true;
+        }
+    </script>
+
+</body>
+
+</html>

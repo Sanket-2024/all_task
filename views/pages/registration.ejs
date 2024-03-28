@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registration</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            color: whitesmoke;
+            background-color: whitesmoke;
+        }
+
+        .section {
+            padding-top: 50px;
+        }
+
+        .container {
+            margin: auto;
+            max-width: 1170px;
+            padding: 0 25%;
+        }
+
+        .form {
+            justify-content: center;
+            align-items: center;
+            background-color: #000000;
+            padding: 50px;
+            margin: 100px 0;
+            width: 450px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+        }
+
+        form {
+            align-items: center;
+
+        }
+
+        input {
+            width: 350px;
+            padding: 5px 2px;
+            margin-bottom: 10px;
+            margin-top: 5px;
+            border-radius: 7px;
+            align-items: center;
+        }
+
+        #submitbtn {
+            border: none;
+            font-size: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            color: black;
+            background-color: orange;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        span {
+            text-align: right;
+            color: red;
+            font-size: 14px;
+        }
+        #reg{
+            font-size: 35px;
+            color: whitesmoke;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <%if(hours<3){%>
+    <section class="section">
+        <div class="container">
+            <div class="form">
+
+                <center><div id="reg">Registration</div></center><br><br>
+                
+
+                    <%if(sqlselect[0][0]){%>
+
+                        
+
+                        <form id="form_1" method="POST" onsubmit="return sub()">
+
+                            <input type="text" name="registration_id" value="<%=sqlselect[0][0].id%>" hidden>
+
+                            <label for="fname_id">First Name : </label><br>
+                            <input type="text" id="fname_id" name="fname" value="<%=sqlselect[0][0].firstname%>"
+                                disabled><br><br>
+
+                            <label for="lname_id">Last Name : </label><br>
+                            <input type="text" id="lname_id" name="lname" value="<%=sqlselect[0][0].lastname%>"
+                                disabled><br><br>
+
+                            <label for="email_id">Email : </label><br>
+                            <input type="text" id="email_id" name="email" value="<%=sqlselect[0][0].email%>"
+                                disabled><br><br>
+
+                            <label for="password_id">Enter Password : </label><br>
+                            <input type="text" id="password_id" name="password" value="" tabindex="1"><span
+                                id="password_span"></span><br><br>
+
+                            <label for="re-password_id">Re-Enter Password : </label><br>
+                            <input type="text" id="re_password_id" name="re_entered_password" value=""><span
+                                id="re_password_span"></span><br><br>
+
+                            <input type="text" id="sault_id" name="sault" value="<%=sqlselect[0][0].sault%>" hidden>
+
+                            <input type="submit" name="Submit" value="Submit" id="submitbtn">
+
+                        </form>
+                        <%}%>
+
+                            <%if(!sqlcheckselect[0][0] && !sqlselect[0][0]){%>
+                                <form id="form_1" method="POST" onsubmit="return sub()">
+
+                                    <label for="fname_id">First Name : </label><br>
+                                    <input type="text" id="fname_id" name="fname" value="" tabindex="1"><span
+                                        id="fname_span"></span><br><br>
+
+                                    <label for="lname_id">Last Name : </label><br>
+                                    <input type="text" id="lname_id" name="lname" value=""><span
+                                        id="lname_span"></span><br><br>
+
+                                    <label for="email_id">Email : </label><br>
+                                    <input type="text" id="email_id" name="email" value=""><span
+                                        id="email_span"></span><br><br>
+
+                                    <input type="submit" name="Submit" value="Register" id="submitbtn">
+
+                                </form>
+                                <%}%>
+
+                                <%if(sqlcheckselect[0][0]){%>
+                                    <form id="form_1" method="POST" onsubmit="return sub()">
+    
+                                        <label for="fname_id">First Name : </label><br>
+                                        <input type="text" id="fname_id" name="fname" value="<%=sqlcheckselect[0][0].firstname%>" tabindex="1"><span
+                                            id="fname_span"></span><br><br>
+    
+                                        <label for="lname_id">Last Name : </label><br>
+                                        <input type="text" id="lname_id" name="lname" value="<%=sqlcheckselect[0][0].lastname%>"><span
+                                            id="lname_span"></span><br><br>
+    
+                                        <label for="email_id">Email : </label><br>
+                                        <input type="text" id="email_id" name="email" value="<%=sqlcheckselect[0][0].email%>"><span
+                                            id="email_span">User Already Exist please Login</span><br><br>
+    
+                                        <input type="submit" name="Submit" value="Register" id="submitbtn">
+    
+                                    </form>
+                                    <%}%>
+                        
+                       
+            </div>
+        </div>
+    </section>
+    <%}%>
+    <%if(hours>3){%>
+                            
+        <h1 style="color:#000000"> Link Expired !</h1>
+        <a href="/">go to Home Page</a>
+        
+    <%}%>
+
+    <%if (!sqlselect[0][0]) {%>
+        <script>
+
+            function sub() {
+
+                var fname_id = document.getElementById("fname_id");
+                var lname_id = document.getElementById("lname_id");
+                var email_id = document.getElementById("email_id");
+
+
+                var fname_span = document.getElementById("fname_span");
+                var lname_span = document.getElementById("lname_span");
+                var email_span = document.getElementById("email_span");
+
+
+                console.log(fname_id);
+                console.log(lname_id);
+                console.log(email_id);
+
+
+                var res1 = first_name(fname_id, fname_span);
+                var res2 = first_name(lname_id, lname_span);
+                var res3 = ValidateEmail(email_id, email_span);
+
+
+
+                if (res1 == true && res2 == true && res3 == true) {
+
+                    return true;
+                } else {
+                    return false;
+                }
+
+                // submit();
+
+            }
+
+
+            // async function submit(){
+            //             let formData = document.getElementById("form_1");
+            //             let data = new FormData(formData);
+            //             const params = new URLSearchParams(data);
+            //             const jobData = await new Response(params).text();
+            //             console.log(jobData);
+
+            //             console.log("Insert data!");
+
+            //             let data2 = await fetch("http://localhost:8080/", {
+            //                 method: "POST",
+            //                 headers:{
+            //                     'Content-type': "application/x-www-form-urlencoded" 
+            //                 },
+            //                 body: jobData
+            //             });
+
+            //         }
+
+
+            function first_name(fname, fnamespan) {
+                var first_name_format = /^[a-zA-Z ]+$/;
+                if (!fname.value) {
+                    fnamespan.innerHTML = " *required ";
+                    fname.focus();
+                    return false;
+                } else if (!fname.value.match(first_name_format)) {
+                    fnamespan.innerHTML = " Enter Valid Name ";
+                    fname.focus();
+                    return false;
+                } else {
+                    fnamespan.innerHTML = "";
+                    return true;
+                }
+
+            }
+
+            function ValidateEmail(email1, emailspan) {
+                var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                if (!email1.value) {
+                    emailspan.innerHTML = " *required ";
+                    email1.focus();
+                    return false;
+                } else if (!email1.value.match(mailformat)) {
+                    emailspan.innerHTML = "You have entered an invalid email address!";
+                    email1.focus();
+                    return false;
+                } else {
+                    emailspan.innerHTML = "";
+                    return true;
+                }
+
+            }
+        </script>
+
+        <%}%>
+
+            <%if(sqlselect[0][0]){%>
+                <script>
+
+                    function sub() {
+
+                        var password_id = document.getElementById("password_id");
+                        var re_password_id = document.getElementById("re_password_id");
+                        var sault_id = document.getElementById("sault_id");
+
+                        var password_span = document.getElementById("password_span");
+                        var re_password_span = document.getElementById("re_password_span");
+                        var sault_span = document.getElementById("sault_span");
+
+                        console.log(password_id);
+                        console.log(re_password_id);
+                        console.log(password_span);
+                        console.log(re_password_span);
+                        console.log(sault_id);
+
+                        var res1 = password(password_id, password_span);
+                        var res2 = password(re_password_id, re_password_span);
+                        var res3 = passwordMatch(password_id, re_password_id, re_password_span);
+
+                        if (res1 == true && res2 == true && res3 == true) {
+
+                            return true;
+                        } else {
+                            return false;
+                        }
+
+                        // submit();
+
+
+                    }
+
+                    // async function submit(){
+                    //     let formData = document.getElementById("form_1");
+                    //     let data = new FormData(formData);
+                    //     const params = new URLSearchParams(data);
+                    //     const jobData = await new Response(params).text();
+                    //     console.log(jobData);
+
+                    //     console.log("Insert data!");
+
+                    //     let data2 = await fetch("http://localhost:8080/activation/:id", {
+                    //         method: "POST",
+                    //         headers:{
+                    //             'Content-type': "application/x-www-form-urlencoded" 
+                    //         },
+                    //         body: jobData
+                    //     });
+
+                    // }
+
+
+                    function password(email1, emailspan) {
+                        var mailformat = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+                        if (!email1.value) {
+                            emailspan.innerHTML = " *required ";
+                            email1.focus();
+                            return false;
+                        } else if (!email1.value.match(mailformat)) {
+                            emailspan.innerHTML = " *Invalid password!";
+                            email1.focus();
+                            return false;
+                        } else {
+                            emailspan.innerHTML = "";
+                            return true;
+                        }
+                    }
+
+                    function passwordMatch(a, b, c) {
+
+                        if (a.value == b.value) {
+                            c.innerHTML = "";
+                            return true;
+                        } else if (a.value != b.value) {
+                            c.innerHTML = "Password Does not match!"
+                            return false;
+                        }
+
+                    }
+
+                </script>
+
+                <%}%>
+
+
+
+</body>
+
+</html>

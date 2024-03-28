@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .section {
+            margin: 0px 0px;
+            padding: 50px 0px;
+
+        }
+
+        .container {
+            width: 1170px;
+            padding: 0px 50px;
+            margin: auto;
+        }
+
+        .form {
+            background-color: whitesmoke;
+            padding: 25px 0px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .col {
+            width: 48%;
+            padding: 0 120px;
+        }
+
+        #basicdetail input {
+            margin-bottom: 16px;
+        }
+
+        #basicdetail select {
+            margin-bottom: 16px;
+        }
+
+        #button1 input {
+            float: left;
+            background-color: rgb(41, 102, 136);
+            font-size: 15px;
+            padding: 7px 25px;
+            color: whitesmoke;
+            border: none;
+        }
+
+        #button2 input {
+            float: right;
+            background-color: rgb(41, 102, 136);
+            font-size: 15px;
+            padding: 7px 25px;
+            color: whitesmoke;
+            border: none;
+        }
+
+        .form .row p {
+            padding: 0 120px;
+            padding-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        #basicDetailpart {
+            display: none;
+        }
+
+        #edupart {
+            display: none;
+        }
+
+        #workexppart {
+            display: none;
+        }
+
+        #languagepart {
+            display: none;
+        }
+
+        #techpart {
+            display: none;
+        }
+
+        #refpart {
+            display: none;
+        }
+
+        #prefpart {
+            display: none;
+        }
+
+        .row1 {
+            padding-left:  150px;
+            margin: auto;
+        }
+
+        span {
+            font-size: 10px;
+            color: red;
+        }
+        .col8{
+            
+            margin: auto; 
+        }
+        .row12{
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body onload="fun1()">
+    <section class="section">
+        <div class="container">
+            <div class="form">
+                <form action="" method="POST" onsubmit="return subFun()" id="myform">
+                    <div class="part" id="basicDetailpart">
+                        <div class="row">
+                            <p>Basic Details</p>
+                        </div>
+                        <div class="row">
+
+                            <div class="col8">
+                                <!-- <div class="row"> -->
+                            
+                            
+                                <label for="fname">First name:</label>
+                                <input type="text" id="fname" name="b_fname" value="" tabindex="1" autofocus><span
+                                    id="span1"></span><br><br>
+
+                                <label for="lname">Last name:</label>
+                                <input type="text" id="lname" name="b_lname" value=""><span id="span2"></span><br><br>
+
+                                <label for="designation">Designation:</label>
+                                <input type="text" id="designation" name="b_designation" value=""><span
+                                    id="span3"></span><br><br>
+
+                               
+
+                                <label for="address1"> Current Address:</label>
+                                <input type="text" id="address1" name="b_address1" value=""><span id="span4"></span><br><br>
+
+                                
+
+                                <label for="address2">Perment Address:</label>
+                                <input type="text" id="address2" name="b_address2" value=""><span id="span5"></span><br><br>
+
+                                
+
+                                <label for="email">Email:</label>
+                                <input type="text" id="email" name="b_email" value=""><span id="span6"></span><br><br>
+
+                                
+
+                                <label for="phoneno">Phone Number:</label>
+                                <input type="text" id="phoneno" name="b_phoneno" value=""><span id="span7"></span><br><br>
+
+                                
+
+                                <label for="city">City: </label>
+                                <select name="b_city" id="city">
+                                    <option value="1">Amdavad</option>
+                                    <option value="2">Gandhinagar</option>
+                                </select><span id="span11"></span><br><br>
+
+                                
+
+                                <label id="gender_label">Gender: </label>
+                                <input type="radio" id="male" name="b_gender" value="3"><label for="male">Male</label>                              
+                                <input type="radio" id="female" name="b_gender" value="4"><label
+                                    for="female">Female</label><span id="span9"></span><br><br>
+
+                                <label for="zipcode">Zipcode: </label>
+                                <input type="text" id="zipcode" name="b_zipcode" value=""><span id="span10"></span><br><br>
+
+                                <label for="relationship">Relationship Status: </label>
+                                <select name="b_relationship" id="relationship">
+                                    <option value="1">Single</option>
+                                    <option value="2">Married </option>
+                                </select><span id="span11"></span><br><br>
+
+
+                                <label for="dob">Date of Birth:</label>
+                                <input type="text" id="dob" name="b_dob" value=""><span id="span12"></span><br><br>
+
+
+                            </div>
+                        </div><br>
+                    </div>
+
+
+
+
+                    <div class="part" id="edupart">
+                        <div class="row">
+                            <p>Education Details</p>
+                        </div>
+                        <div class="row1" id="edusec">
+
+
+                            <p>
+                                <input type="button" name="Remove" value="Remove" onclick="removeEducation()">
+                                <input type="button" name="Add" value="Add" onclick="addEducation()">
+                            </p>
+
+                            <div name="sscresult"><br>
+
+                                <label for="nameofboard1">Name Of Board: </label>
+                                <select name="e_nameofboard[]" id="nameofboard1">
+                                    <option value="">-- Select --</option>
+                                    <option value="5">SSC Details</option>
+                                    <option value="6">HSC Details</option>
+                                    <option value="7">Bechelor Details</option>
+                                    <option value="8">Master Details</option>
+                                    <option value="15">BCA Details</option>
+                                    <option value="16">MCA Details</option>
+                                </select>
+                                <span id="span13"></span>
+
+                                <lable for="passingyear1">Passing Year:</lable>
+                                <input type="text" id="passingyear1" name="e_passingyear[]" value=""><span
+                                    id="span14"></span>
+
+                                <label for="percentage1">Percentage: </label>
+                                <input type="text" id="percentage1" name="e_percentage[]" value=""><span
+                                    id="span15"></span>
+
+                            </div>
+
+
+
+                            <div name="hscresult"><br>
+
+                                <label for="nameofboard2">Name Of Board: </label>
+
+                                <select id="nameofboard2" name="e_nameofboard[]">
+                                    <option value="">-- Select --</option>
+                                    <option value="5">SSC Details</option>
+                                    <option value="6">HSC Details</option>
+                                    <option value="7">Bechelor Details</option>
+                                    <option value="8">Master Details</option>
+                                    <option value="15">BCA Details</option>
+                                    <option value="16">MCA Details</option>
+                                </select>
+                                <span id="span16"></span>
+
+                                <lable for="passingyear2">Passing Year:</lable>
+                                <input type="text" id="passingyear2" name="e_passingyear[]" value=""><span
+                                    id="span17"></span>
+
+                                <label for="percentage2">Percentage: </label>
+                                <input type="text" id="percentage2" name="e_percentage[]" value=""><span
+                                    id="span18"></span>
+
+                            </div>
+
+
+                            <div name="bachelordegree"><br>
+
+                                <label for="coursename3">Name of Board: </label>
+
+                                <select id="coursename3" name="e_nameofboard[]">
+                                    <option value="">-- Select --</option>
+                                    <option value="5">SSC Details</option>
+                                    <option value="6">HSC Details</option>
+                                    <option value="7">Bechelor Details</option>
+                                    <option value="8">Master Details</option>
+                                    <option value="15">BCA Details</option>
+                                    <option value="16">MCA Details</option>
+                                </select>
+                                <span id="span19"></span>
+
+                                <lable for="passingyear3">Passing Year:</lable>
+                                <input type="text" id="passingyear3" name="e_passingyear[]" value=""><span
+                                    id="span21"></span>
+
+                                <label for="percentage3">Percentage: </label>
+                                <input type="text" id="percentage3" name="e_percentage[]" value=""><span
+                                    id="span22"></span>
+
+                            </div>
+
+                            <div name="masterdegree"><br>
+
+                                <label for="coursename4">Name of Board: </label>
+
+                                <select id="coursename4" name="e_nameofboard[]">
+                                    <option value="">-- Select --</option>
+                                    <option value="5">SSC Details</option>
+                                    <option value="6">HSC Details</option>
+                                    <option value="7">Bechelor Details</option>
+                                    <option value="8">Master Details</option>
+                                    <option value="15">BCA Details</option>
+                                    <option value="16">MCA Details</option>
+                                </select>
+                                <span id="span23"></span>
+
+                                <lable for="passingyear4">Passing Year:</lable>
+                                <input type="text" id="passingyear4" name="e_passingyear[]" value=""><span
+                                    id="span25"></span>
+
+                                <label for="percentage4">Percentage: </label>
+                                <input type="text" id="percentage4" name="e_percentage[]" value=""><span
+                                    id="span26"></span>
+
+                            </div>
+
+
+
+                        </div><br>
+                    </div>
+
+
+                    <!-- Work Experience -->
+
+
+                    <div class="part" id="workexppart">
+                        <div class="row">
+                            <p>Work Experience:</p>
+                        </div>
+                        <div class="row" id="worksec">
+
+
+                            <p>
+                                <input type="button" name="Add" value="Remove" onclick="removeWorkExperience()">
+                                <input type="button" name="Add" value="ADD" onclick="addWorkExperience()">
+                            </p><br>
+
+                            <div name="one">
+
+                                <label for="companyname1">Company Name: </label>
+                                <input type="text" id="companyname1" name="w_companyname[]" value=""><span
+                                    id="span27"></span>
+
+                                <label for="designation1">Designation: </label>
+                                <input type="text" id="designation1" name="w_designation[]" value=""><span
+                                    id="span28"></span>
+
+                                <label for="from1">From: </label>
+                                <input type="text" id="from1" name="w_from[]" value=""><span id="span29"></span>
+
+                                <label for="to1">To: </label>
+                                <input type="text" id="to1" name="w_to[]" value=""><span id="span30"></span>
+
+                            </div><br>
+
+                            <div name="two">
+
+                                <label for="companyname2">Company Name: </label>
+                                <input type="text" id="companyname2" name="w_companyname[]" value=""><span
+                                    id="span31"></span>
+
+                                <label for="designation2">Designation: </label>
+                                <input type="text" id="designation2" name="w_designation[]" value=""><span
+                                    id="span32"></span>
+
+                                <label for="from2">From: </label>
+                                <input type="text" id="from2" name="w_from[]" value=""><span id="span33"></span>
+
+                                <label for="to2">To: </label>
+                                <input type="text" id="to2" name="w_to[]" value=""><span id="span34"></span>
+
+                            </div><br>
+
+
+                            <div name="three">
+
+                                <label for="companyname3">Company Name: </label>
+                                <input type="text" id="companyname3" name="w_companyname[]" value=""><span
+                                    id="span35"></span>
+
+                                <label for="designation3">Designation: </label>
+                                <input type="text" id="designation3" name="w_designation[]" value=""><span
+                                    id="span36"></span>
+
+                                <label for="from3">From: </label>
+                                <input type="text" id="from3" name="w_from[]" value=""><span id="span37"></span>
+
+                                <label for="to3">To: </label>
+                                <input type="text" id="to3" name="w_to[]" value=""><span id="span38"></span>
+
+                            </div><br>
+
+
+                        </div><br>
+                    </div>
+
+
+                    <!-- Language Known-->
+
+
+                    <div class="part" id="languagepart">
+                        <div class="row">
+                            <p>Language Known</p>
+                        </div>
+                        <div class="row1">
+
+
+                            <div name="hindi">
+
+                                <input type="checkbox" id="hindi1" name="languageName[]" value="9">
+                                <label for="hindi1">Hindi</label><span id="span39"></span>
+
+                                <input type="checkbox" id="read1" name="read[]" value="12"><span id="span40"></span>
+                                <label for="read1">Read</label>
+
+                                <input type="checkbox" id="write1" name="write[]" value="13"><span id="span41"></span>
+                                <label for="write1">Write</label>
+
+                                <input type="checkbox" id="speak1" name="speak[]" value="14">
+                                <label for="speak1">Speak</label><span id="span42"></span>
+
+                            </div><br>
+
+
+
+                            <div name="english">
+
+                                <input type="checkbox" id="english1" name="languageName[]" value="10">
+                                <label for="english1">English</label><span id="span43"></span>
+
+                                <input type="checkbox" id="read2" name="read[]" value="12"><span id="span44"></span>
+                                <label for="read2">Read</label>
+
+                                <input type="checkbox" id="write2" name="write[]" value="13"><span id="span45"></span>
+                                <label for="write2">Write</label>
+
+                                <input type="checkbox" id="speak2" name="speak[]" value="14">
+                                <label for="speak2">Speak</label><span id="span46"></span>
+
+                            </div><br>
+
+
+                            <div name="gujarati">
+
+                                <input type="checkbox" id="gujarati1" name="languageName[]" value="11">
+                                <label for="gujarati1">Gujarati</label><span id="span47"></span>
+
+                                <input type="checkbox" id="read3" name="read[]" value="12"><span id="span48"></span>
+                                <label for="read3">Read</label>
+
+                                <input type="checkbox" id="write3" name="write[]" value="13"><span id="span49"></span>
+                                <label for="write3">Write</label>
+
+                                <input type="checkbox" id="speak3" name="speak[]" value="14">
+                                <label for="speak3">Speak</label><span id="span50"></span>
+
+                            </div><br>
+
+
+                        </div><br>
+                    </div>
+
+
+
+                    <!-- Technologies You know-->
+
+
+                    <div class="part" id="techpart">
+                        <div class="row">
+                            <p>Technologies You know</p>
+                        </div>
+                        <div class="row1">
+
+
+
+                            <div name="tphp">
+
+                                <input type="checkbox" id="php" name="tech[]" value="1">
+                                <label for="php">PHP</label><span id="span51"></span>
+
+                                <input type="radio" id="beginer1" name="php" value="12"><span id="span52"></span>
+                                <label for="beginer1">Beginer</label>
+
+                                <input type="radio" id="mideator1" name="php" value="13"><span id="span53"></span>
+                                <label for="mideator1">Mideator</label>
+
+                                <input type="radio" id="expert1" name="php" value="14">
+                                <label for="expert1">Expert</label>
+
+                                <span id="span54"></span>
+
+                            </div><br>
+
+
+
+                            <div name="tmysql">
+
+                                <input type="checkbox" id="mysql" name="tech[]" value="2">
+                                <label for="mysql">Mysql</label><span id="span55"></span>
+
+                                <input type="radio" id="beginer2" name="mysql" value="12">
+                                <label for="beginer2">Beginer</label>
+
+                                <input type="radio" id="mideator2" name="mysql" value="13">
+                                <label for="mideator2">Mideator</label>
+
+                                <input type="radio" id="expert2" name="mysql" value="14">
+                                <label for="expert2">Expert</label>
+
+                                <span id="span56"></span>
+
+                            </div><br>
+
+
+                            <div name="tlaravel">
+
+                                <input type="checkbox" id="laravel" name="tech[]" value="3">
+                                <label for="laravel">Laravel</label><span id="span57"></span>
+
+                                <input type="radio" id="beginer3" name="laravel" value="12">
+                                <label for="beginer3">Beginer</label>
+
+                                <input type="radio" id="mideator3" name="laravel" value="13">
+                                <label for="mideator3">Mideator</label>
+
+                                <input type="radio" id="expert3" name="laravel" value="14">
+                                <label for="expert3">Expert</label>
+
+                                <span id="span58"></span>
+
+                            </div><br>
+
+                            <div name="toracle">
+
+                                <input type="checkbox" id="oracle" name="tech[]" value="4">
+                                <label for="oracle">Oracle</label><span id="span59"></span>
+
+                                <input type="radio" id="beginer4" name="oracle" value="12">
+                                <label for="beginer4">Beginer</label>
+
+                                <input type="radio" id="mideator4" name="oracle" value="13">
+                                <label for="mideator4">Mideator</label>
+
+                                <input type="radio" id="expert4" name="oracle" value="14">
+                                <label for="expert4">Expert</label><span id="span60"></span>
+
+                            </div><br>
+
+
+
+
+                        </div><br>
+                    </div>
+
+                    <!--Reference Part-->
+
+                    <div class="part" id="refpart">
+                        <div class="row">
+                            <p>Reference</p>
+                        </div>
+                        <div class="row1" id="refsec">
+
+
+                            <div>
+                                <input type="button" name="Remove" value="Remove" onclick="removeReference()">
+                                <input type="button" name="Add" value="ADD" onclick="addReference()">
+                            </div><br>
+
+                            <div name="reference1">
+
+                                <label for="name1">Name: </label>
+                                <input type="text" id="name1" name="ref_name[]" value=""><span id="span61"></span>
+
+                                <label for="contactno1">Contact No: </label>
+                                <input type="text" id="contactno1" name="ref_contactno[]" value=""><span
+                                    id="span62"></span>
+
+                                <label for="relation1">Relation: </label>
+                                <input type="text" id="relation1" name="ref_relation[]" value=""><span
+                                    id="span63"></span>
+
+                            </div><br>
+
+
+
+                            <div name="reference2">
+
+                                <label for="name2">Name: </label>
+                                <input type="text" id="name2" name="ref_name[]" value=""><span id="span64"></span>
+
+                                <label for="contactno2">Contact No: </label>
+                                <input type="text" id="contactno2" name="ref_contactno[]" value=""><span
+                                    id="span65"></span>
+
+                                <label for="relation2">Relation: </label>
+                                <input type="text" id="relation2" name="ref_relation[]" value=""><span
+                                    id="span66"></span>
+
+                            </div><br>
+
+
+
+
+                        </div><br>
+                    </div>
+
+
+                    <!--Preferance Part-->
+
+                    <div class="part" id="prefpart">
+                        <div class="row">
+                            <p>Preferance</p>
+                        </div>
+                        <div class="row1">
+
+
+                            <label for="preferedlocation">Prefered Location: </label>
+                            <select name="preferedlocation" id="preferedlocation">
+                                <option value="Amdavad">Amdavad</option>
+                                <option value="Anand">Anand </option>
+                                <option value="Modasa">Modasa</option>
+                                <option value="Lunavada">Lunavada</option>
+                            </select><span id="span67"></span><br><br>
+
+
+
+                            <label for="noticeperiod">Notice Period: </label>
+                            <input type="text" id="noticeperiod" name="noticeperiod" value=""><span
+                                id="span68"></span><br><br>
+
+
+                            <label for="expectedctc">Expected CTC: </label>
+                            <input type="text" id="expectedctc" name="expectedctc" value=""><span
+                                id="span69"></span><br><br>
+
+
+                            <label for="currentctc">Current CTC: </label>
+                            <input type="text" id="currentctc" name="currentctc" value=""><span
+                                id="span70"></span><br><br>
+
+                            <label for="department">Department: </label>
+                            <select name="department" id="department">
+                                <option value="10">Development</option>
+                                <option value="8">UI/UX Designer</option>
+                                <option value="11">Marketing</option>
+                                <option value="6">SEO</option>
+                            </select><span id="span71"></span><br>
+
+
+
+                        </div><br>
+                    </div>
+
+
+
+
+
+                    <div class="row">
+                        <div class="col" id="button1">
+                            <input type="button" name="prev" value="Prev" onclick="return prevPage()">
+                        </div>
+                        <div class="col" id="button2">
+                            <input type="button" name="next" value="Next" id="submitajax" onclick="return nextPage()">
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+
+        function fun1() {
+            document.getElementById("basicDetailpart").style.display = "block";
+        }
+        function prevPage() {
+            var x = document.getElementById("basicDetailpart");
+            if (x.style.display === "block") {
+
+
+            }
+            else if (document.getElementById("edupart").style.display === "block") {
+                document.getElementById("edupart").style.display = "none";
+                document.getElementById("basicDetailpart").style.display = "block";
+
+            }
+            else if (document.getElementById("workexppart").style.display === "block") {
+                document.getElementById("workexppart").style.display = "none";
+                document.getElementById("edupart").style.display = "block";
+
+            }
+            else if (document.getElementById("languagepart").style.display === "block") {
+                document.getElementById("languagepart").style.display = "none";
+                document.getElementById("workexppart").style.display = "block";
+
+            }
+            else if (document.getElementById("techpart").style.display === "block") {
+                document.getElementById("techpart").style.display = "none";
+                document.getElementById("languagepart").style.display = "block";
+
+            }
+            else if (document.getElementById("refpart").style.display === "block") {
+                document.getElementById("refpart").style.display = "none";
+                document.getElementById("techpart").style.display = "block";
+
+            }
+            else if (document.getElementById("prefpart").style.display === "block") {
+                document.getElementById("prefpart").style.display = "none";
+                document.getElementById("refpart").style.display = "block";
+
+            }
+        }
+        function nextPage() {
+
+            var x = document.getElementById("basicDetailpart");
+            if (x.style.display === "block") {
+
+
+                var b_fname = document.getElementById("fname");
+                var b_fname_span = document.getElementById("span1");
+                console.log(b_fname);
+                var res1 = first_name(b_fname, b_fname_span);
+
+                var b_lname = document.getElementById("lname");
+                var b_lname_span = document.getElementById("span2");
+                console.log(b_lname);
+                var res2 = first_name(b_lname, b_lname_span);
+
+                var b_designation = document.getElementById("designation");
+                var b_designation_span = document.getElementById("span3");
+                console.log(b_designation);
+                var res3 = designation_fun(b_designation, b_designation_span);
+
+                var b_address1 = document.getElementById("address1");
+                var b_address1_span = document.getElementById("span4");
+                console.log(b_address1);
+                var res4 = address(b_address1, b_address1_span);
+
+                var b_address2 = document.getElementById("address2");
+                var b_address2_span = document.getElementById("span5");
+                console.log(b_address2);
+                var res5 = address(b_address2, b_address2_span);
+
+                var b_email = document.getElementById("email");
+                var b_email_span = document.getElementById("span6");
+                console.log(b_email);
+                var res6 = ValidateEmail(b_email, b_email_span);
+
+                var b_phoneno = document.getElementById("phoneno");
+                var b_phoneno_span = document.getElementById("span7");
+                console.log(b_phoneno);
+                var res7 = contactfun(b_phoneno, b_phoneno_span);
+
+                var b_city = document.getElementById("city");
+                var b_city_span = document.getElementById("span8");
+                console.log(b_city);
+                // var res8 = first_name(b_city,b_city_span);
+
+                var b_gender_male = document.getElementById("male");
+                var b_gender_female = document.getElementById("female");
+                var b_gender_span = document.getElementById("span9");
+                console.log(b_gender_male);
+                var res9 = gender_fun(b_gender_male, b_gender_female, b_gender_span);
+
+                var b_zipcode = document.getElementById("zipcode");
+                var b_zipcode_span = document.getElementById("span10");
+                console.log(b_zipcode);
+                var res10 = zipcode_fun(b_zipcode, b_zipcode_span);
+
+                var b_relationship = document.getElementById("relationship");
+                var b_relationship_span = document.getElementById("fname");
+                console.log(b_relationship);
+
+                var b_dob = document.getElementById("dob");
+                var b_dob_span = document.getElementById("span12");
+                console.log(b_dob);
+                var res11 = dobfun(b_dob, b_dob_span);
+
+                if (res1 == true && res2 == true && res3 == true && res4 == true && res5 == true && res6 == true && res7 == true && res9 == true && res10 == true && res11 == true) {
+                    document.getElementById("edupart").style.display = "block";
+                    document.getElementById("basicDetailpart").style.display = "none";
+                    return true;
+                } else {
+                    return false;
+                }
+
+
+
+            } else if (document.getElementById("edupart").style.display === "block") {
+
+
+                // Education details
+
+                // SSC
+
+                var e_nameofboard10th = document.getElementById("nameofboard1");
+                var e_nameofboard10th_span = document.getElementById("span13");
+                console.log(e_nameofboard10th);
+                var res12 = first_name_combo(e_nameofboard10th, e_nameofboard10th_span);
+
+                var e_passingyear10th = document.getElementById("passingyear1");
+                var e_passingyear10th_span = document.getElementById("span14");
+                console.log(e_passingyear10th);
+                var res13 = passingyear_fun(e_passingyear10th, e_passingyear10th_span);
+
+                var e_percentage10th = document.getElementById("percentage1");
+                var e_percentage10th_span = document.getElementById("span15");
+                console.log(e_percentage10th);
+                var res14 = percentagefun(e_percentage10th, e_percentage10th_span);
+
+                // HSC
+
+                var e_nameofboard12th = document.getElementById("nameofboard2");
+                var e_nameofboard12th_span = document.getElementById("span16");
+                console.log(e_nameofboard12th);
+                var res15 = first_name_combo(e_nameofboard12th, e_nameofboard12th_span);
+
+                var e_passingyear12th = document.getElementById("passingyear2");
+                var e_passingyear12th_span = document.getElementById("span17");
+                console.log(e_passingyear12th);
+                var res16 = passingyear_fun(e_passingyear12th, e_passingyear12th_span);
+
+                var e_percentage12th = document.getElementById("percentage2");
+                var e_percentage12th_span = document.getElementById("span18");
+                console.log(e_percentage12th);
+                var res17 = percentagefun(e_percentage12th, e_percentage12th_span);
+
+                // course 3
+
+                var e_coursename_be = document.getElementById("coursename3");
+                var e_coursename_be_span = document.getElementById("span19");
+                console.log(e_coursename_be);
+                var res18 = first_name_combo(e_coursename_be, e_coursename_be_span);
+
+
+                var e_passingyear_be = document.getElementById("passingyear3");
+                var e_passingyear_be_span = document.getElementById("span21");
+                console.log(e_passingyear_be);
+                var res20 = passingyear_fun(e_passingyear_be, e_passingyear_be_span);
+
+                var e_percentage_be = document.getElementById("percentage3");
+                var e_percentage_be_span = document.getElementById("span22");
+                console.log(e_percentage_be);
+                var res21 = percentagefun(e_percentage_be, e_percentage_be_span);
+
+                // course 4
+
+                var e_coursename_me = document.getElementById("coursename4");
+                var e_coursename_me_span = document.getElementById("span23");
+                console.log(e_coursename_me);
+
+
+                var e_passingyear_me = document.getElementById("passingyear4");
+                var e_passingyear_me_span = document.getElementById("span25");
+                console.log(e_passingyear_me);
+
+
+                var e_percentage_me = document.getElementById("percentage4");
+                var e_percentage_me_span = document.getElementById("span26");
+                console.log(e_percentage_me);
+
+
+                if (!e_coursename_me.value && !e_passingyear_me.value && !e_percentage_me.value) {
+                    e_coursename_me_span.innerHTML = "";
+                    e_passingyear_me_span.innerHTML = "";
+                    e_percentage_me_span.innerHTML = "";
+
+                    var res22 = true;
+                    var res23 = true;
+                    var res24 = true;
+                    var res25 = true;
+
+                } else {
+                    var res22 = first_name_combo(e_coursename_me, e_coursename_me_span);
+                    var res23 = true;
+                    var res24 = passingyear_fun(e_passingyear_me, e_passingyear_me_span);
+                    var res25 = percentagefun(e_percentage_me, e_percentage_me_span);
+                }
+
+                if (res12 == true && res13 == true && res14 == true && res15 == true && res16 == true && res17 == true && res18 == true && res20 == true && res21 == true && res22 == true && res23 == true && res24 == true && res25 == true) {
+                    document.getElementById("edupart").style.display = "none";
+                    document.getElementById("workexppart").style.display = "block";
+                    return true;
+                } else {
+                    return false;
+                }
+
+
+
+            }
+            else if (document.getElementById("workexppart").style.display === "block") {
+
+
+                //Work experience
+
+                // 1
+
+                var w_companyname_companyone = document.getElementById("companyname1");
+                var w_companyname_companyone_span = document.getElementById("span27");
+                console.log(w_companyname_companyone);
+
+
+                var w_designation_companyone = document.getElementById("designation1");
+                var w_designation_companyone_span = document.getElementById("span28");
+                console.log(w_designation_companyone);
+
+
+                var w_from_companyone = document.getElementById("from1");
+                var w_from_companyone_span = document.getElementById("span29");
+                console.log(w_from_companyone);
+
+
+                var w_to_companyone = document.getElementById("to1");
+                var w_to_companyone_span = document.getElementById("span30");
+                console.log(w_to_companyone);
+
+
+                if (!w_companyname_companyone.value && !w_designation_companyone.value && !w_from_companyone.value && !w_to_companyone.value) {
+                    w_companyname_companyone_span.innerHTML = "";
+                    w_designation_companyone_span.innerHTML = "";
+                    w_from_companyone_span.innerHTML = "";
+                    w_to_companyone_span.innerHTML = "";
+
+                    var res26 = true;
+                    var res27 = true;
+                    var res28 = true;
+                    var res29 = true;
+
+                } else {
+                    var res26 = first_name(w_companyname_companyone, w_companyname_companyone_span);
+                    var res27 = designation_fun(w_designation_companyone, w_designation_companyone_span);
+                    var res28 = dobfun(w_from_companyone, w_from_companyone_span);
+                    var res29 = dobfun(w_to_companyone, w_to_companyone_span);
+                }
+
+
+                // 2 
+
+                var w_companyname_companytwo = document.getElementById("companyname2");
+                var w_companyname_companytwo_span = document.getElementById("span31");
+                console.log(w_companyname_companytwo);
+
+
+                var w_designation_companytwo = document.getElementById("designation2");
+                var w_designation_companytwo_span = document.getElementById("span32");
+                console.log(w_designation_companytwo);
+
+                var w_from_companytwo = document.getElementById("from2");
+                var w_from_companytwo_span = document.getElementById("span33");
+                console.log(w_from_companytwo);
+
+                var w_to_companytwo = document.getElementById("to2");
+                var w_to_companytwo_span = document.getElementById("span34");
+                console.log(w_to_companytwo);
+
+
+                if (!w_companyname_companytwo.value && !w_designation_companytwo.value && !w_from_companytwo.value && !w_to_companytwo.value) {
+                    w_companyname_companytwo_span.innerHTML = "";
+                    w_designation_companytwo_span.innerHTML = "";
+                    w_from_companytwo_span.innerHTML = "";
+                    w_to_companytwo_span.innerHTML = "";
+
+                    var res30 = true;
+                    var res31 = true;
+                    var res32 = true;
+                    var res33 = true;
+
+
+                } else {
+                    var res30 = first_name(w_companyname_companytwo, w_companyname_companytwo_span);
+                    var res31 = designation_fun(w_designation_companytwo, w_designation_companytwo_span);
+                    var res32 = dobfun(w_from_companytwo, w_from_companytwo_span);
+                    var res33 = dobfun(w_to_companytwo, w_to_companytwo_span);
+                }
+
+                // 3 
+
+                var w_companyname_companythree = document.getElementById("companyname3");
+                var w_companyname_companythree_span = document.getElementById("span35");
+                console.log(w_companyname_companythree);
+
+                var w_designation_companythree = document.getElementById("designation3");
+                var w_designation_companythree_span = document.getElementById("span36");
+                console.log(w_designation_companythree);
+
+                var w_from_companythree = document.getElementById("from3");
+                var w_from_companythree_span = document.getElementById("span37");
+                console.log(w_from_companythree);
+
+                var w_to_companythree = document.getElementById("to3");
+                var w_to_companythree_span = document.getElementById("span38");
+                console.log(w_to_companythree);
+
+                if (!w_companyname_companythree.value && !w_designation_companythree.value && !w_from_companythree.value && !w_to_companythree.value) {
+                    w_companyname_companythree_span.innerHTML = "";
+                    w_designation_companythree_span.innerHTML = "";
+                    w_from_companythree_span.innerHTML = "";
+                    w_to_companythree_span.innerHTML = "";
+
+                    var res34 = true;
+                    var res35 = true;
+                    var res36 = true;
+                    var res37 = true;
+
+                } else {
+                    var res34 = first_name(w_companyname_companythree, w_companyname_companythree_span);
+                    var res35 = designation_fun(w_designation_companythree, w_designation_companythree_span);
+                    var res36 = dobfun(w_from_companythree, w_from_companythree_span);
+                    var res37 = dobfun(w_to_companythree, w_to_companythree_span);
+                }
+
+                if (res26 == true && res27 == true && res28 == true && res29 == true && res30 == true && res31 == true && res32 == true && res33 == true && res37 == true) {
+                    document.getElementById("workexppart").style.display = "none";
+                    document.getElementById("languagepart").style.display = "block";
+                    return true;
+
+                } else {
+
+                    return false;
+
+                }
+
+
+            }
+            else if (document.getElementById("languagepart").style.display === "block") {
+
+                // Language Known 
+
+
+                // hindi 
+
+                var l_hindi = document.getElementById("hindi1");
+                var l_hindi_span = document.getElementById("span39");
+                console.log(l_hindi);
+
+                var l_read_hindi = document.getElementById("read1");
+                var l_write_hindi = document.getElementById("write1");
+                var l_speak_hindi = document.getElementById("speak1");
+                var l_speak_hindi_span = document.getElementById("span42");
+                console.log(l_speak_hindi);
+
+
+                var res38 = tech(l_hindi, l_hindi_span, l_read_hindi, l_write_hindi, l_speak_hindi, l_speak_hindi_span);
+
+
+                // english
+
+                var l_english = document.getElementById("english1");
+                var l_english_span = document.getElementById("span43");
+                console.log(l_english);
+
+                var l_read_english = document.getElementById("read2");
+                var l_write_english = document.getElementById("write2");
+                var l_speak_english = document.getElementById("speak2");
+                var l_speak_english_span = document.getElementById("span46");
+                console.log(l_speak_english);
+
+                var res39 = tech(l_english, l_english_span, l_read_english, l_write_english, l_speak_english, l_speak_english_span);
+
+                // gujarati
+
+                var l_gujarati = document.getElementById("gujarati1");
+                var l_gujarati_span = document.getElementById("span47");
+                console.log(l_gujarati);
+
+                var l_read_gujarati = document.getElementById("read3");
+                var l_write_gujarati = document.getElementById("write3");
+                var l_speak_gujarati = document.getElementById("speak3");
+                var l_speak_gujarati_span = document.getElementById("span50");
+                console.log(l_speak_gujarati);
+
+
+                var res40 = tech(l_gujarati, l_gujarati_span, l_read_gujarati, l_write_gujarati, l_speak_gujarati, l_speak_gujarati_span);
+
+                if (res38 == true && res39 == true && res40 == true) {
+                    document.getElementById("languagepart").style.display = "none";
+                    document.getElementById("techpart").style.display = "block";
+                    return true;
+                } else {
+                    return false;
+                }
+
+
+
+            }
+            else if (document.getElementById("techpart").style.display === "block") {
+
+
+                // Technologies You may know
+
+                var php_check = document.getElementById("php");
+                var php_check_span = document.getElementById("span51");
+                console.log(php_check);
+
+                var php_beginer = document.getElementById("beginer1");
+                var php_mideator = document.getElementById("mideator1");
+                var php_expert = document.getElementById("expert1");
+                var php_span = document.getElementById("span54");
+
+
+                var res41 = tech(php_check, php_check_span, php_beginer, php_mideator, php_expert, php_span);
+
+
+                //mysql
+
+                var mysql_check = document.getElementById("mysql");
+                var mysql_check_span = document.getElementById("span55");
+                console.log(mysql_check);
+
+                var mysql_beginer = document.getElementById("beginer2");
+                var mysql_mideator = document.getElementById("mideator2");
+                var mysql_expert = document.getElementById("expert2");
+                var mysql_span = document.getElementById("span56");
+
+
+                var res42 = tech(mysql_check, mysql_check_span, mysql_beginer, mysql_mideator, mysql_expert, mysql_span);
+
+
+                //laravel
+
+                var laravel_check = document.getElementById("laravel");
+                var laravel_check_span = document.getElementById("span57");
+                console.log(laravel_check);
+
+                var laravel_beginer = document.getElementById("beginer3");
+                var laravel_mideator = document.getElementById("mideator3");
+                var laravel_expert = document.getElementById("expert3");
+                var laravel_span = document.getElementById("span58");
+
+
+                var res43 = tech(laravel_check, laravel_check_span, laravel_beginer, laravel_mideator, laravel_expert, laravel_span);
+
+                // oracle
+
+                var oracle_check = document.getElementById("oracle");
+                var oracle_check_span = document.getElementById("span59");
+                console.log(oracle_check);
+
+
+                var oracle_beginer = document.getElementById("beginer4");
+                var oracle_mideator = document.getElementById("mideator4");
+                var oracle_expert = document.getElementById("expert4");
+                var oracle_span = document.getElementById("span60");
+
+
+                var res44 = tech(oracle_check, oracle_check_span, oracle_beginer, oracle_mideator, oracle_expert, oracle_span);
+
+                if (res41 == true && res42 == true && res43 == true && res44 == true) {
+                    document.getElementById("techpart").style.display = "none";
+                    document.getElementById("refpart").style.display = "block";
+                    return true;
+                } else {
+                    return false;
+                }
+
+            }
+            else if (document.getElementById("refpart").style.display === "block") {
+
+                // references
+
+                // 1
+
+                var ref1_name = document.getElementById("name1");
+                var ref1_name_span = document.getElementById("span61");
+                console.log(ref1_name);
+
+                var ref1_contactno = document.getElementById("contactno1");
+                var ref1_contactno_span = document.getElementById("span62");
+                console.log(ref1_contactno);
+
+                var ref1_relation = document.getElementById("relation1");
+                var ref1_relation_span = document.getElementById("span63");
+                console.log(ref1_relation);
+
+                if (!ref1_name.value && !ref1_contactno.value && !ref1_relation.value) {
+                    ref1_name_span.innerHTML = "";
+                    ref1_contactno_span.innerHTML = "";
+                    ref1_relation_span.innerHTML = "";
+
+                    var res45 = true;
+                    var res46 = true;
+                    var res47 = true;
+
+
+                } else {
+                    var res45 = first_name(ref1_name, ref1_name_span);
+                    var res46 = contactfun(ref1_contactno, ref1_contactno_span);
+                    var res47 = first_name(ref1_relation, ref1_relation_span);
+
+                }
+
+
+
+                // 2
+
+                var ref2_name = document.getElementById("name2");
+                var ref2_name_span = document.getElementById("span64");
+                console.log(ref2_name);
+
+                var ref2_contactno = document.getElementById("contactno2");
+                var ref2_contactno_span = document.getElementById("span65");
+                console.log(ref2_contactno);
+
+                var ref2_relation = document.getElementById("relation2");
+                var ref2_relation_span = document.getElementById("span66");
+                console.log(ref2_relation);
+
+                if (!ref2_name.value && !ref2_contactno.value && !ref2_relation.value) {
+                    ref2_name_span.innerHTML = "";
+                    ref2_contactno_span.innerHTML = "";
+                    ref2_relation_span.innerHTML = "";
+
+                    var res48 = true;
+                    var res49 = true;
+                    var res50 = true;
+
+                } else {
+                    var res48 = first_name(ref2_name, ref2_name_span);
+                    var res49 = contactfun(ref2_contactno, ref2_contactno_span);
+                    var res50 = first_name(ref2_relation, ref2_relation_span);
+
+                }
+
+                if (res45 == true && res46 == true && res47 == true && res48 == true && res49 == true && res50 == true) {
+                    document.getElementById("refpart").style.display = "none";
+                    document.getElementById("prefpart").style.display = "block";
+                    return true;
+                }
+                else {
+                    return false;
+                }
+
+
+
+            }
+            else if (document.getElementById("prefpart").style.display === "block") {
+
+                // Preferences
+
+                var preferedlocation = document.getElementById("preferedlocation");
+                var preferedlocation_span = document.getElementById("fname");
+                console.log(preferedlocation);
+
+                var noticeperiod = document.getElementById("noticeperiod");
+                var noticeperiod_span = document.getElementById("span68");
+                console.log(noticeperiod);
+                var res51 = ctc(noticeperiod, noticeperiod_span);
+
+                var expectedctc = document.getElementById("expectedctc");
+                var expectedctc_span = document.getElementById("span69");
+                console.log(expectedctc);
+                var res52 = ctc(expectedctc, expectedctc_span);
+
+                var currentctc = document.getElementById("currentctc");
+                var currentctc_span = document.getElementById("span70");
+                console.log(currentctc);
+                var res53 = ctc(currentctc, currentctc_span);
+
+                var department = document.getElementById("department");
+                var department_span = document.getElementById("fname");
+                console.log(department);
+
+                if (res51 == true && res52 == true && res53 == true) {
+                    document.getElementById("submitajax").removeAttribute("type");
+                    document.getElementById("submitajax").removeAttribute("value");
+                    document.getElementById("submitajax").setAttribute("type", "submit");
+                    document.getElementById("submitajax").setAttribute("value", "Submit");
+
+
+                    return true;
+                } else {
+                    return false;
+                }
+
+            }
+        }
+
+        async function submit() {
+                let formData = document.getElementById("myform");
+                let data = new FormData(formData);
+                const params = new URLSearchParams(data);
+                const jobdata = await new Response(params).text();
+                console.log(jobdata);
+
+                console.log("Insert data!");
+
+                let data2 = await fetch("http://localhost:7000", {
+                    method: "POST",
+                    headers: {
+                        'Content-type': "application/x-www-form-urlencoded"
+                    },
+                    body: jobdata
+                });
+            }
+
+
+
+        // Validation code
+
+
+        function subFun() {
+
+            submit();
+
+
+        }
+
+
+
+        // Basic Deatil
+
+        function first_name(fname, fnamespan) {
+            var first_name_format = /^[a-zA-Z ]+$/;
+            if (!fname.value) {
+                fnamespan.innerHTML = " *required ";
+                fname.focus();
+                return false;
+            } else if (!fname.value.match(first_name_format)) {
+                fnamespan.innerHTML = " Enter Valid Name ";
+                fname.focus();
+                return false;
+            } else {
+                fnamespan.innerHTML = "";
+                return true;
+            }
+
+        }
+
+        function first_name_combo(fname, fnamespan) {
+            var first_name_format = /^[a-zA-Z0-9 ]+$/;
+            if (!fname.value) {
+                fnamespan.innerHTML = " *required ";
+                fname.focus();
+                return false;
+            } else if (!fname.value.match(first_name_format)) {
+                fnamespan.innerHTML = " Enter Valid Name ";
+                fname.focus();
+                return false;
+            } else {
+                fnamespan.innerHTML = "";
+                return true;
+            }
+        }
+
+        function first_name_notrequired(fname, fnamespan) {
+            var first_name_format = /^[a-zA-Z ]+$/;
+
+            if (!fname.value.match(first_name_format)) {
+                fnamespan.innerHTML = " Enter Valid Name ";
+                fname.focus();
+                return false;
+            } else {
+                fnamespan.innerHTML = "";
+                return true;
+            }
+
+        }
+
+        function designation_fun(fname, fnamespan) {
+            var designation_format = /^[a-zA-Z0-9\s/',]*$/;
+            if (!fname.value) {
+                fnamespan.innerHTML = " *required ";
+                fname.focus();
+                return false;
+            } else if (!fname.value.match(designation_format)) {
+                fnamespan.innerHTML = " Enter Valid value ";
+                fname.focus();
+                return false;
+            } else {
+                fnamespan.innerHTML = "";
+                return true;
+            }
+
+        }
+
+        function designation_fun_notrequired(fname, fnamespan) {
+            var designation_format = /^[a-zA-Z0-9\s/',]*$/;
+            document.getElementById("");
+            if (!fname.value.match(designation_format)) {
+                fnamespan.innerHTML = " Enter Valid value ";
+                fname.focus();
+                return false;
+            } else {
+                fnamespan.innerHTML = "";
+                return true;
+            }
+        }
+
+        function address(a, b) {
+            var address_format = /^[a-zA-Z0-9\s'$&+:;=?@#|/',.<>^*()%!]*$/;
+            if (!a.value) {
+                b.innerHTML = " *required ";
+                a.focus();
+                return false;
+            } else if (!a.value.match(address_format)) {
+                b.innerHTML = " Enter Valid Address  ";
+                a.focus();
+                return false;
+            } else {
+                b.innerHTML = "";
+                return true;
+            }
+
+        }
+
+        function ValidateEmail(email1, emailspan) {
+            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if (!email1.value) {
+                emailspan.innerHTML = " *required ";
+                email1.focus();
+                return false;
+            } else if (!email1.value.match(mailformat)) {
+                emailspan.innerHTML = "You have entered an invalid email address!";
+                email1.focus();
+                return false;
+            } else {
+                emailspan.innerHTML = "";
+                return true;
+            }
+
+        }
+
+        function contactfun(contact, contactspan) {
+            var contact_format = /^\d{10}$/;
+            if (!contact.value) {
+                contactspan.innerHTML = " *required ";
+                contact.focus();
+                return false;
+            } else if (!contact.value.match(contact_format)) {
+                contactspan.innerHTML = " Enter Valid Contact Number ";
+                contact.focus();
+                return false;
+            } else {
+                contactspan.innerHTML = "";
+                return true;
+            }
+        }
+
+        function gender_fun(b_gender_male, b_gender_female, b_gender_span) {
+            if (!b_gender_male.checked && !b_gender_female.checked) {
+                b_gender_span.innerHTML = " *required "
+                document.getElementById("gender_label").focus();
+                return false;
+            } else {
+                b_gender_span.innerHTML = "";
+                return true;
+            }
+        }
+
+        function zipcode_fun(contact, contactspan) {
+            var contact_format = /^\d{6}$/;
+            if (!contact.value) {
+                contactspan.innerHTML = " *required ";
+                contact.focus();
+                return false;
+            } else if (!contact.value.match(contact_format)) {
+                contactspan.innerHTML = " Enter Valid zipcode Number ";
+                contact.focus();
+                return false;
+            } else {
+                contactspan.innerHTML = "";
+                return true;
+            }
+        }
+
+        function dobfun(dob, dobspan) {
+            var dob_format = /^([0-9]{4})\-([0-9]{2})\-([0-9]{2})$/;
+            if (!dob.value) {
+                dobspan.innerHTML = " *required ";
+                dob.focus();
+                return false;
+            } else if (!dob.value.match(dob_format)) {
+                dobspan.innerHTML = " Enter Valid Date of Birth ";
+                dob.focus();
+                return false;
+            } else {
+                dobspan.innerHTML = "";
+                return true;
+            }
+        }
+
+        function passingyear_fun(contact, contactspan) {
+            var contact_format = /^\d{4}$/;
+            if (!contact.value) {
+                contactspan.innerHTML = " *required ";
+                contact.focus();
+                return false;
+            } else if (!contact.value.match(contact_format)) {
+                contactspan.innerHTML = " Enter Valid zipcode Number ";
+                contact.focus();
+                return false;
+            } else {
+                contactspan.innerHTML = "";
+                return true;
+            }
+        }
+
+        function percentagefun(contact, contactspan) {
+            var contact_format = /^([0-9]{2})*$/;       // /^([0-9]{2})\/([0-9.%])*$/;
+            if (!contact.value) {
+                contactspan.innerHTML = " *required ";
+                contact.focus();
+                return false;
+            } else if (!contact.value.match(contact_format)) {
+                contactspan.innerHTML = " Enter Valid value ";
+                contact.focus();
+                return false;
+            } else {
+                contactspan.innerHTML = "";
+                return true;
+            }
+        }
+
+        function ctc(dob, dobspan) {
+            var dob_format = /^[a-zA-Z0-9\s'$&+:;=?@#|/',.<>^*()%!]*$/;
+            if (!dob.value) {
+                dobspan.innerHTML = " *required ";
+                dob.focus();
+                return false;
+            } else if (!dob.value.match(dob_format)) {
+                dobspan.innerHTML = " Enter Valid value ";
+                dob.focus();
+                return false;
+            } else {
+                dobspan.innerHTML = "";
+                return true;
+            }
+        }
+
+        function tech(php_check, php_check_span, php_beginer, php_mideator, php_expert, php_span) {
+            if (!php_check.checked && !php_beginer.checked && !php_mideator.checked && !php_expert.checked) {
+                php_check_span.innerHTML = "";
+                php_span.innerHTML = "";
+                return true;
+
+            } else if (php_check.checked && !php_beginer.checked && !php_mideator.checked && !php_expert.checked) {
+                php_span.innerHTML = " *required ";
+                return false;
+
+            } else if (!php_check.checked && (php_beginer.checked || php_mideator.checked || php_expert.checked)) {
+                php_check_span.innerHTML = " *required ";
+                return false;
+            } else {
+                php_check_span.innerHTML = "";
+                php_span.innerHTML = "";
+                return true;
+            }
+        }
+
+        // function check(w_companyname_companytwo, w_companyname_companytwo_span, w_designation_companytwo, w_designation_companytwo_span, w_from_companytwo, w_from_companytwo_span, w_to_companytwo,w_to_companytwo_span){
+        //         if(!w_companyname_companytwo.value && !w_designation_companytwo.value && !w_from_companytwo.value && !w_to_companytwo.value){
+        //         w_companyname_companytwo_span.innerHTML="";
+        //         w_designation_companytwo_span.innerHTML="";
+        //         w_from_companytwo_span.innerHTML = "";
+        //         w_to_companytwo_span.innerHTML = "";
+
+        //         return true;
+
+
+        //         }else{
+        //             var res30 =  first_name(w_companyname_companytwo, w_companyname_companytwo_span);
+        //             var res31 =  designation_fun(w_designation_companytwo, w_designation_companytwo_span);
+        //             var res32 = dobfun(w_from_companytwo, w_from_companytwo_span);
+        //             var res33 = dobfun(w_to_companytwo, w_to_companytwo_span);
+        //             if(res30==true && res31==true && res32==true && res33==true){
+        //                 return true;
+        //             }else{
+        //                 return false;
+        //             }
+        //         }
+        //     }
+
+        
+
+        
+        function removeEducation(){
+            var educationSection = document.getElementById("edusec");
+            
+            if(educationSection.getElementsByTagName("div").length != 4){
+                educationSection.removeChild(educationSection.lastChild);
+            }
+        }
+        
+
+        function addEducation() {
+            var educationSection = document.getElementById("edusec");
+            educationSection.appendChild(document.createElement("div"));
+            educationSection.lastChild.innerHTML = `<br>
+                        
+                        <label for="">Name of Board: </label>
+                                                
+                        <select id="" name="e_nameofboard[]">
+                            <option value="">-- Select --</option>
+                            <option value="5">SSC Details</option>
+                            <option value="6">HSC Details</option>
+                            <option value="7">Bechelor Details</option>
+                            <option value="8">Master Details</option>
+                            <option value="15">BCA Details</option>
+                            <option value="16">MCA Details</option>
+                        </select>
+                        <span id=""></span>
+                           
+                        <lable for="">Passing Year:</lable>
+                        <input type="text" id="" name="e_passingyear[]" value=""><span id=""></span>
+                
+                        <label for="">Percentage: </label>
+                        <input type="text" id="" name="e_percentage[]" value=""><span id=""></span>`;
+        }
+
+        function removeWorkExperience(){
+            var ax = document.getElementById("worksec");
+            if(ax.getElementsByTagName("div").length != 0){
+                ax.removeChild(ax.lastChild);
+            }
+        }
+
+        var workExp = document.getElementById("worksec");
+
+        function addWorkExperience() {
+
+            workExp.appendChild(document.createElement("div"));
+
+            workExp.lastChild.innerHTML = `<label for="">Company Name: </label>
+                    <input type="text" id="" name="w_companyname[]" value=""><span id=""></span>
+            
+                    <label for="designation1">Designation: </label>
+                    <input type="text" id="" name="w_designation[]" value=""><span id=""></span>
+            
+                    <label for="from1">From: </label>
+                    <input type="text" id="" name="w_from[]" value=""><span id=""></span>
+            
+                    <label for="to1">To: </label>
+                    <input type="text" id="" name="w_to[]" value=""><span id=""></span>`;
+            workExp.appendChild(document.createElement("br"));
+
+        }
+
+
+       
+
+        function removeReference(){
+
+            var ref = document.getElementById("refsec");
+            
+            if(ref.getElementsByTagName("div").length != 3){
+                ref.removeChild(ref.lastChild);
+            }
+
+        }
+
+        function addReference() {
+            var ref = document.getElementById("refsec");
+
+            ref.appendChild(document.createElement("div"));
+            ref.lastChild.innerHTML = ` <label for="">Name: </label>
+                <input type="text" id="" name="ref_name[]" value=""><span id=""></span>
+        
+                <label for="">Contact No: </label>
+                <input type="text" id="" name="ref_contactno[]" value=""><span id=""></span>
+        
+                <label for="">Relation: </label>
+                <input type="text" id="" name="ref_relation[]" value=""><span id=""></span><br>`;
+            ref.appendChild(document.createElement("br"));
+
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>

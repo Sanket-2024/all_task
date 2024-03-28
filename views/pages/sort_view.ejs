@@ -1,0 +1,149 @@
+<!Doctype html>
+<html>
+<header>
+    <title>26-02-2024</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            color: white;
+        }
+
+        section {
+            background-color: cornflowerblue;
+            padding: 25px 0px;
+        }
+
+        .container {
+
+            padding: 0 150px;
+            margin: 0 auto;
+        }
+
+        table {
+            border: 1px solid black;
+            width: 100%;
+        }
+
+        tr {
+            border: 1px dotted black;
+        }
+
+        tr .heading td {
+            padding: 0 15px;
+
+        }
+
+        td {
+            color: black;
+            border: 1px solid white;
+        }
+
+        .heading {
+            background-color: orange;
+            color: white;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</header>
+
+<body>
+    <section>
+        <div class="container">
+            <%- include('../partials/sort_components',{p,order_by,order})%>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <form>
+                <table>
+                    <tr class="heading">
+                        <td calss="header">Id
+                            <a href="?page=<%=p%>&select=<%=keys[0]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
+                            <a href="?page=<%=p%>&select=<%=keys[0]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
+                        </td>
+                        <td calss="header">First Name
+                            <a href="?page=<%=p%>&select=<%=keys[1]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
+                            <a href="?page=<%=p%>&select=<%=keys[1]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
+                        </td>
+                        <td calss="header">Last Name
+                            <a href="?page=<%=p%>&select=<%=keys[2]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
+                            <a href="?page=<%=p%>&select=<%=keys[2]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
+                        </td>
+                        <td calss="header">Date of Birth
+                            <a href="?page=<%=p%>&select=<%=keys[3]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
+                            <a href="?page=<%=p%>&select=<%=keys[3]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
+                        </td>
+                        <td calss="header">Contact Number
+                            <a href="?page=<%=p%>&select=<%=keys[4]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
+                            <a href="?page=<%=p%>&select=<%=keys[4]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
+                        </td>
+                        <td calss="header">Email Address
+                            <a href="?page=<%=p%>&select=<%=keys[5]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
+                            <a href="?page=<%=p%>&select=<%=keys[5]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
+                        </td>
+                        <td calss="header">Permanent Address
+                            <a href="?page=<%=p%>&select=<%=keys[6]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
+                            <a href="?page=<%=p%>&select=<%=keys[6]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
+                        </td>
+                        <td calss="header">Current Address
+                            <a href="?page=<%=p%>&select=<%=keys[7]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
+                            <a href="?page=<%=p%>&select=<%=keys[7]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
+                        </td>
+                        <td calss="header">Age
+                            <a href="?page=<%=p%>&select=<%=keys[8]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
+                            <a href="?page=<%=p%>&select=<%=keys[8]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
+                        </td>
+                        <td calss="header">Created Date
+                            <a href="?page=<%=p%>&select=<%=keys[9]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
+                            <a href="?page=<%=p%>&select=<%=keys[9]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
+                        </td>
+                    </tr>
+                    <%for(let i=0;i<result.length; i++){ %>
+                        <tr>
+                            <td>
+                                <%= result[i].stuid %>
+                            </td>
+                            <td>
+                                <%= result[i].name %>
+                            </td>
+                            <td>
+                                <%= result[i].lastname %>
+                            </td>
+                            <td>
+                                <%= result[i].dob %>
+                            </td>
+                            <td>
+                                <%= result[i].contact %>
+                            </td>
+                            <td>
+                                <%= result[i].email %>
+                            </td>
+                            <td>
+                                <%= result[i].address1 %>
+                            </td>
+                            <td>
+                                <%= result[i].address2 %>
+                            </td>
+                            <td>
+                                <%= result[i].age %>
+                            </td>
+                            <td>
+                                <%= result[i].created_date %>
+                            </td>
+                        </tr>
+                        <% } %>
+                </table>
+            </form>
+        </div>
+    </section>
+
+
+
+</body>
+
+</html>

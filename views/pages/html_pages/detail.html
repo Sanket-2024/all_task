@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>11-03-2024</title>
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+            body{
+                margin: 0px;
+                padding: 0px;
+            }
+            .section{
+                padding: 50px 0;
+            }
+            .container{
+                max-width: 1170px;
+                margin: 0 auto;
+                padding: 0 150px;
+            }
+            table,tr,td,th{
+                border: 1px solid black;
+            }
+            td{
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body onload = "tableData()">
+        <section class="section">
+            <div class="container">
+                <div calss="pagination">
+
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="container">
+                <center>
+                <div class="table">
+                    <table id="tbl"></table><br>
+                    <input type="button" value="Comments" onclick="commentsData()">
+                    <div id="row"></div>
+                </div>
+                </center>
+            </div>
+        </section>
+    </body>
+
+    <script>
+
+        const tableData = async ()=>{
+            const id = window.location.href.split("/").pop();
+            let data = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+            let a = await data.json();
+            console.log(a);
+            let tbl = document.getElementById("tbl");
+            tbl.innerHTML = `<tr>
+                <td>id</td>                    
+                <td>UserId</td>
+                <td>title</td>
+                <td>body</td>
+            </tr>`
+            tbl.innerHTML  += `<tr>
+                <td>${a.id}</td>
+                <td>${a.userId}</td>
+                <td>${a.title}</td>
+                <td>${a.body}</td>
+            </tr>`
+        }
+
+        const commentsData = async ()=>{
+            const id = window.location.href.split("/").pop();
+            let comments = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${id}`);
+            let c = await comments.json();
+            let rows = document.getElementById("row");
+            c.map(x=>{
+                rows.innerHTML = `<div>
+                                        <p>Name: ${x.name}</p>
+                                        <p>Email: ${x.email}</p>
+                                        <p>Comment: ${x.body}</p>
+                                   </div>`
+            });
+        }
+        
+        
+    </script>
+
+</html>

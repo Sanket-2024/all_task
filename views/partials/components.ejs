@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .col{
+                width: 50%;
+                font-weight: bold;
+            }
+            .row{
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                padding: 0 10px;
+            }
+            .col button{
+                padding: 5 10px;
+                font-size: larger;
+                font-weight: bold;
+            }
+            body{
+                width: 1170px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                margin: 0 auto;
+            }
+            #col2{
+                float: right;
+            }
+            #col1{
+                float: left;
+            }
+            .button{
+                border: none;
+                background-color: cadetblue;
+                padding: 10px;
+                font-weight: bold;
+                font-size: 15px;
+            }
+            .button option{
+                border: none;
+                background-color: cadetblue;
+                padding: 10px;
+                font-weight: bold;
+                font-size: 15px;
+            }
+            #f{
+                float: right;
+            }
+            #f a{
+                background-color: cadetblue;
+                padding: 5px 10px;
+                color: black;
+            }
+            #f span{
+                padding: 5px 10px;
+            }
+            
+        </style>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </head>
+    <body>
+       
+            <div class="row">
+                <div class="col" id="col1">
+                    
+                    <form action="/task06?page=1" method="get">
+                        <% if(m=="december2023"){%>
+                        <select class="button" name="month" id="month">
+                            <option value="december2023" selected>December 2023</option>
+                            <option value="january2024">January 2024</option>
+                            <option value="february2024">February 2024</option>
+                        </select>
+                        <%}%>
+                        <% if(m=="january2024"){%>
+                            <select class="button" name="month" id="month">
+                                <option value="december2023">December 2023</option>
+                                <option value="january2024" selected>January 2024</option>
+                                <option value="february2024">February 2024</option>
+                            </select>
+                        <%}%>
+                        <% if(m=="february2024"){%>
+                            <select  class="button" name="month" id="month">
+                                <option value="december2023">December 2023</option>
+                                <option value="january2024">January 2024</option>
+                                <option value="february2024" selected>February 2024</option>
+                            </select>
+                        <%}%>
+                        <input type="submit" value="Apply" class="button">
+                        <br>
+                    </form>
+                    <h3>Month is : <%=m%></h3>
+                </div>
+                <div class="col" id="col2">
+                    <div id="f">
+                        <a href="/task06?page=1&<%=m%>"<%if(Number(p)==1){%>onclick='return false;' style="pointer-events: none"<%}%>><i class="fa-solid fa-angles-left"></i></a>
+                        <a href="/task06?page=<%=Number(p)-1%>&<%=m%>" <%if(Number(p)==1){%> onclick='return false;' style="pointer-events: none"<%}%>><i class="fa-solid fa-angle-left"></i></a>
+
+                        <span class="pages"><%=p%></span>
+
+                        <a href="/task06?page=<%=Number(p)+1%>&<%=m%>" <%if(Number(p)==lastpage){%> onclick='return false;' style="pointer-events: none"<%}%>><i class="fa-solid fa-angle-right"></i></a>
+                        <a href="/task06?page=<%=lastpage%>&<%=m%>" <%if(Number(p)==lastpage){%> onclick='return false;' style="pointer-events: none"<%}%>><i class="fa-solid fa-angles-right"></i></a>
+                    </div>
+                </div>
+            </div>
+    </body>
+</html>

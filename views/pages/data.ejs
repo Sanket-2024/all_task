@@ -1,0 +1,92 @@
+<!Doctype html>
+<html>
+    <header>
+        <title>27-02-2024</title>
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+            body{
+                margin: 0px;
+                padding: 0px;
+                
+            }
+            section{
+                background-color: white;
+                padding: 25px 0px;
+            }
+            .container{
+                
+                padding: 0 150px;
+                margin: 0 auto;
+            }
+            table{
+                border: 1px solid black;
+                width: 100%;
+                text-align: center;
+            }
+            tr{
+                border: 1px dotted black;
+            }
+            tr .heading td {
+                padding: 0 15px;
+            
+            }
+            td{
+                color: black;
+                border: 1px solid black;
+                padding: 9px 0;
+
+            }
+            .heading{
+                background-color: orange;
+                
+            }
+            
+        </style>
+    </header>
+    <body>
+        <section><center><h3>Sanket Patel 28-02-2024  24DEV087</h3></center><br>
+            <div class="container">
+                <%- include('../partials/components',{p,m})%>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <form >
+                <table >
+                    <tr class="heading">
+                        <td>Id</td>
+                        <td>First Name</td>
+                        <td>Number of days</td>
+                        <td>Percentage</td>
+                        <td>-----</td>                       
+                        
+                    </tr>
+                    <%for(let i=0;i<result.length; i++){ %>
+                    <tr>
+                        <td><%= result[i].stuid %></td>
+                        <td><%= result[i].name %></td>
+                        <td><%= result[i].presentDay%></td>
+                        <% if(m=='december2023'){%>
+                        <td><%= parseFloat((result[i].presentDay/31)*100).toFixed(2)%>%</td>
+                        <%}%>
+                        <% if(m=='january2024'){%>
+                            <td><%= parseFloat((result[i].presentDay/31)*100).toFixed(2)%>%</td>
+                        <%}%>
+                        <% if(m=='february2024'){%>
+                            <td><%= parseFloat((result[i].presentDay/29)*100).toFixed(2)%>%</td>
+                        <%}%>
+                        <td></td>
+                        
+                    </tr>
+                    <% } %>
+                </table>
+                </form>
+            </div>
+        </section>
+
+           
+
+    </body>
+</html>

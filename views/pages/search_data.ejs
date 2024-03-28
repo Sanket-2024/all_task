@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Search</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-color: #101820;
+        }
+
+        .section {
+            margin: 55px 0;
+
+        }
+
+        .container {
+            width: 1170px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        table,
+        tr,
+        td {
+            border: none;
+            border-collapse: collapse;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .header td {
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: grey;
+            color: whitesmoke;
+            padding: 10px 25px;
+        }
+
+        #tr2 :nth-child(1) {
+            background-color: grey;
+            font-weight: bold;
+            color: whitesmoke;
+        }
+
+        #tr2 td {
+            background-color: white;
+
+        }
+
+        tr {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="section">
+        <div calss="container">
+            <center>
+                <div class="form">
+                    <form>
+                        <%if(!data){%>
+                            <input type="text" value="" name="s" autofocus>
+                            <input type="submit" value="Submit">
+                            <%}%>
+                            <%if(data){%>
+                                <input type="text" value="<%=data%>" name="s" autofocus>
+                                <input type="submit" value="Submit">
+                            <%}%>
+                    </form>
+                </div>
+            </center>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div calss="table">
+                <table>
+                    <tr class="header">
+                        <td>Id</td>
+                        <td>First Name</td>
+                        <td>Last Name</td>
+                        <td>DOB</td>
+                        <td>Contact</td>
+                        <td>Email</td>
+                        <td>Current Address</td>
+                        <td>Permanant Address</td>
+                        <td>Age</td>
+                        <td>Created Date</td>
+                    </tr>
+                    <% for(let i=0; i<result.length;i++){%>
+                        <tr id="tr2">
+                            <td>
+                                <%=result[i].stuid%>
+                            </td>
+                            <td>
+                                <%=result[i].name%>
+                            </td>
+                            <td>
+                                <%=result[i].lastname%>
+                            </td>
+                            <td>
+                                <%=result[i].dob%>
+                            </td>
+                            <td>
+                                <%=result[i].contact%>
+                            </td>
+                            <td>
+                                <%=result[i].email%>
+                            </td>
+                            <td>
+                                <%=result[i].address1%>
+                            </td>
+                            <td>
+                                <%=result[i].address2%>
+                            </td>
+                            <td>
+                                <%=result[i].age%>
+                            </td>
+                            <td>
+                                <%=result[i].created_date%>
+                            </td>
+                        </tr>
+                        <%}%>
+                </table>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

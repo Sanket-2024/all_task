@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Data</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .section {
+            padding: 25px 0;
+        }
+
+        .container {
+            width: 1170px;
+            padding: 0 150px;
+            margin: 0 auto;
+        }
+
+        table,
+        tr,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            padding: 5px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .col {
+            width: 50%;
+        }
+
+        .col span {
+            text-align: center;
+            font-size: 25px;
+            color: maroon;
+            font-weight: bold;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .header {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight: bold;
+            background-color: thistle;
+
+        }
+
+        .header td {
+            padding: 10px;
+        }
+
+        table tr :nth-child(1) {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight: bold;
+            background-color: thistle;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body><br><br>
+    <center>
+        <h1>Sanket Patel / 29-02-2024 / 24DEV087</h1>
+    </center>
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <span>Student Id: <%=result1[0].stuid%></span><br><br>
+                    <span>Student Name: <%=result1[1].name%></span><br><br>
+                    <span>Attendence: <%=(((result2[0].attendance) /91)*100).toFixed(2)%> %</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+
+            <table>
+                <tr class="header">
+                    <td rowspan="2">Subject Name</td>
+                    <td colspan="2">Prelim Exam</td>
+                    <td colspan="2">Terminal Exam</td>
+                    <td colspan="2">Final Exam</td>
+                    <td rowspan="2">Total Marks</td>
+                </tr>
+                <tr class="header">
+                    <td>Theory Marks</td>
+                    <td>Practical Marks</td>
+                    <td>Theory Marks</td>
+                    <td>Practical Marks</td>
+                    <td>Theory Marks</td>
+                    <td>Practical Marks</td>
+                </tr>
+                <%for(let i=0; i< result1.length; i+=3){%>
+                    <tr>
+                        <td>
+                            <%=result1[i].subject_name%>
+                        </td>
+                        <td>
+                            <%=result1[i].theory%>
+                        </td>
+                        <td>
+                            <%=result1[i].practical%>
+                        </td>
+                        <td>
+                            <%=result1[i+1].theory%>
+                        </td>
+                        <td>
+                            <%=result1[i+1].practical%>
+                        </td>
+                        <td>
+                            <%=result1[i+1].practical%>
+                        </td>
+                        <td>
+                            <%=result1[i+2].practical%>
+                        </td>
+                        <td>
+                            <%= result1[i].theory + result1[i].practical + result1[i+1].theory + result1[i+1].practical
+                                + result1[i+1].practical + result1[i+2].practical %>
+                        </td>
+                    </tr>
+                    <%}%>
+            </table>
+
+        </div>
+    </section>
+</body>
+
+</html>

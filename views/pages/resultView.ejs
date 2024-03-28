@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>28-02-2024</title>
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+            body{
+                margin: 0px;
+                padding: 0px;
+            }
+            section{
+                background-color: whitesmoke;
+                padding: 25px 0px;
+            }
+            .container{
+                width: 1170px;
+                padding: 0px 150px;
+                margin: 0 auto;
+            }
+            table,tr,td{
+                border: 2px solid black;
+                border-collapse: collapse;
+                text-align: center;
+                padding: 5px;
+            }
+            table{
+                width: 100%;
+            }
+            .tableheader{
+                background-color: #FC6868;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <section class="section">
+            <div class="container">
+                <center><h1>Sanket Patel / 29-02-2024 / 24DEV087</h1></center><br>
+                <%- include('../partials/result_components',{p,lastpage})%>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <form action="" method="">
+                    <table>
+                        <tr class="tableheader" >
+                            <td rowspan="2">Id</td>
+                            <td rowspan="2">Student Name</td>
+                            <td colspan="2">Prelim Exam</td>
+                            <td colspan="2">Terminal Exam</td>
+                            <td colspan="2">Final Exam</td>
+                            <td rowspan="2">Total Marks</td>
+                            <td rowspan="2">Result Summary</td>
+                        </tr>
+                        <tr class="tableheader">
+                                                     
+                            <td>Theory</td>
+                            <td>Practical</td>
+                            <td>Theory</td>
+                            <td>Practical</td>
+                            <td>Theory</td>
+                            <td>Practical</td>
+                            
+                        </tr>
+                        <%for(let i=0; i<result.length; i+=3 ){%>
+                        <tr>
+                            <td><%=result[i].result_er_no%></td>
+                            <td><%=result[i].name%></td>
+                            <td> <%= result[i+2].theory%></td>
+                            <td> <%= result[i+2].practical%></td>
+                            <td> <%= result[i+1].theory%></td>
+                            <td> <%= result[i+1].practical%></td>
+                            <td> <%= result[i].theory%></td>
+                            <td> <%= result[i].practical%></td> 
+                            <td><%=Number(result[i].practical)+Number(result[i].theory)
+                                +Number(result[i+1].practical)+Number(result[i+1].theory)
+                                +Number(result[i+2].practical)+Number(result[i+2].theory)
+                                %></td>
+                            <td><a href="/task07/data?page=<%=p%>&id=<%=result[i].result_er_no%>" target="_blank">View</a></td>
+                        </tr>
+                        <%}%>
+                    </table>
+                </form>
+            </div>
+        </section>
+    </body>
+</html>

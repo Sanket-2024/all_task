@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .col {
+            width: 50%;
+            font-weight: bold;
+
+        }
+
+        .row {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 10px;
+        }
+
+        .col button {
+            padding: 5 10px;
+            font-size: larger;
+            font-weight: bold;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #col2 {
+            float: right;
+        }
+
+        #col1 {
+            float: left;
+
+        }
+
+        .button {
+            border: none;
+            background-color: cadetblue;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        #f {
+            float: right;
+
+        }
+
+        #f a {
+            background-color: cadetblue;
+            padding: 5px 10px;
+            color: black;
+        }
+
+        #f span {
+            padding: 5px 10px;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+
+    <div class="row">
+        <div class="col" id="col1">
+
+        </div>
+        <div class="col" id="col2">
+            <div id="f">
+                <a href="?page=1" <%if(Number(p)==1){%>onclick='return false;' style="pointer-events: none"<%}%>><i
+                            class="fa-solid fa-angles-left"></i></a>
+                <a href="?page=<%=Number(p)-1%>" <%if(Number(p)==1){%> onclick='return false;'
+                    style="pointer-events: none"<%}%>><i class="fa-solid fa-angle-left"></i></a>
+
+                <span class="pages">
+                    <%=p%>
+                </span>
+
+                <a href="?page=<%=Number(p)+1%>" <%if(Number(p)==lastpage){%> onclick='return false;'
+                    style="pointer-events: none"<%}%>><i class="fa-solid fa-angle-right"></i></a>
+                <a href="?page=<%=lastpage%>" <%if(Number(p)==lastpage){%> onclick='return false;'
+                    style="pointer-events: none"<%}%>><i class="fa-solid fa-angles-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

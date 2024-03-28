@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Patel sanket 24DEV087</title>
+        <style>
+            tr,td{
+                border: 1px solid black;
+            }
+            table{
+                margin-top: 140px;
+                
+            }
+            body{
+                background-color: #eedd82;
+            }
+            td{
+                width: 100px;
+                height: 100px;
+                border-radius: 25px;
+                background-color: blue;
+                opacity: 0.6;
+                color: whitesmoke;
+                text-align: center;
+                font-size: 40px;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+        </style>
+    </head>
+    <body >
+        <center><h1>Sanket Patel 24DEV087 05/02/2024</h1>
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        </center>
+        <script>
+             var sign = "O";
+            
+            table = document.getElementsByTagName("table");
+            tr = table[0].getElementsByTagName("tr");
+            td = table[0].getElementsByTagName("td");
+            console.log(td);
+            for(let i=0;i<td.length;i++){
+                td[i].addEventListener("click",function (){
+                    if(sign == "O"){
+                        if(!td[i].innerHTML){
+                            td[i].innerHTML = "X";
+                            sign = "X";
+                            result("X");
+                        }
+                    }else{
+                        if(!td[i].innerHTML){
+                            td[i].innerHTML = "O";
+                            sign = "O";
+                            result("O");
+                        }
+                    }
+                });
+                
+            }
+
+            function result(sign){
+                if((td[0].innerHTML === sign && td[1].innerHTML === sign && td[2].innerHTML === sign) ||
+                (td[3].innerHTML === sign && td[4].innerHTML === sign && td[5].innerHTML === sign) ||
+                (td[6].innerHTML === sign && td[7].innerHTML === sign && td[8].innerHTML === sign) ||
+                (td[0].innerHTML === sign && td[3].innerHTML === sign && td[6].innerHTML === sign) ||
+                (td[1].innerHTML === sign && td[4].innerHTML === sign && td[7].innerHTML === sign) ||
+                (td[2].innerHTML === sign && td[5].innerHTML === sign && td[8].innerHTML === sign) ||
+                (td[0].innerHTML === sign && td[4].innerHTML === sign && td[8].innerHTML === sign) ||
+                (td[2].innerHTML === sign && td[4].innerHTML === sign && td[6].innerHTML === sign)){
+                    if(sign === "X"){
+                        showResult("X");
+                    }
+                    if(sign === "O"){
+                        showResult("O");
+                    }
+                }else{
+                    var check = false;
+                    for(let i=0;i<td.length;i++){
+                        if(!td[i].innerHTML){
+                            check = true
+                        }
+                    }
+                    if(!check){
+                        showResult("Draw");
+                    }
+                }
+
+            }
+            function showResult(sign){
+                name = " ";
+                if(sign === "X"){
+                    name = "sanket win";
+                }
+                if(sign === "O"){
+                    name = "computer win";
+                }
+                if(sign == "Draw"){
+                    name = "Match Draw";
+                }
+                document.getElementsByTagName("body")[0].innerHTML = `<h2 style="margin-top:200px; margin-left: 40%">${name}</h2>`;
+
+                const btn = document.createElement("button");
+                btn.innerHTML = "Play Again";
+                btn.style.marginLeft = "40%";
+                btn.style.fontSize = "30px";
+                btn.style.fontFamily = "'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"
+                btn.addEventListener("click", function (){
+                    window.location.reload();
+                });
+                document.getElementsByTagName("body")[0].appendChild(btn);
+            }
+
+            // for(let i=0;i<tr.length;i++){
+            //     // td[i].innerHTML;
+            //     // if(td[i].innerHTML === "X" )
+            // }
+            
+            // for(i=0;i<td.length;i++){
+            //     if(td[i].contains()){
+            //         td[i].removeEventListener("click",);
+            //     }
+            // }
+            // const playerx = "X";
+            // const playero = "O";
+
+            // const combination1 = [[0,1,2],
+            //                      [3,4,5],
+            //                     [6,7,8],
+            //                     [0,3,6],
+            //                     [1,4,7],
+            //                     [2,5,8],
+            //                     [0,4,8],
+            //                     [2,4,6]];
+
+            // function f(){
+
+            //     const co1 = combination1.flat();
+
+                // for(let i=0;i<col1.length;i++){
+                //     if()
+                // }
+
+
+            // }
+            // for(let i =0;i<combination.length;i++){
+            //     for(let j=0;j<combination[i].length;j++){
+            //         combination[i][j] == td[i]
+            //     }
+                
+            // }
+
+            // if((td[0].innerHTML == td[1].innerHTML == td[2].innerHTML == )){
+            //     if(td[0].innerHTML === "X"){
+            //         console.log(" x is winner");
+            //         console.log("x is winner")
+            //     }else{
+            //         console.log(" o is winner");
+            //     }
+                                
+            // }
+            // if(td[3].innerHTML == td[4].innerHTML == td[5].innerHTML){
+            //     if(td[3].innerHTML === "X"){
+            //         console.log(" x is winner");
+            //     }else{
+            //         console.log(" o is winner");
+            //     }             
+            // }
+            // if(td[6].innerHTML == td[7].innerHTML == td[8].innerHTML){
+            //     if(td[6].innerHTML === "X"){
+            //         console.log(" x is winner");
+            //     }else{
+            //         console.log(" o is winner");
+            //     }             
+            // }
+            // if(td[0].innerHTML == td[3].innerHTML == td[6].innerHTML){
+            //     if(td[0].innerHTML === "X"){
+            //         console.log(" x is winner");
+            //     }else{
+            //         console.log(" o is winner");
+            //     }             
+            // }
+            // if(td[1].innerHTML == td[4].innerHTML == td[7].innerHTML){
+            //     if(td[1].innerHTML === "X"){
+            //         console.log(" x is winner");
+            //     }else{
+            //         console.log(" o is winner");
+            //     }             
+            // }
+            // if(td[2].innerHTML == td[5].innerHTML == td[8].innerHTML){
+            //     if(td[2].innerHTML === "X"){
+            //         console.log(" x is winner");
+            //     }else{
+            //         console.log(" o is winner");
+            //     }             
+            // }
+            // if(td[0].innerHTML == td[4].innerHTML == td[8].innerHTML){
+            //     if(td[0].innerHTML === "X"){
+            //         console.log(" x is winner");
+            //     }else{
+            //         console.log(" o is winner");
+            //     }             
+            // }
+            // if(td[2].innerHTML == td[4].innerHTML == td[6].innerHTML){
+            //     if(td[2].innerHTML === "X"){
+            //         console.log(" x is winner");
+            //     }else{
+            //         console.log(" o is winner");
+            //     }             
+            // }
+            
+
+            
+
+        </script>
+    </body>
+</html>

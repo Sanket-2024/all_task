@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Onclick Demo</title>
+        <style>
+            table,tr{
+                border: 2px solid black;
+                border-collapse:collapse;
+            }
+            td{
+                border: 2px solid black;
+                height: 100px ;
+                width: 100px;
+                border-collapse:collapse;
+                text-align: center;
+                background-color: whitesmoke;
+                padding: 10px 20px;
+            }
+            p{
+                font-size: medium;
+                color: maroon;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            body{
+                background-color: beige;
+            }
+            
+        </style>
+    </head>
+    <body onload="loadFun()"><br><br><center>
+        <h1 id="text1"> </h1>
+        <h1 id=1>JavaScript</h1>
+        <!-- <input type="button" id="button" value="Button" onclick="myFunction()"> -->
+        <table><form onsubmit="return fun6()">
+
+            <tr>
+                <td>
+                    <p>Mouse over Event </p>
+                    <input type="button" id="id111" name="button1" value="button1" onmouseover="mouseover()">
+                </td>
+                <td>
+                    <p>Mouse Out Event</p>
+                    <input type="button" id="bt" name="button2" value="button2" onmouseout="mouseout()">
+                </td>
+                <td id="tdata">
+                    <p>Onclick Event</p>
+                    <input type="button" id="id3" name="button3" value="button3" onclick="colorChange()">
+                </td>
+                <td>
+                    <p>Onfocus Event</p>
+                    <label for="4" id="tex">Name:</label>
+                    <input type="text" id="id4" name="button4" value="button4" onfocus="callMe()">
+                </td>
+                <td>
+                    <p id="id1">Ondouble click Event</p>
+                    <input type="button" id="id5" name="button5" value="button5" ondblclick="myFun2()">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   <p>onsubmit Event</p>
+                    <input type="submit" id="id6" name="button6" value="submit">
+                </td>
+                <td>
+                    <p>Onchange Event</p>
+                    <label for="textpra">Pet Name:</label>
+                    <input type="text" id="textpra" name="textpra" value="button7" onChange="chAlert(this.value)">
+                </td>
+                <td>
+                    <p>Oninput Event</p>
+                    <input type="text" id="text8" value="" oninput="oninpt()">
+                    <p id="p8"></p>
+                </td>
+                <td>
+                    <p>onkeyup Event</p>
+                    <input type="text" id="text9" name="button9" value="" onkeyup="fun9()">
+                </td>
+                <td>
+                    <p id="p10">onselect Event</p>
+                    <input type="text" id="td10" value="hello" onselect="fun10()">
+               
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>ontoggle Event</p>
+                    <details ontoggle="fun11()">
+                        <summary id="id11">Copyright 1999-2014.</summary>
+                       
+                    </details>
+                    
+                </td>
+                <td>
+                    <p>Onblur Event</p>
+                    <input type="text" id="text12" name="button12" value="" onblur="fun12()">
+                </td>
+                <td>
+                    <p id="p13">OnCopy Event</p>
+                    <input type="text" id="text13" name="button13" value="ABC" oncopy="fun13()">
+                </td>
+                <td>
+                    <p id="p14">Oncut Event</p>
+                    <input type="text" id="text14" name="button14" value="Demo" oncut="fun14()">
+                </td>
+                <td>
+                    <p id="p15">OnKeypress Event</p>
+                    <input type="text" id="text15" name="button14" value="" onkeypress="fun15()">
+                </td>
+            </tr></form>
+            
+        </table></center>
+        <script>
+            function loadFun(){
+                var a = document.getElementById("text1");
+                a.innerHTML = "Sanket Patel 24DEV087";
+            }
+            function myFunction(){
+                document.getElementById("id1").innerHTML="javaScript";
+            }
+            function myFun2(){
+                document.getElementById("id1").innerHTML="You did it!"
+            }
+            function mouseover(){
+                document.getElementById("id111").value="hey!";
+            }
+            function mouseout(){
+                document.getElementById("bt").value="hmm";
+            }
+            function colorChange(){
+                document.getElementById("tdata").style.backgroundColor = "grey";
+                document.getElementById(3).style.backgroundColor = "maroon";
+            }
+            function callMe(){
+                document.getElementById("tex").style.color = "#F4C430";
+            }
+            function windowFun(){
+                alert("This is a alertbox.If you agree then click ok.")
+            }
+            function chAlert(val){
+                alert("You are aware about the change! " + val);
+            }
+            function oninpt(){
+                var a = document.getElementById("text8");
+                var b = document.getElementById("p8");
+                
+                b.innerHTML = text8.value;
+            }
+            function fun6(){
+                return true;
+            }
+            function fun9(){
+                var a = document.getElementById("text9");
+                a.value = a.value.toUpperCase();
+            }
+            function fun10(){
+                let x=0;
+                var a = document.getElementById("td10");
+                var b= document.getElementById("p10");
+                b.innerHTML = a.value;
+            }
+            function fun11(){
+                var a = document.getElementById("id11");
+                a.innerHTML = "toggled";
+            }
+            function fun12(){
+                var a = document.getElementById("text12");
+                a.value = a.value.toUpperCase();
+            }
+            function fun13(){
+                var a = document.getElementById("text13");
+                var b = document.getElementById("p13");
+                b.innerHTML = "You copied the text!"
+            }
+            function fun14(){
+                var a = document.getElementById("text14");
+                var b = document.getElementById("p14");
+                b.innerHTML = "You cut the text!"
+            }
+            function fun15(){
+                var a = document.getElementById("text15");
+                var b = document.getElementById("p15");
+                b.innerHTML = "You press the key!"
+            }
+
+        </script>
+    </body>
+</html>

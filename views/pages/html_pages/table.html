@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+        Sanket Patel 
+        </title>
+        <style>
+            table,tr{
+                border: 3pt solid black;
+            }
+            
+            td{
+                height: 100px;
+                width: 100px;
+                border: 1pt solid black;
+            }
+            tr:nth-of-type(odd) td:nth-of-type(odd), tr:nth-of-type(even) td:nth-of-type(even){
+                background-color: grey;
+            }
+        </style>
+    </head>
+    <body><br><br>
+        <center><h1>Sanket Patel 24DEV087</h1>
+            <table>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+            </table><br>
+            <div class="table">
+                <div>
+                    <input type="button" id="addrow" name="addrow" value="Add Row" onclick="addRow()">
+                    <input type="button" id="removerow" name="removerow" value="Remove Row" onclick="removeRow()">
+                </div><br>
+                <div>
+                    <input type="button" id="addcolumn" name="addcolumn" value="Add Column" onclick="addColumn()" >
+                    <input type="button" id="removecolumn" name="removecolumn" value="Remove Column" onclick="removeColumn()" >
+                </div>
+            </div>
+        </center>
+        <script>
+            function countTag(){
+                var row = document.getElementsByTagName("tr").countTag;
+                var column = document.getElementByTagName("tr").childElementCount;
+            }
+            function addRow(){
+               
+                document.getElementsByTagName("table").appendChild(document.createElement("tr"));
+                
+            }
+            function removeRow(){
+                document.getElementsByTagName("table").removeChild("tr");
+            }
+            // function addColumn(){
+            //     document.getElementsByTagName("tr").appendChild(document.createElement("td"));
+            // }
+            // function removeColumn(){
+            //     document.getElementsByTagName("tr").removeChild("td");
+            // }
+        </script>
+        <script>
+
+            function addColumn(){
+                let table= document.getElementsByTagName("table")
+                tr=table[0].getElementsByTagName("tr")
+                for(i=0;i<tr.length;i++){
+                    tr[i].appendChild(document.createElement("td"))
+                }
+            }
+
+            function removeColumn(){
+                let table = document.getElementsByTagName("table")
+                tr=table[0].getElementsByTagName("tr")
+                for(i=0;i<tr.length;i++){
+                    if(table[0].getElementsByTagName("td").length==  2*tr.length) break;
+                    tr[i].removeChild(tr[i].lastChild)
+                }
+            }
+
+            function addRow(){
+                table= document.getElementsByTagName("table")
+                tr=table[0].getElementsByTagName("tr")
+                td=tr[0].getElementsByTagName("td")
+                table[0].appendChild(document.createElement("tr"))
+                for(i=0;i<td.length;i++){
+                    table[0].lastChild.appendChild(document.createElement("td"))
+                }
+            }
+
+            function removeRow(){
+                table = document.getElementsByTagName("table")
+                tr=table[0].getElementsByTagName("tr")
+                if(tr.length>2){
+                        table[0].removeChild(table[0].lastChild);
+                }  
+            }
+
+        </script>
+
+    </body>
+</html>
