@@ -1,0 +1,137 @@
+<!Doctype html>
+<html>
+<header>
+    <title>04-03-2024</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            color: white;
+        }
+
+        section {
+            background-color: whitesmoke;
+            padding: 25px 0px;
+        }
+
+        .container {
+            
+            padding: 0 10px;
+            margin: 0 auto;
+        }
+
+        table {
+            border: none;
+            border-radius: 8px;
+            
+        }
+
+        tr {
+            border: none;
+            border-radius: 8px;
+        }
+
+        tr .heading td {
+            padding: 0 15px;
+            border-radius: 8px;
+        }
+
+        td {
+            color: black;
+            border: none;
+            border-radius: 8px;
+            background-color: white;
+        }
+
+        .heading {
+            
+            color: white;
+        }
+        .heading td{
+            background-color: grey;
+            padding: 10px 20px; 
+            text-align: center;
+        }
+        h1{
+            color: black;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</header>
+
+<body><center><br><h1>Sanket Patel 24DEV087 Searching </h1></center>
+    <section>
+        <div class="container">
+            <%- include('../partials/search_components04_march',{result,p,stuid,name,lastname, dob, contact, email, address1, address2, age, created_date, operator, maxlength})%>
+        </div>
+    </section>
+    <section>
+        <div calss="container">
+            <%- include('../partials/search_component04_march',{result,p,stuid,name,lastname, dob, contact, email, address1, address2, age, created_date, operator, maxlength})%>
+        </div>
+    </section>
+      
+    <section>
+        <div class="container">
+            <form>
+                <table>
+                    <tr class="heading">
+                        <td calss="header">Id</td>
+                        <td calss="header">First Name</td>
+                        <td calss="header">Last Name</td>
+                        <td calss="header">Date of Birth</td>
+                        <td calss="header">Contact Number</td>
+                        <td calss="header">Email Address</td>
+                        <td calss="header">Permanent Address</td>
+                        <td calss="header">Current Address</td>
+                        <td calss="header">Age</td>
+                        <td calss="header">Created Date</td>
+                    </tr>
+                    <%for(let i=0;i<result.length; i++){ %>
+                        <tr>
+                            <td>
+                                <%= result[i].stuid %>
+                            </td>
+                            <td>
+                                <%= result[i].name %>
+                            </td>
+                            <td>
+                                <%= result[i].lastname %>
+                            </td>
+                            <td>
+                                <%= result[i].dob %>
+                            </td>
+                            <td>
+                                <%= result[i].contact %>
+                            </td>
+                            <td>
+                                <%= result[i].email %>
+                            </td>
+                            <td>
+                                <%= result[i].address1 %>
+                            </td>
+                            <td>
+                                <%= result[i].address2 %>
+                            </td>
+                            <td>
+                                <%= result[i].age %>
+                            </td>
+                            <td>
+                                <%= result[i].created_date %>
+                            </td>
+                        </tr>
+                    <% } %>
+                </table>
+            </form>
+        </div>
+    </section>
+
+    
+
+</body>
+
+</html>

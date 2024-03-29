@@ -305,7 +305,83 @@ app.get('/task05', (req, res) => {
 
     try {
         if (req.cookies.token) {
-            res.sendFile(path.join(__dirname, 'views', 'pages', 'html_pages', 'tictactoe.html'));
+
+
+            try {
+
+                const { stuid, name, lastname, dob, contact, email, address1, address2, age, created_date, operator } = req.query;
+
+                const p = req.query.page || 1;
+                const offset = (Number(p) - 1) * 50;
+                console.log(req.query.operator);
+                console.log(req.query);
+
+                var query = `SELECT *,DATE_FORMAT(dob, "%d/%m/%Y") as DOB, DATE_FORMAT(created_date, "%d/%m/%Y %T") as created_at from student_master_tbl `
+
+                const limit = `limit 50 offset ${offset}`
+
+                var data = "";
+
+                const keys = Object.keys(req.query);
+                console.log(keys);
+
+                keys.forEach((k) => {
+
+                    if (!query.includes("where") && k != 'page') query += "where";
+
+                    if (k == 'stuid' && k != 'page') query += ` ${k} ="${req.query[k]}" `;
+
+                    console.log(req.query[k]);
+
+                    if (req.query[k] && k != 'operator' && k != 'stuid' && k != 'page') query += ` ${k} LIKE "%${req.query[k]}%" ${req.query['operator']} `;
+                })
+
+                if (req.query['operator'] === 'AND') data = query.slice(0, -4);
+
+                if (req.query['operator'] === 'OR') data = query.slice(0, -3);
+
+                console.log(query);
+
+
+                console.log(data);
+
+                if (data) {
+                    a.query(data, (err, result) => {
+                        if (err) console.log(err);
+                        else {
+                            const maxlength = Math.ceil(result.length / 50);
+                            const query2 = data + limit;
+                            a.query(query2, (err, result) => {
+                                if (err) console.log(err);
+                                else {
+                                    res.render('./pages/view_04_march', { result, p, stuid, name, lastname, dob, contact, email, address1, address2, age, created_date, operator, maxlength });
+                                }
+                            })
+                        }
+                    })
+                } else {
+                    a.query(query, (err, result) => {
+                        if (err) console.log(err);
+                        else {
+                            const maxlength = Math.ceil(result.length / 50);
+                            console.log(result.length);
+                            console.log(maxlength);
+                            const query2 = query + limit;
+                            console.log(query2);
+                            a.query(query2, (err, result) => {
+                                if (err) console.log(err);
+                                else {
+                                    res.render('./pages/view_04_march', { result, p, stuid, name, lastname, dob, contact, email, address1, address2, age, created_date, operator, maxlength });
+                                }
+                            })
+                        }
+                    });
+                }
+            } catch (error) {
+                console.log(error);
+            }
+
+
         } else {
             res.redirect('/login');
         }
@@ -327,8 +403,6 @@ app.get('/task06', (req, res) => {
             const lastpage = Math.ceil(200 / limit);
             const m = req.query.month || 'december2023'
             const y = m.slice(0, -4);
-
-
 
             var sql = "SELECT s.stuid,s.name,monthname(a.date) as month,count(a.attendance)as presentDay  FROM student_master as s INNER JOIN attendance_tbl as a ON s.stuid = a.er_no WHERE a.attendance = 'P' group by s.stuid,month having month='" + y + "' ORDER BY a.er_no LIMIT " + limit + " offset " + offset + ";"
 
@@ -530,9 +604,9 @@ app.get('/task10', (req, res) => {
     try {
         if (req.cookies.token) {
 
-                res.sendFile(path.join(__dirname, 'views', 'pages','html_pages', 'info.html'));
-            
-            
+            res.sendFile(path.join(__dirname, 'views', 'pages', 'html_pages', 'info.html'));
+
+
         } else {
             res.redirect('/login');
         }
@@ -547,9 +621,9 @@ app.get('/task10/detail/:id', (req, res) => {
     try {
         if (req.cookies.token) {
 
-                res.sendFile(path.join(__dirname, 'views', 'pages','html_pages', 'detail.html'));
-            
-            
+            res.sendFile(path.join(__dirname, 'views', 'pages', 'html_pages', 'detail.html'));
+
+
         } else {
             res.redirect('/login');
         }
@@ -565,14 +639,14 @@ app.get('/task11', (req, res) => {
 
     try {
         if (req.cookies.token) {
-            
+
 
             var workRecordId = req.body.workRecordId || [];
             var educationId = req.body.educationId || [];
             var languageId = req.body.languageId || [];
             var techrecord = req.body.techrecord || [];
-        
-            var empid = req.body.empid || null 
+
+            var empid = req.body.empid || null
             var b_fname = req.body.b_fname || null;
             var b_lname = req.body.b_lname || null;
             var b_designation = req.body.b_designation || null;
@@ -585,22 +659,22 @@ app.get('/task11', (req, res) => {
             var b_zipcode = req.body.b_zipcode || null;
             var b_relationship = req.body.b_relationship || null;
             var b_dob = req.body.b_dob || null;
-            
-        
+
+
             var e_nameofboard = req.body.e_nameofboard || [];
             var e_passingyear = req.body.e_passingyear || [];
             var e_percentage = req.body.e_percentage || [];
-        
-            
+
+
             var w_companyname = req.body.w_companyname || [];
             var w_designation = req.body.w_designation || [];
             var w_from = req.body.w_from || [];
             var w_to = req.body.w_to || [];
-        
-        
+
+
             var l_hindi = req.body.l_hindi;
             var l_read_hindi = req.body.l_read_hindi || 0;
-            var l_write_hindi = req.body.l_write_hindi  || 0;
+            var l_write_hindi = req.body.l_write_hindi || 0;
             var l_speak_hindi = req.body.l_speak_hindi || 0;
             var l_english = req.body.l_english;
             var l_read_english = req.body.l_read_english || 0;
@@ -610,41 +684,41 @@ app.get('/task11', (req, res) => {
             var l_read_gujarati = req.body.l_read_gujarati || 0;
             var l_write_gujarati = req.body.l_write_gujarati || 0;
             var l_speak_gujarati = req.body.l_speak_gujarati || 0;
-        
-                
-        
-            
-        
+
+
+
+
+
             var languageName = req.body.languageName || [];
             var read = req.body.read || [];
             var write = req.body.write || [];
             var speak = req.body.speak || [];
-        
-        
+
+
             var tech = req.body.tech || [];
-            var php = req.body.php || null;   
-            var mysql = req.body.mysql || null;   
-            var laravel = req.body.laravel || null;   
+            var php = req.body.php || null;
+            var mysql = req.body.mysql || null;
+            var laravel = req.body.laravel || null;
             var oracle = req.body.oracle || null;
-        
-            
-        
+
+
+
             var ref_name = req.body.ref_name || [];
             var ref_contactno = req.body.ref_contactno || [];
             console.log();
             var ref_relation = req.body.ref_relation || [];
-        
-            var preferedlocation = req.body.preferedlocation || null; 
+
+            var preferedlocation = req.body.preferedlocation || null;
             var noticeperiod = req.body.noticeperiod || null;
             var expectedctc = req.body.expectedctc || null;
             var currentctc = req.body.currentctc || null;
             var department = req.body.department || null;
-        
-        
-        
-             
-           res.render('./pages/form',{workRecordId,educationId,languageId,techrecord, empid, b_fname, b_lname,b_designation, b_address1, b_address2, b_email,b_phoneno, b_city, b_gender, b_zipcode , b_relationship, b_dob, e_nameofboard, e_passingyear, e_percentage, w_companyname, w_designation, w_from, w_to, languageName, read, write, speak, tech, php, mysql, laravel, oracle, ref_name, ref_contactno, ref_relation, preferedlocation, noticeperiod, expectedctc, currentctc, department});
-        
+
+
+
+
+            res.render('./pages/form', { workRecordId, educationId, languageId, techrecord, empid, b_fname, b_lname, b_designation, b_address1, b_address2, b_email, b_phoneno, b_city, b_gender, b_zipcode, b_relationship, b_dob, e_nameofboard, e_passingyear, e_percentage, w_companyname, w_designation, w_from, w_to, languageName, read, write, speak, tech, php, mysql, laravel, oracle, ref_name, ref_contactno, ref_relation, preferedlocation, noticeperiod, expectedctc, currentctc, department });
+
 
 
 
@@ -659,174 +733,127 @@ app.get('/task11', (req, res) => {
 });
 
 app.post('/task11', async (req, res) => {
-    console.log(req.body);
 
-    var b_fname = req.body.b_fname || null;
-    var b_lname = req.body.b_lname || null;
-    var b_designation = req.body.b_designation || null;
-    var b_address1 = req.body.b_address1 || null;
-    var b_address2 = req.body.b_address2 || null;
-    var b_email = req.body.b_email || null;
-    var b_phoneno = req.body.b_phoneno || null;
-    var b_city = req.body.b_city || null;
-    var b_gender = req.body.b_gender || null;
-    var b_zipcode = req.body.b_zipcode || null;
-    var b_relationship = req.body.b_relationship || null;
-    var b_dob = req.body.b_dob || null;
-    // var e_nameofboard10th = req.body.e_nameofboard10th;
-    // var e_passingyear10th = req.body.e_passingyear10th;
-    // var e_percentage10th = req.body.e_percentage10th;
-    // var e_nameofboard12th = req.body.e_nameofboard12th;
-    // var e_passingyear12th = req.body.e_passingyear12th;
-    // var e_percentage12th = req.body.e_percentage12th;
-    // var e_coursename_be = req.body.e_coursename_be;
-    // var e_university_be = req.body.e_university_be;
-    // var e_passingyear_be = req.body.e_passingyear_be;
-    // var e_percentage_be = req.body.e_percentage_be;
-    // var e_coursename_me = req.body.e_coursename_me;
-    // var e_university_me = req.body.e_university_me;
-    // var e_passingyear_me = req.body.e_passingyear_me;
-    // var e_percentage_me = req.body.e_percentage_me;
+    try {
+        if (req.cookies.token) {
+            console.log(req.body);
 
-    var e_nameofboard = req.body.e_nameofboard || [];
-    var e_passingyear = req.body.e_passingyear || [];
-    var e_percentage = req.body.e_percentage || [];
+            var b_fname = req.body.b_fname || null;
+            var b_lname = req.body.b_lname || null;
+            var b_designation = req.body.b_designation || null;
+            var b_address1 = req.body.b_address1 || null;
+            var b_address2 = req.body.b_address2 || null;
+            var b_email = req.body.b_email || null;
+            var b_phoneno = req.body.b_phoneno || null;
+            var b_city = req.body.b_city || null;
+            var b_gender = req.body.b_gender || null;
+            var b_zipcode = req.body.b_zipcode || null;
+            var b_relationship = req.body.b_relationship || null;
+            var b_dob = req.body.b_dob || null;
+            
+            var e_nameofboard = req.body.e_nameofboard || [];
+            var e_passingyear = req.body.e_passingyear || [];
+            var e_percentage = req.body.e_percentage || [];
 
-    // var w_companyname_companyone = req.body.w_companyname_companyone;
-    // var w_designation_companyone = req.body.w_designation_companyone;
-    // var w_from_companyone = req.body.w_from_companyone;
-    // var w_to_companyone = req.body.w_to_companyone;
-    // var w_companyname_companytwo = req.body.w_companyname_companytwo;
-    // var w_designation_companytwo = req.body.w_designation_companytwo;
-    // var w_from_companytwo = req.body.w_from_companytwo;
-    // var w_to_companytwo = req.body.w_to_companytwo;
-    // var w_companyname_companythree = req.body.w_companyname_companythree;
-    // var w_designation_companythree = req.body.w_designation_companythree;
-    // var w_from_companythree = req.body.w_from_companythree;
-    // var w_to_companythree = req.body.w_to_companythree;
-
-    var w_companyname = req.body.w_companyname || [];
-    var w_designation = req.body.w_designation || [];
-    var w_from = req.body.w_from || [];
-    var w_to = req.body.w_to || [];
+           
+            var w_companyname = req.body.w_companyname || [];
+            var w_designation = req.body.w_designation || [];
+            var w_from = req.body.w_from || [];
+            var w_to = req.body.w_to || [];
 
 
-    var l_hindi = req.body.l_hindi;
-    var l_read_hindi = req.body.l_read_hindi || 0;
-    var l_write_hindi = req.body.l_write_hindi  || 0;
-    var l_speak_hindi = req.body.l_speak_hindi || 0;
-    var l_english = req.body.l_english;
-    var l_read_english = req.body.l_read_english || 0;
-    var l_write_english = req.body.l_write_english || 0;
-    var l_speak_english = req.body.l_speak_english || 0;
-    var l_gujarati = req.body.l_gujarati;
-    var l_read_gujarati = req.body.l_read_gujarati || 0;
-    var l_write_gujarati = req.body.l_write_gujarati || 0;
-    var l_speak_gujarati = req.body.l_speak_gujarati || 0;
-
-        
-
-    // var l_hindi = req.body.l_hindi;
-    // var l_english = req.body.l_english;
-    // var l_gujarati = req.body.l_gujarati;
-
-    // var read = req.body.read;
-    // var write = req.body.write;
-    // var speak = req.body.speak;
-
-    var languageName = req.body.languageName || [];
-    var read = req.body.read || [];
-    var write = req.body.write || [];
-    var speak = req.body.speak || [];
+            var l_hindi = req.body.l_hindi;
+            var l_read_hindi = req.body.l_read_hindi || 0;
+            var l_write_hindi = req.body.l_write_hindi || 0;
+            var l_speak_hindi = req.body.l_speak_hindi || 0;
+            var l_english = req.body.l_english;
+            var l_read_english = req.body.l_read_english || 0;
+            var l_write_english = req.body.l_write_english || 0;
+            var l_speak_english = req.body.l_speak_english || 0;
+            var l_gujarati = req.body.l_gujarati;
+            var l_read_gujarati = req.body.l_read_gujarati || 0;
+            var l_write_gujarati = req.body.l_write_gujarati || 0;
+            var l_speak_gujarati = req.body.l_speak_gujarati || 0;
 
 
-    var tech = req.body.tech || [];
-    var php_check = req.body.php_check;
-    var php = req.body.php || null;   
-    var mysql_check = req.body.mysql_check;
-    var mysql = req.body.mysql || null;   
-    var laravel_check = req.body.laravel_check;
-    var laravel = req.body.laravel || null;   
-    var oracle_check = req.body.oracle_check;
-    var oracle = req.body.oracle || null;
 
-    // var ref1_name = req.body.ref1_name;
-    // var ref1_contactno = req.body.ref1_contactno;
-    // var ref1_relation = req.body.ref1_relation;
-    // var ref2_name = req.body.ref2_name;
-    // var ref2_contactno = req.body.ref2_contactno;
-    // var ref2_relation = req.body.ref2_relation;
+            var languageName = req.body.languageName || [];
+            var read = req.body.read || [];
+            var write = req.body.write || [];
+            var speak = req.body.speak || [];
 
-    var ref_name = req.body.ref_name || [];
-    var ref_contactno = req.body.ref_contactno || [];
-    console.log();
-    var ref_relation = req.body.ref_relation || [];
 
-    var preferedlocation = req.body.preferedlocation || null; 
-    var noticeperiod = req.body.noticeperiod || null;
-    var expectedctc = req.body.expectedctc || null;
-    var currentctc = req.body.currentctc || null;
-    var department = req.body.department || null;
+            var tech = req.body.tech || [];
+            var php_check = req.body.php_check;
+            var php = req.body.php || null;
+            var mysql_check = req.body.mysql_check;
+            var mysql = req.body.mysql || null;
+            var laravel_check = req.body.laravel_check;
+            var laravel = req.body.laravel || null;
+            var oracle_check = req.body.oracle_check;
+            var oracle = req.body.oracle || null;
 
-    var sqlBasic = `INSERT INTO employeebasic_details(firstname, lastname, dob, email, phoneno, address1, address2, designation, gender_id, relationship_id,city, zipcode) VALUES('${b_fname}', '${b_lname}', '${b_dob}', '${b_email}', '${b_phoneno}', '${b_address1}', '${b_address2}', '${b_designation}', '${b_gender}', '${b_relationship}','${b_city}', '${b_zipcode}');`
+            
 
-    const basicDtl = await a.promise().query(sqlBasic);
-    console.log(basicDtl);
-   
-    const employee_id = basicDtl[0].insertId;
+            var ref_name = req.body.ref_name || [];
+            var ref_contactno = req.body.ref_contactno || [];
+            console.log();
+            var ref_relation = req.body.ref_relation || [];
 
-    // Education Details
+            var preferedlocation = req.body.preferedlocation || null;
+            var noticeperiod = req.body.noticeperiod || null;
+            var expectedctc = req.body.expectedctc || null;
+            var currentctc = req.body.currentctc || null;
+            var department = req.body.department || null;
 
-    for(let i=0; i<e_nameofboard.length;i++){
+            var sqlBasic = `INSERT INTO employeebasic_details(firstname, lastname, dob, email, phoneno, address1, address2, designation, gender_id, relationship_id,city, zipcode) VALUES('${b_fname}', '${b_lname}', '${b_dob}', '${b_email}', '${b_phoneno}', '${b_address1}', '${b_address2}', '${b_designation}', '${b_gender}', '${b_relationship}','${b_city}', '${b_zipcode}');`
 
-        if(e_nameofboard[i]){
-            var sqlEducation = `INSERT INTO education_detail(edu_id, passingyear, percentage, edu_empid) VALUES('${e_nameofboard[i]}','${e_passingyear[i]}', '${e_percentage[i]}', '${employee_id}')`;
-        
-            const eduDtl = await a.promise().query(sqlEducation);
-            console.log(eduDtl);
-        }
-        
-    }
+            const basicDtl = await a.promise().query(sqlBasic);
+            console.log(basicDtl);
 
-    // Work Experience
+            const employee_id = basicDtl[0].insertId;
 
-    for(let i=0; i<w_companyname.length; i++){
-        
-        if(w_companyname[i]){
+            // Education Details
 
-            var sqlWorkExp = `INSERT INTO workexperience (work_empid,companyname,work_from,work_to,designation) VALUES('${employee_id}','${w_companyname[i]}', '${w_from[i]}', '${w_to[i]}', '${w_designation[i]}')`;
+            for (let i = 0; i < e_nameofboard.length; i++) {
 
-            const workDtl = await a.promise().query(sqlWorkExp);
-            console.log(workDtl);
+                if (e_nameofboard[i]) {
+                    var sqlEducation = `INSERT INTO education_detail(edu_id, passingyear, percentage, edu_empid) VALUES('${e_nameofboard[i]}','${e_passingyear[i]}', '${e_percentage[i]}', '${employee_id}')`;
 
-        }
+                    const eduDtl = await a.promise().query(sqlEducation);
+                    console.log(eduDtl);
+                }
 
-    }
+            }
 
-    //Language Details
-    // var languageName = req.body.languageName;
-    // var read = req.body.read;
-    // var write = req.body.write;
-    // var speak = req.body.speak;
+            // Work Experience
 
-        
-    // for(let i=0; i<languageName.length; i++){
+            for (let i = 0; i < w_companyname.length; i++) {
 
-        // if(languageName[i]){
+                if (w_companyname[i]) {
 
-            if(!read[0]){read[0]= 0};
-            if(!write[0]){write[0] = 0};
-            if(!speak[0]){speak[0] = 0};
-            if(!read[1]){read[1]= 0};
-            if(!write[1]){write[1] = 0};
-            if(!speak[1]){speak[1] = 0};
-            if(!read[2]){read[2]= 0};
-            if(!write[2]){write[2] = 0};
-            if(!speak[2]){speak[2] = 0};
+                    var sqlWorkExp = `INSERT INTO workexperience (work_empid,companyname,work_from,work_to,designation) VALUES('${employee_id}','${w_companyname[i]}', '${w_from[i]}', '${w_to[i]}', '${w_designation[i]}')`;
 
-            // console.log(read[i]);
-            // console.log(write[i]);
-            // console.log(speak[i]);
+                    const workDtl = await a.promise().query(sqlWorkExp);
+                    console.log(workDtl);
+
+                }
+
+            }
+
+           
+
+            if (!read[0]) { read[0] = 0 };
+            if (!write[0]) { write[0] = 0 };
+            if (!speak[0]) { speak[0] = 0 };
+            if (!read[1]) { read[1] = 0 };
+            if (!write[1]) { write[1] = 0 };
+            if (!speak[1]) { speak[1] = 0 };
+            if (!read[2]) { read[2] = 0 };
+            if (!write[2]) { write[2] = 0 };
+            if (!speak[2]) { speak[2] = 0 };
+
+            
 
             var sqlLanguage1 = `INSERT INTO language_tbl(language_empid, lang_id, read_id, write_id, speak_id) VALUES(${employee_id},'${languageName[0]}','${read[0]}','${write[0]}','${speak[0]}')`;
             var sqlLanguage2 = `INSERT INTO language_tbl(language_empid, lang_id, read_id, write_id, speak_id) VALUES(${employee_id},'${languageName[1]}','${read[1]}','${write[1]}','${speak[1]}')`;
@@ -836,345 +863,354 @@ app.post('/task11', async (req, res) => {
             const languageinsert2 = await a.promise().query(sqlLanguage2);
             const languageinsert3 = await a.promise().query(sqlLanguage3);
             // console.log(languageinsert);
-        // }
+            // }
 
-    // }
+            // }
 
 
-    // Technologies 
+            // Technologies 
 
-    var tech = req.body.tech || [];
-    
-    // for(let i=0; i<techrecord.length; i++){
+            var tech = req.body.tech || [];
 
-    //     if(tech[i]){
-    //         var sqlTech = `UPDATE technologies_tbl SET technologies_id='${tech[i]}', skilllevel_id=? WHERE  id='${techrecord[i]}'AND empid = '${empid}'`;
+            // for(let i=0; i<techrecord.length; i++){
 
-    //         if(tech[i]==1){const phptechDtl = await a.promise().query(sqlTech,[php]); console.log(phptechDtl);}
-    //         if(tech[i]==2){const mysqltechDtl = await a.promise().query(sqlTech,[mysql]);console.log(mysqltechDtl);}
-    //         if(tech[i]==3){const laraveltechDtl = await a.promise().query(sqlTech,[laravel]);console.log(laraveltechDtl);}
-    //         if(tech[i]==4){const oracletechDtl = await a.promise().query(sqlTech,[oracle]);console.log(oracletechDtl);}
+            //     if(tech[i]){
+            //         var sqlTech = `UPDATE technologies_tbl SET technologies_id='${tech[i]}', skilllevel_id=? WHERE  id='${techrecord[i]}'AND empid = '${empid}'`;
 
-    //     }
-    // }
-    
-    
-    var sqlTech = `INSERT INTO technologies_tbl(empid, technologies_id, skilllevel_id) VALUES(${employee_id},?,?)`;
+            //         if(tech[i]==1){const phptechDtl = await a.promise().query(sqlTech,[php]); console.log(phptechDtl);}
+            //         if(tech[i]==2){const mysqltechDtl = await a.promise().query(sqlTech,[mysql]);console.log(mysqltechDtl);}
+            //         if(tech[i]==3){const laraveltechDtl = await a.promise().query(sqlTech,[laravel]);console.log(laraveltechDtl);}
+            //         if(tech[i]==4){const oracletechDtl = await a.promise().query(sqlTech,[oracle]);console.log(oracletechDtl);}
 
-    if(tech[0]){const phptechDtl = await a.promise().query(sqlTech,[tech[0],php]); console.log(phptechDtl);}
-    if(tech[1]){const mysqltechDtl = await a.promise().query(sqlTech,[tech[1],mysql]);console.log(mysqltechDtl);}
-    if(tech[2]){const laraveltechDtl = await a.promise().query(sqlTech,[tech[2],laravel]);console.log(laraveltechDtl);}
-    if(tech[3]){const oracletechDtl = await a.promise().query(sqlTech,[tech[3],oracle]);console.log(oracletechDtl);}
+            //     }
+            // }
 
-    
-    // Reference Contact
 
-    for(let i=0; i<ref_name.length; i++){
+            var sqlTech = `INSERT INTO technologies_tbl(empid, technologies_id, skilllevel_id) VALUES(${employee_id},?,?)`;
 
-        if(ref_name[i]){
+            if (tech[0]) { const phptechDtl = await a.promise().query(sqlTech, [tech[0], php]); console.log(phptechDtl); }
+            if (tech[1]) { const mysqltechDtl = await a.promise().query(sqlTech, [tech[1], mysql]); console.log(mysqltechDtl); }
+            if (tech[2]) { const laraveltechDtl = await a.promise().query(sqlTech, [tech[2], laravel]); console.log(laraveltechDtl); }
+            if (tech[3]) { const oracletechDtl = await a.promise().query(sqlTech, [tech[3], oracle]); console.log(oracletechDtl); }
 
-            var sqlReference = `INSERT INTO referencecontact_tbl(ref_empid, name, contactno, relation) VALUES(${employee_id}, '${ref_name[i]}', '${ref_contactno[i]}', '${ref_relation[i]}')`;
 
-            const refDtl = await a.promise().query(sqlReference);
+            // Reference Contact
 
-            console.log(refDtl);
+            for (let i = 0; i < ref_name.length; i++) {
 
+                if (ref_name[i]) {
+
+                    var sqlReference = `INSERT INTO referencecontact_tbl(ref_empid, name, contactno, relation) VALUES(${employee_id}, '${ref_name[i]}', '${ref_contactno[i]}', '${ref_relation[i]}')`;
+
+                    const refDtl = await a.promise().query(sqlReference);
+
+                    console.log(refDtl);
+
+                }
+
+            }
+
+            // preference 
+
+            var sqlPref = `INSERT INTO preference_tbl(pref_empid, prefered_location, noticeperiod, expectedctc, currentctc, department_id) VALUES(${employee_id}, '${preferedlocation}', '${noticeperiod}', '${expectedctc}', '${currentctc}', '${department}')`;
+
+            const prefDtl = await a.promise().query(sqlPref);
+            console.log(prefDtl);
+
+
+            // res.render('./pages/ajax_form_data',{employee_id});
+
+        } else {
+            res.redirect('/login');
         }
-
+    } catch (e) {
+        console.log(e);
     }
+});
 
-    // preference 
-    
-    var sqlPref = `INSERT INTO preference_tbl(pref_empid, prefered_location, noticeperiod, expectedctc, currentctc, department_id) VALUES(${employee_id}, '${preferedlocation}', '${noticeperiod}', '${expectedctc}', '${currentctc}', '${department}')`;
+app.get('/task11/grid', async (req, res) => {
 
-    const prefDtl = await a.promise().query(sqlPref);
-    console.log(prefDtl);
+    try {
+        if (req.cookies.token) {
+
+            var p = req.query.page || 1;
+            const limit = 20;
+            const offset = (Number(p) - 1) * limit;
+            const lastpage = Math.ceil(300 / limit);
 
 
-    res.render('./pages/data',{employee_id});
 
+            var tsql = `SELECT * FROM employeebasic_details limit ${limit} offset ${offset} ;`
+
+            const sd = await a.promise().query(tsql);
+            console.log(sd);
+
+
+            console.log(sd[0].length);
+
+            res.render('./pages/ajax_form_data', { sd, lastpage, p });
+        } else {
+            res.redirect('/login');
+        }
+    } catch (e) {
+        console.log(e);
+    }
 
 });
 
-app.get('/task11/UpdateData', async (req,res)=>{
 
-    var insertedId = req.query.id || 1;
-    console.log(insertedId);
 
-    var sqlBasicSelect = `SELECT * FROM employeebasic_details WHERE emp_id = ${insertedId}`;
-    var sqlEduSelect = `SELECT * FROM education_detail WHERE edu_empid = ${insertedId}`;
-    var sqlWorkSelect = `SELECT * FROM workexperience WHERE work_empid = ${insertedId}`;
-    var sqlLanguageSelect = `SELECT * FROM language_tbl WHERE language_empid = ${insertedId}`;
-    var sqltechSelect = `SELECT * FROM technologies_tbl WHERE empid = ${insertedId}`;
-    var sqlrefSelect = `SELECT * FROM referencecontact_tbl WHERE ref_empid = ${insertedId}`;
-    var sqlprefSelect = `SELECT * FROM preference_tbl WHERE pref_empid = ${insertedId}`;
+app.get('/task11/UpdateData', async (req, res) => {
 
-    const UbasicDtl = await a.promise().query(sqlBasicSelect);
-    console.log(UbasicDtl);
-    const UeduDtl = await a.promise().query(sqlEduSelect);
-    console.log(UeduDtl);
-    const UworkDtl = await a.promise().query(sqlWorkSelect);
-    if(!UworkDtl){
-        const UworkDtl = [];
+    try {
+        if (req.cookies.token) {
+
+            var insertedId = req.query.id || 1;
+            console.log(insertedId);
+
+            var sqlBasicSelect = `SELECT * FROM employeebasic_details WHERE emp_id = ${insertedId}`;
+            var sqlEduSelect = `SELECT * FROM education_detail WHERE edu_empid = ${insertedId}`;
+            var sqlWorkSelect = `SELECT * FROM workexperience WHERE work_empid = ${insertedId}`;
+            var sqlLanguageSelect = `SELECT * FROM language_tbl WHERE language_empid = ${insertedId}`;
+            var sqltechSelect = `SELECT * FROM technologies_tbl WHERE empid = ${insertedId}`;
+            var sqlrefSelect = `SELECT * FROM referencecontact_tbl WHERE ref_empid = ${insertedId}`;
+            var sqlprefSelect = `SELECT * FROM preference_tbl WHERE pref_empid = ${insertedId}`;
+
+            const UbasicDtl = await a.promise().query(sqlBasicSelect);
+            console.log(UbasicDtl);
+            const UeduDtl = await a.promise().query(sqlEduSelect);
+            console.log(UeduDtl);
+            const UworkDtl = await a.promise().query(sqlWorkSelect);
+            if (!UworkDtl) {
+                const UworkDtl = [];
+            }
+            console.log(UworkDtl);
+            const UlangDtl = await a.promise().query(sqlLanguageSelect);
+            if (!UlangDtl) {
+                const UlangDtl = [];
+            }
+            console.log(UlangDtl);
+            const UtechDtl = await a.promise().query(sqltechSelect);
+            if (!UtechDtl) {
+                const UtechDtl = [];
+            }
+            console.log(UtechDtl);
+            const UrefDtl = await a.promise().query(sqlrefSelect);
+            if (!UrefDtl) {
+                const UrefDtl = [];
+            }
+            console.log(UrefDtl);
+            const UprefDtl = await a.promise().query(sqlprefSelect) || [];
+            console.log(UprefDtl);
+
+            console.log(UbasicDtl[0][0].emp_id);
+            // console.log(UprefDtl[0][0].prefered_location);
+
+            res.render('./pages/UpdateForm', { UbasicDtl, UeduDtl, UworkDtl, UlangDtl, UtechDtl, UrefDtl, UprefDtl });
+
+        } else {
+            res.redirect('/login');
+        }
+    } catch (e) {
+        console.log(e);
     }
-    console.log(UworkDtl);
-    const UlangDtl = await a.promise().query(sqlLanguageSelect);
-    if(!UlangDtl){
-        const UlangDtl = [];
-    }
-    console.log(UlangDtl);
-    const UtechDtl = await a.promise().query(sqltechSelect);
-    if(!UtechDtl){
-        const UtechDtl = [];
-    }
-    console.log(UtechDtl);
-    const UrefDtl = await a.promise().query(sqlrefSelect);
-    if(!UrefDtl){
-        const UrefDtl = [];
-    }
-    console.log(UrefDtl);
-    const UprefDtl = await a.promise().query(sqlprefSelect);
-    console.log(UprefDtl);
-
-    console.log(UbasicDtl[0][0].emp_id);
-    console.log(UprefDtl[0][0].prefered_location);
-
-    res.render('./pages/UpdateForm',{UbasicDtl,UeduDtl,UworkDtl,UlangDtl,UtechDtl,UrefDtl,UprefDtl});
-
-
 });
 
-app.post('/task11/UpdateData', async (req,res)=>{
+app.post('/task11/UpdateData', async (req, res) => {
 
-    console.log(req.body);
+    try {
+        if (req.cookies.token) {
 
-    var workRecordId = req.body.workRecordId || [];
-    var educationId = req.body.educationId || [];
-    var languageId = req.body.languageId || [];
-    var techrecord = req.body.techrecord || [];
-    
+            console.log(req.body);
 
-    var empid = req.body.empid || 100;
-    console.log(empid);
-    var b_fname = req.body.b_fname ;
-    var b_lname = req.body.b_lname;
-    var b_designation = req.body.b_designation;
-    var b_address1 = req.body.b_address1;
-    var b_address2 = req.body.b_address2;
-    var b_email = req.body.b_email;
-    var b_phoneno = req.body.b_phoneno;
-    var b_city = req.body.b_city;
-    var b_gender = req.body.b_gender;
-    var b_zipcode = req.body.b_zipcode;
-    var b_relationship = req.body.b_relationship;
-    var b_dob = req.body.b_dob;
-    // var e_nameofboard10th = req.body.e_nameofboard10th;
-    // var e_passingyear10th = req.body.e_passingyear10th;
-    // var e_percentage10th = req.body.e_percentage10th;
-    // var e_nameofboard12th = req.body.e_nameofboard12th;
-    // var e_passingyear12th = req.body.e_passingyear12th;
-    // var e_percentage12th = req.body.e_percentage12th;
-    // var e_coursename_be = req.body.e_coursename_be;
-    // var e_university_be = req.body.e_university_be;
-    // var e_passingyear_be = req.body.e_passingyear_be;
-    // var e_percentage_be = req.body.e_percentage_be;
-    // var e_coursename_me = req.body.e_coursename_me;
-    // var e_university_me = req.body.e_university_me;
-    // var e_passingyear_me = req.body.e_passingyear_me;
-    // var e_percentage_me = req.body.e_percentage_me;
-
-    var e_nameofboard = req.body.e_nameofboard;
-    var e_passingyear = req.body.e_passingyear;
-    var e_percentage = req.body.e_percentage;
-
-    // var w_companyname_companyone = req.body.w_companyname_companyone;
-    // var w_designation_companyone = req.body.w_designation_companyone;
-    // var w_from_companyone = req.body.w_from_companyone;
-    // var w_to_companyone = req.body.w_to_companyone;
-    // var w_companyname_companytwo = req.body.w_companyname_companytwo;
-    // var w_designation_companytwo = req.body.w_designation_companytwo;
-    // var w_from_companytwo = req.body.w_from_companytwo;
-    // var w_to_companytwo = req.body.w_to_companytwo;
-    // var w_companyname_companythree = req.body.w_companyname_companythree;
-    // var w_designation_companythree = req.body.w_designation_companythree;
-    // var w_from_companythree = req.body.w_from_companythree;
-    // var w_to_companythree = req.body.w_to_companythree;
-
-    var w_companyname = req.body.w_companyname;
-    var w_designation = req.body.w_designation;
-    var w_from = req.body.w_from;
-    var w_to = req.body.w_to;
+            var workRecordId = req.body.workRecordId || [];
+            var educationId = req.body.educationId || [];
+            var languageId = req.body.languageId || [];
+            var techrecord = req.body.techrecord || [];
 
 
-    var l_hindi = req.body.l_hindi;
-    var l_read_hindi = req.body.l_read_hindi || 0;
-    var l_write_hindi = req.body.l_write_hindi  || 0;
-    var l_speak_hindi = req.body.l_speak_hindi || 0;
-    var l_english = req.body.l_english;
-    var l_read_english = req.body.l_read_english || 0;
-    var l_write_english = req.body.l_write_english || 0;
-    var l_speak_english = req.body.l_speak_english || 0;
-    var l_gujarati = req.body.l_gujarati;
-    var l_read_gujarati = req.body.l_read_gujarati || 0;
-    var l_write_gujarati = req.body.l_write_gujarati || 0;
-    var l_speak_gujarati = req.body.l_speak_gujarati || 0;
-
-    // var l_hindi = req.body.l_hindi;
-    // var l_english = req.body.l_english;
-    // var l_gujarati = req.body.l_gujarati;
-
-    // var read = req.body.read;
-    // var write = req.body.write;
-    // var speak = req.body.speak;
-
-    var languageName = req.body.languageName || [];
-    var read = req.body.read || [];
-    var write = req.body.write || [];
-    var speak = req.body.speak || [];
-
-
-    var php_check = req.body.php_check || null;
-    var php = req.body.php || null;
-    var mysql_check = req.body.mysql_check || null;
-    var mysql = req.body.mysql || null;
-    var laravel_check = req.body.laravel_check || null;
-    var laravel = req.body.laravel || null;
-    var oracle_check = req.body.oracle_check || null;
-    var oracle = req.body.oracle || null;
-
-    // var ref1_name = req.body.ref1_name;
-    // var ref1_contactno = req.body.ref1_contactno;
-    // var ref1_relation = req.body.ref1_relation;
-    // var ref2_name = req.body.ref2_name;
-    // var ref2_contactno = req.body.ref2_contactno;
-    // var ref2_relation = req.body.ref2_relation;
-
-    var ref_name = req.body.ref_name || null;
-    var ref_contactno = req.body.ref_contactno || null;
-    console.log();
-    var ref_relation = req.body.ref_relation || null;
-
-    var preferedlocation = req.body.preferedlocation || null;
-    var noticeperiod = req.body.noticeperiod || null;
-    var expectedctc = req.body.expectedctc || null;
-    var currentctc = req.body.currentctc || null;
-    var department = req.body.department || null;
-    console.log(req.body);
-
-    var sqlBasicUpdate = `UPDATE employeebasic_details SET firstname = '${b_fname}', lastname = '${b_lname}', dob= '${b_dob}', email ='${b_email}', phoneno = '${b_phoneno}', address1= '${b_address1}', address2 = '${b_address2}', designation='${b_designation}', gender_id='${b_gender}', relationship_id = '${b_relationship}',city='${b_city}', zipcode ='${b_zipcode}' WHERE emp_id = '${empid}'`;
-
-    const updatebasicDtl = await a.promise().query(sqlBasicUpdate);
-    console.log(updatebasicDtl);
-   
-    
-    // Education Details
-
-    for(let i=0; i<e_nameofboard.length;i++){
-
-        if(e_nameofboard[i]){
-
-            var sqlEducationUpdate = `UPDATE education_detail SET edu_id = '${e_nameofboard[i]}', passingyear = '${e_passingyear[i]}', percentage = '${e_percentage[i]}' WHERE  edu_empid = '${empid}' AND id = '${educationId[i]}'`;
-             
-        
-            const updateEduDtl = await a.promise().query(sqlEducationUpdate);
-            console.log(updateEduDtl);
-        }
-        
-    }
-
-    // Work Experience
-
-    for(let i=0; i<w_companyname.length; i++){
-        
-        if(w_companyname[i]){
-
-            var sqlWorkExpUpdate = `UPDATE workexperience SET companyname = '${w_companyname[i]}', work_from = '${w_from[i]}', work_to = '${w_to[i]}', designation = '${w_designation[i]}' WHERE work_empid = '${empid}' AND id = '${workRecordId[i]}'` ;
-
-            const WorkExpup = await a.promise().query(sqlWorkExpUpdate);
-            console.log(WorkExpup);
-
-        }
-
-    }
-
-    //Language Details
-    // var languageName = req.body.languageName;
-    // var read = req.body.read;
-    // var write = req.body.write;
-    // var speak = req.body.speak;
-   
-
-   
-    for(let i=0; i<languageName.length; i++){
-
-        if(languageName[i]){
-
-            if(!read[i]){read[i]= 0};
-            if(!write[i]){write[i] = 0};
-            if(!speak[i]){speak[i] = 0};
-
-            var sqlLanguageUpdate = `UPDATE language_tbl SET lang_id = '${languageName[i]}', read_id= '${read[i]}', write_id='${write[i]}', speak_id='${speak[i]}' WHERE language_empid = '${empid}' AND id = '${languageId[i]}'`;
-
-            
-            const languageUpdate = await a.promise().query(sqlLanguageUpdate);
-            console.log(languageUpdate);
-        }
-
-    }
-
-     // Technologies 
-     var tech = req.body.tech || [];
-    
-    for(let i=0; i<techrecord.length; i++){
-
-        if(tech[i]){
-            var sqlTech = `UPDATE technologies_tbl SET technologies_id='${tech[i]}', skilllevel_id=? WHERE  id='${techrecord[i]}'AND empid = '${empid}'`;
-
-            if(tech[i]==1){const phptechDtl = await a.promise().query(sqlTech,[php]); console.log(phptechDtl);}
-            if(tech[i]==2){const mysqltechDtl = await a.promise().query(sqlTech,[mysql]);console.log(mysqltechDtl);}
-            if(tech[i]==3){const laraveltechDtl = await a.promise().query(sqlTech,[laravel]);console.log(laraveltechDtl);}
-            if(tech[i]==4){const oracletechDtl = await a.promise().query(sqlTech,[oracle]);console.log(oracletechDtl);}
-
-        }
-    }
-
-    // Reference Contact
-    var referenceRecord = req.body.referenceRecord;
-
-    for(let i=0; i<ref_name.length; i++){
-
-        if(ref_name[i]){
-
-            var sqlReferenceUpdate = `UPDATE referencecontact_tbl SET name = '${ref_name[i]}', contactno = '${ref_contactno[i]}', relation =  '${ref_relation[i]}' WHERE ref_empid = '${empid}' AND referencecontact_id = '${referenceRecord[i]}'`;
+            var empid = req.body.empid || 100;
+            console.log(empid);
+            var b_fname = req.body.b_fname;
+            var b_lname = req.body.b_lname;
+            var b_designation = req.body.b_designation;
+            var b_address1 = req.body.b_address1;
+            var b_address2 = req.body.b_address2;
+            var b_email = req.body.b_email;
+            var b_phoneno = req.body.b_phoneno;
+            var b_city = req.body.b_city;
+            var b_gender = req.body.b_gender;
+            var b_zipcode = req.body.b_zipcode;
+            var b_relationship = req.body.b_relationship;
+            var b_dob = req.body.b_dob;
+           
            
 
-            const refDtl = await a.promise().query(sqlReferenceUpdate);
+            var e_nameofboard = req.body.e_nameofboard;
+            var e_passingyear = req.body.e_passingyear;
+            var e_percentage = req.body.e_percentage;
 
-            console.log(refDtl);
+           
 
+            var w_companyname = req.body.w_companyname;
+            var w_designation = req.body.w_designation;
+            var w_from = req.body.w_from;
+            var w_to = req.body.w_to;
+
+
+            var l_hindi = req.body.l_hindi;
+            var l_read_hindi = req.body.l_read_hindi || 0;
+            var l_write_hindi = req.body.l_write_hindi || 0;
+            var l_speak_hindi = req.body.l_speak_hindi || 0;
+            var l_english = req.body.l_english;
+            var l_read_english = req.body.l_read_english || 0;
+            var l_write_english = req.body.l_write_english || 0;
+            var l_speak_english = req.body.l_speak_english || 0;
+            var l_gujarati = req.body.l_gujarati;
+            var l_read_gujarati = req.body.l_read_gujarati || 0;
+            var l_write_gujarati = req.body.l_write_gujarati || 0;
+            var l_speak_gujarati = req.body.l_speak_gujarati || 0;
+
+          
+            var languageName = req.body.languageName || [];
+            var read = req.body.read || [];
+            var write = req.body.write || [];
+            var speak = req.body.speak || [];
+
+
+            var php_check = req.body.php_check || null;
+            var php = req.body.php || null;
+            var mysql_check = req.body.mysql_check || null;
+            var mysql = req.body.mysql || null;
+            var laravel_check = req.body.laravel_check || null;
+            var laravel = req.body.laravel || null;
+            var oracle_check = req.body.oracle_check || null;
+            var oracle = req.body.oracle || null;
+
+           
+
+            var ref_name = req.body.ref_name || null;
+            var ref_contactno = req.body.ref_contactno || null;
+            console.log();
+            var ref_relation = req.body.ref_relation || null;
+
+            var preferedlocation = req.body.preferedlocation || null;
+            var noticeperiod = req.body.noticeperiod || null;
+            var expectedctc = req.body.expectedctc || null;
+            var currentctc = req.body.currentctc || null;
+            var department = req.body.department || null;
+            console.log(req.body);
+
+            var sqlBasicUpdate = `UPDATE employeebasic_details SET firstname = '${b_fname}', lastname = '${b_lname}', dob= '${b_dob}', email ='${b_email}', phoneno = '${b_phoneno}', address1= '${b_address1}', address2 = '${b_address2}', designation='${b_designation}', gender_id='${b_gender}', relationship_id = '${b_relationship}',city='${b_city}', zipcode ='${b_zipcode}' WHERE emp_id = '${empid}'`;
+
+            const updatebasicDtl = await a.promise().query(sqlBasicUpdate);
+            console.log(updatebasicDtl);
+
+
+            // Education Details
+
+            for (let i = 0; i < e_nameofboard.length; i++) {
+
+                if (e_nameofboard[i]) {
+
+                    var sqlEducationUpdate = `UPDATE education_detail SET edu_id = '${e_nameofboard[i]}', passingyear = '${e_passingyear[i]}', percentage = '${e_percentage[i]}' WHERE  edu_empid = '${empid}' AND id = '${educationId[i]}'`;
+
+
+                    const updateEduDtl = await a.promise().query(sqlEducationUpdate);
+                    console.log(updateEduDtl);
+                }
+
+            }
+
+            // Work Experience
+
+            for (let i = 0; i < w_companyname.length; i++) {
+
+                if (w_companyname[i]) {
+
+                    var sqlWorkExpUpdate = `UPDATE workexperience SET companyname = '${w_companyname[i]}', work_from = '${w_from[i]}', work_to = '${w_to[i]}', designation = '${w_designation[i]}' WHERE work_empid = '${empid}' AND id = '${workRecordId[i]}'`;
+
+                    const WorkExpup = await a.promise().query(sqlWorkExpUpdate);
+                    console.log(WorkExpup);
+
+                }
+
+            }
+
+            
+
+
+
+            for (let i = 0; i < languageName.length; i++) {
+
+                if (languageName[i]) {
+
+                    if (!read[i]) { read[i] = 0 };
+                    if (!write[i]) { write[i] = 0 };
+                    if (!speak[i]) { speak[i] = 0 };
+
+                    var sqlLanguageUpdate = `UPDATE language_tbl SET lang_id = '${languageName[i]}', read_id= '${read[i]}', write_id='${write[i]}', speak_id='${speak[i]}' WHERE language_empid = '${empid}' AND id = '${languageId[i]}'`;
+
+
+                    const languageUpdate = await a.promise().query(sqlLanguageUpdate);
+                    console.log(languageUpdate);
+                }
+
+            }
+
+            // Technologies 
+            var tech = req.body.tech || [];
+
+            for (let i = 0; i < techrecord.length; i++) {
+
+                if (tech[i]) {
+                    var sqlTech = `UPDATE technologies_tbl SET technologies_id='${tech[i]}', skilllevel_id=? WHERE  id='${techrecord[i]}'AND empid = '${empid}'`;
+
+                    if (tech[i] == 1) { const phptechDtl = await a.promise().query(sqlTech, [php]); console.log(phptechDtl); }
+                    if (tech[i] == 2) { const mysqltechDtl = await a.promise().query(sqlTech, [mysql]); console.log(mysqltechDtl); }
+                    if (tech[i] == 3) { const laraveltechDtl = await a.promise().query(sqlTech, [laravel]); console.log(laraveltechDtl); }
+                    if (tech[i] == 4) { const oracletechDtl = await a.promise().query(sqlTech, [oracle]); console.log(oracletechDtl); }
+
+                }
+            }
+
+            // Reference Contact
+            var referenceRecord = req.body.referenceRecord;
+
+            for (let i = 0; i < ref_name.length; i++) {
+
+                if (ref_name[i]) {
+
+                    var sqlReferenceUpdate = `UPDATE referencecontact_tbl SET name = '${ref_name[i]}', contactno = '${ref_contactno[i]}', relation =  '${ref_relation[i]}' WHERE ref_empid = '${empid}' AND referencecontact_id = '${referenceRecord[i]}'`;
+
+
+                    const refDtl = await a.promise().query(sqlReferenceUpdate);
+
+                    console.log(refDtl);
+
+                }
+
+            }
+
+
+            // preference 
+
+            var sqlPrefUpdate = `UPDATE preference_tbl SET prefered_location = '${preferedlocation}', noticeperiod = '${noticeperiod}', expectedctc =  '${expectedctc}', currentctc = '${currentctc}', department_id = '${department}' WHERE pref_empid = '${empid}'`;
+
+
+            const prefDtl = await a.promise().query(sqlPrefUpdate);
+            console.log(prefDtl);
+
+
+
+            res.send("data updated");
+        } else {
+            res.redirect('/login');
         }
-
+    } catch (e) {
+        console.log(e);
     }
-
-     
-     // preference 
-    
-     var sqlPrefUpdate = `UPDATE preference_tbl SET prefered_location = '${preferedlocation}', noticeperiod = '${noticeperiod}', expectedctc =  '${expectedctc}', currentctc = '${currentctc}', department_id = '${department}' WHERE pref_empid = '${empid}'`;
-     
-
-     const prefDtl = await a.promise().query(sqlPrefUpdate);
-     console.log(prefDtl);
- 
-
-
-    res.send("data updated");
 });
-
-
-app.get('/task12', (req, res) => {
-
-});
-
 
 
 

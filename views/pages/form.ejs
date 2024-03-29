@@ -124,6 +124,7 @@
 </head>
 
 <body onload="fun1()">
+    <center><br><h1>Sanket Patel 24DEV087 15-03-2024</h1></center>
     <section class="section">
         <div class="container">
             <div class="form">
@@ -653,10 +654,14 @@
                         <div class="col" id="button1">
                             <input type="button" name="prev" value="Prev" onclick="return prevPage()">
                         </div>
+                        
                         <div class="col" id="button2">
                             <input type="button" name="next" value="Next" id="submitajax" onclick="return nextPage()">
                         </div>
-                    </div>
+                    </div><center>
+                    <div id="linkupdate1" hidden>
+                        <a  href="/task11/grid" >View Data</a>
+                    </div></center>
 
 
                 </form>
@@ -1262,6 +1267,7 @@
                     document.getElementById("submitajax").setAttribute("type", "button");
                     document.getElementById("submitajax").setAttribute("value", "Submit");
                     document.getElementById("submitajax").setAttribute("onclick", "return subFun()");
+                    document.getElementById("linkupdate1").style.display = "block";
                     
                     return true;
                 } else {

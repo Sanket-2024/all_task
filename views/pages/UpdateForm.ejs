@@ -112,13 +112,17 @@
             font-size: 5px;
             color: red;
         }
-        .col8{
+
+        .col8 {
             margin: auto;
         }
     </style>
 </head>
 
 <body onload="fun1()">
+    <center><br>
+        <h1>Sanket Patel 24DEV087 15-03-2024</h1>
+    </center>
     <section class="section">
         <div class="container">
             <div class="form">
@@ -131,68 +135,81 @@
 
                             <div class="col8">
                                 <!-- <div class="row"-->
-                                    <input type="text" id="empid" name="empid" value="<%=UbasicDtl[0][0].emp_id%>" tabindex="1" hidden>
+                                <input type="text" id="empid" name="empid" value="<%=UbasicDtl[0][0].emp_id%>"
+                                    tabindex="1" hidden>
 
-                                    <label for="fname">First name:</label>
-                                <input type="text" id="fname" name="b_fname" value="<%=UbasicDtl[0][0].firstname%>" tabindex="1" autofocus><span
-                                    id="span1"></span><br><br>
+                                <label for="fname">First name:</label>
+                                <input type="text" id="fname" name="b_fname" value="<%=UbasicDtl[0][0].firstname%>"
+                                    tabindex="1" autofocus><span id="span1"></span><br><br>
 
                                 <label for="lname">Last name:</label>
-                                <input type="text" id="lname" name="b_lname" value="<%=UbasicDtl[0][0].lastname%>"><span id="span2"></span><br><br>
+                                <input type="text" id="lname" name="b_lname" value="<%=UbasicDtl[0][0].lastname%>"><span
+                                    id="span2"></span><br><br>
 
                                 <label for="designation">Designation:</label>
-                                <input type="text" id="designation" name="b_designation" value="<%=UbasicDtl[0][0].designation%>"><span
-                                    id="span3"></span><br><br>
+                                <input type="text" id="designation" name="b_designation"
+                                    value="<%=UbasicDtl[0][0].designation%>"><span id="span3"></span><br><br>
 
-                               
+
 
                                 <label for="address1"> Current Address:</label>
-                                <input type="text" id="address1" name="b_address1" value="<%=UbasicDtl[0][0].address1%>"><span id="span4"></span><br><br>
+                                <input type="text" id="address1" name="b_address1"
+                                    value="<%=UbasicDtl[0][0].address1%>"><span id="span4"></span><br><br>
 
-                                
+
 
                                 <label for="address2">Perment Address:</label>
-                                <input type="text" id="address2" name="b_address2" value="<%=UbasicDtl[0][0].address2%>"><span id="span5"></span><br><br>
+                                <input type="text" id="address2" name="b_address2"
+                                    value="<%=UbasicDtl[0][0].address2%>"><span id="span5"></span><br><br>
 
-                                
+
 
                                 <label for="email">Email:</label>
-                                <input type="text" id="email" name="b_email" value="<%=UbasicDtl[0][0].email%>"><span id="span6"></span><br><br>
+                                <input type="text" id="email" name="b_email" value="<%=UbasicDtl[0][0].email%>"><span
+                                    id="span6"></span><br><br>
 
-                                
+
 
                                 <label for="phoneno">Phone Number:</label>
-                                <input type="text" id="phoneno" name="b_phoneno" value="<%=UbasicDtl[0][0].phoneno%>"><span id="span7"></span><br><br>
+                                <input type="text" id="phoneno" name="b_phoneno"
+                                    value="<%=UbasicDtl[0][0].phoneno%>"><span id="span7"></span><br><br>
 
-                                
+
 
                                 <label for="city">City: </label>
                                 <select name="b_city" id="city">
-                                    <option value="1" <%if(UbasicDtl[0][0].city == 1){%>selected<%}%>>Amdavad</option>
-                                    <option value="2" <%if(UbasicDtl[0][0].city == 2){%>selected<%}%>>Gandhinagar</option>
+                                    <option value="1" <%if(UbasicDtl[0][0].city==1){%>selected<%}%>>Amdavad</option>
+                                    <option value="2" <%if(UbasicDtl[0][0].city==2){%>selected<%}%>>Gandhinagar</option>
                                 </select><span id="span11"></span><br><br>
 
-                                
+
 
                                 <label id="gender_label">Gender: </label>
-                                <input type="radio" id="male" name="b_gender" value="3" <%if(UbasicDtl[0][0].gender_id == 3){%>checked<%}%>><label for="male">Male</label>                              
-                                <input type="radio" id="female" name="b_gender" value="4" <%if(UbasicDtl[0][0].gender_id == 4){%>checked<%}%>><label
-                                    for="female">Female</label><span id="span9"></span><br><br>
+                                <input type="radio" id="male" name="b_gender" value="3"
+                                    <%if(UbasicDtl[0][0].gender_id==3){%>checked<%}%>><label for="male">Male</label>
+                                    <input type="radio" id="female" name="b_gender" value="4"
+                                        <%if(UbasicDtl[0][0].gender_id==4){%>checked<%}%>><label
+                                            for="female">Female</label><span id="span9"></span><br><br>
 
-                                <label for="zipcode">Zipcode: </label>
-                                <input type="text" id="zipcode" name="b_zipcode" value="<%=UbasicDtl[0][0].zipcode%>"><span id="span10"></span><br><br>
+                                        <label for="zipcode">Zipcode: </label>
+                                        <input type="text" id="zipcode" name="b_zipcode"
+                                            value="<%=UbasicDtl[0][0].zipcode%>"><span id="span10"></span><br><br>
 
-                                <label for="relationship">Relationship Status: </label>
-                                <select name="b_relationship" id="relationship">
-                                    <option value="1" <%if(UbasicDtl[0][0].relationship_id == 1){%>selected<%}%>>Single</option>
-                                    <option value="2"<%if(UbasicDtl[0][0].relationship_id == 2){%>selected<%}%>>Married </option>
-                                </select><span id="span11"></span><br><br>
+                                        <label for="relationship">Relationship Status: </label>
+                                        <select name="b_relationship" id="relationship">
+                                            <option value="1" <%if(UbasicDtl[0][0].relationship_id==1){%>selected<%}%>
+                                                    >Single</option>
+                                            <option value="2" <%if(UbasicDtl[0][0].relationship_id==2){%>selected<%}%>
+                                                    >Married </option>
+                                        </select><span id="span11"></span><br><br>
 
 
-                                <label for="dob">Date of Birth:</label>
-                                <input type="text" id="dob" name="b_dob" value="<%=JSON.stringify(UbasicDtl[0][0].dob).slice(1,11)%>"><span id="span12"></span><br><br>
+                                        <label for="dob">Date of Birth:</label>
+                                        <input type="text" id="dob" name="b_dob"
+                                            value="<%=JSON.stringify(UbasicDtl[0][0].dob).slice(1,11)%>"><span
+                                            id="span12"></span><br><br>
 
-                               
+
                             </div>
                         </div><br>
                     </div>
@@ -217,22 +234,26 @@
                                 <label for="nameofboard1">Name Of Board: </label>
                                 <select name="e_nameofboard[]" id="nameofboard1">
                                     <option value="">-- Select --</option>
-                                    <option value="5"<%if(UeduDtl[0][0].edu_id == 5){%>selected<%}%>>SSC Details</option>
-                                    <option value="6" <%if(UeduDtl[0][0].edu_id == 6){%>selected<%}%>>HSC Details</option>
-                                    <option value="7" <%if(UeduDtl[0][0].edu_id == 7){%>selected<%}%>>Bechelor Details</option>
-                                    <option value="8" <%if(UeduDtl[0][0].edu_id == 8){%>selected<%}%>>Master Details</option>
-                                    <option value="15" <%if(UeduDtl[0][0].edu_id == 15){%>selected<%}%>>BCA Details</option>
-                                    <option value="16" <%if(UeduDtl[0][0].edu_id == 16){%>selected<%}%>>MCA Details</option>
+                                    <option value="5" <%if(UeduDtl[0][0].edu_id==5){%>selected<%}%>>SSC Details</option>
+                                    <option value="6" <%if(UeduDtl[0][0].edu_id==6){%>selected<%}%>>HSC Details</option>
+                                    <option value="7" <%if(UeduDtl[0][0].edu_id==7){%>selected<%}%>>Bechelor Details
+                                    </option>
+                                    <option value="8" <%if(UeduDtl[0][0].edu_id==8){%>selected<%}%>>Master Details
+                                    </option>
+                                    <option value="15" <%if(UeduDtl[0][0].edu_id==15){%>selected<%}%>>BCA Details
+                                    </option>
+                                    <option value="16" <%if(UeduDtl[0][0].edu_id==16){%>selected<%}%>>MCA Details
+                                    </option>
                                 </select>
                                 <span id="span13"></span>
 
                                 <lable for="passingyear1">Passing Year:</lable>
-                                <input type="text" id="passingyear1" name="e_passingyear[]" value="<%=UeduDtl[0][0].passingyear%>"><span
-                                    id="span14"></span>
+                                <input type="text" id="passingyear1" name="e_passingyear[]"
+                                    value="<%=UeduDtl[0][0].passingyear%>"><span id="span14"></span>
 
                                 <label for="percentage1">Percentage: </label>
-                                <input type="text" id="percentage1" name="e_percentage[]" value="<%=UeduDtl[0][0].percentage%>"><span
-                                    id="span15"></span>
+                                <input type="text" id="percentage1" name="e_percentage[]"
+                                    value="<%=UeduDtl[0][0].percentage%>"><span id="span15"></span>
 
                             </div>
 
@@ -245,22 +266,27 @@
 
                                 <select id="nameofboard2" name="e_nameofboard[]">
                                     <option value="">-- Select --</option>
-                                    <option value="5" <%if(UeduDtl[0][1].edu_id == 5){%>selected<%}%>>SSC Details</option>
-                                    <option value="6" <%if(UeduDtl[0][1].edu_id == 6){%>selected<%}%> >HSC Details</option>
-                                    <option value="7" <%if(UeduDtl[0][1].edu_id == 7){%>selected<%}%> >Bechelor Details</option>
-                                    <option value="8" <%if(UeduDtl[0][1].edu_id == 8){%>selected<%}%>>Master Details</option>
-                                    <option value="15" <%if(UeduDtl[0][1].edu_id == 15){%>selected<%}%>>BCA Details</option>
-                                    <option value="16" <%if(UeduDtl[0][1].edu_id == 16){%>selected<%}%>>MCA Details</option>
+                                    <option value="5" <%if(UeduDtl[0][1].edu_id==5){%>selected<%}%>>SSC Details</option>
+                                    <option value="6" <%if(UeduDtl[0][1].edu_id==6){%>selected<%}%> >HSC Details
+                                    </option>
+                                    <option value="7" <%if(UeduDtl[0][1].edu_id==7){%>selected<%}%> >Bechelor Details
+                                    </option>
+                                    <option value="8" <%if(UeduDtl[0][1].edu_id==8){%>selected<%}%>>Master Details
+                                    </option>
+                                    <option value="15" <%if(UeduDtl[0][1].edu_id==15){%>selected<%}%>>BCA Details
+                                    </option>
+                                    <option value="16" <%if(UeduDtl[0][1].edu_id==16){%>selected<%}%>>MCA Details
+                                    </option>
                                 </select>
                                 <span id="span16"></span>
 
                                 <lable for="passingyear2">Passing Year:</lable>
-                                <input type="text" id="passingyear2" name="e_passingyear[]" value="<%=UeduDtl[0][1].passingyear%>"><span
-                                    id="span17"></span>
+                                <input type="text" id="passingyear2" name="e_passingyear[]"
+                                    value="<%=UeduDtl[0][1].passingyear%>"><span id="span17"></span>
 
                                 <label for="percentage2">Percentage: </label>
-                                <input type="text" id="percentage2" name="e_percentage[]" value="<%=UeduDtl[0][1].percentage%>"><span
-                                    id="span18"></span>
+                                <input type="text" id="percentage2" name="e_percentage[]"
+                                    value="<%=UeduDtl[0][1].percentage%>"><span id="span18"></span>
 
                             </div>
 
@@ -272,76 +298,86 @@
 
                                 <select id="coursename3" name="e_nameofboard[]">
                                     <option value="">-- Select --</option>
-                                    <option value="5" <%if(UeduDtl[0][2].edu_id == 5){%>selected<%}%>>SSC Details</option>
-                                    <option value="6" <%if(UeduDtl[0][2].edu_id == 6){%>selected<%}%>>HSC Details</option>
-                                    <option value="7" <%if(UeduDtl[0][2].edu_id == 7){%>selected<%}%>>Bechelor Details</option>
-                                    <option value="8" <%if(UeduDtl[0][2].edu_id == 8){%>selected<%}%>>Master Details</option>
-                                    <option value="15" <%if(UeduDtl[0][2].edu_id == 15){%>selected<%}%>>BCA Details</option>
-                                    <option value="16" <%if(UeduDtl[0][2].edu_id == 16){%>selected<%}%>>MCA Details</option>
+                                    <option value="5" <%if(UeduDtl[0][2].edu_id==5){%>selected<%}%>>SSC Details</option>
+                                    <option value="6" <%if(UeduDtl[0][2].edu_id==6){%>selected<%}%>>HSC Details</option>
+                                    <option value="7" <%if(UeduDtl[0][2].edu_id==7){%>selected<%}%>>Bechelor Details
+                                    </option>
+                                    <option value="8" <%if(UeduDtl[0][2].edu_id==8){%>selected<%}%>>Master Details
+                                    </option>
+                                    <option value="15" <%if(UeduDtl[0][2].edu_id==15){%>selected<%}%>>BCA Details
+                                    </option>
+                                    <option value="16" <%if(UeduDtl[0][2].edu_id==16){%>selected<%}%>>MCA Details
+                                    </option>
                                 </select>
                                 <span id="span19"></span>
 
                                 <lable for="passingyear3">Passing Year:</lable>
-                                <input type="text" id="passingyear3" name="e_passingyear[]" value="<%=UeduDtl[0][2].passingyear%>"><span
-                                    id="span21"></span>
+                                <input type="text" id="passingyear3" name="e_passingyear[]"
+                                    value="<%=UeduDtl[0][2].passingyear%>"><span id="span21"></span>
 
                                 <label for="percentage3">Percentage: </label>
-                                <input type="text" id="percentage3" name="e_percentage[]" value="<%=UeduDtl[0][2].percentage%>"><span
-                                    id="span22"></span>
+                                <input type="text" id="percentage3" name="e_percentage[]"
+                                    value="<%=UeduDtl[0][2].percentage%>"><span id="span22"></span>
 
                             </div>
 
                             <div name="masterdegree"><br>
 
                                 <%if(UeduDtl[0][3]){%>
-                                <input type="text" name="educationId[]" value="<%=UeduDtl[0][3].id%>" hidden>
-
-                                <label for="coursename4">Name of Board: </label>
-
-                                <select id="coursename4" name="e_nameofboard[]">
-                                    <option value="">-- Select --</option>
-                                    <option value="5" <%if(UeduDtl[0][3].edu_id === 5){%>selected<%}%>>SSC Details</option>
-                                    <option value="6" <%if(UeduDtl[0][3].edu_id === 6){%>selected<%}%>>HSC Details</option>
-                                    <option value="7" <%if(UeduDtl[0][3].edu_id === 7){%>selected<%}%>>Bechelor Details</option>
-                                    <option value="8" <%if(UeduDtl[0][3].edu_id === 8){%>selected<%}%>>Master Details</option>
-                                    <option value="15" <%if(UeduDtl[0][3].edu_id === 15){%>selected<%}%>>BCA Details</option>
-                                    <option value="16" <%if(UeduDtl[0][3].edu_id === 16){%>selected<%}%>>MCA Details</option>
-                                </select>
-                                <span id="span23"></span>
-
-                                <lable for="passingyear4">Passing Year:</lable>
-                                <input type="text" id="passingyear4" name="e_passingyear[]" value="<%=UeduDtl[0][3].passingyear%>"><span
-                                    id="span25"></span>
-
-                                <label for="percentage4">Percentage: </label>
-                                <input type="text" id="percentage4" name="e_percentage[]" value="<%=UeduDtl[0][3].percentage%>"><span
-                                    id="span26"></span>
-                                
-                                <%}%>
-                                <%if(!UeduDtl[0][3]){%>
+                                    <input type="text" name="educationId[]" value="<%=UeduDtl[0][3].id%>" hidden>
 
                                     <label for="coursename4">Name of Board: </label>
 
-                                <select id="coursename4" name="e_nameofboard[]">
-                                    <option value="">-- Select --</option>
-                                    <option value="5">SSC Details</option>
-                                    <option value="6">HSC Details</option>
-                                    <option value="7">Bechelor Details</option>
-                                    <option value="8">Master Details</option>
-                                    <option value="15">BCA Details</option>
-                                    <option value="16">MCA Details</option>
-                                </select>
-                                <span id="span23"></span>
+                                    <select id="coursename4" name="e_nameofboard[]">
+                                        <option value="">-- Select --</option>
+                                        <option value="5" <%if(UeduDtl[0][3].edu_id===5){%>selected<%}%>>SSC Details
+                                        </option>
+                                        <option value="6" <%if(UeduDtl[0][3].edu_id===6){%>selected<%}%>>HSC Details
+                                        </option>
+                                        <option value="7" <%if(UeduDtl[0][3].edu_id===7){%>selected<%}%>>Bechelor
+                                                Details</option>
+                                        <option value="8" <%if(UeduDtl[0][3].edu_id===8){%>selected<%}%>>Master Details
+                                        </option>
+                                        <option value="15" <%if(UeduDtl[0][3].edu_id===15){%>selected<%}%>>BCA Details
+                                        </option>
+                                        <option value="16" <%if(UeduDtl[0][3].edu_id===16){%>selected<%}%>>MCA Details
+                                        </option>
+                                    </select>
+                                    <span id="span23"></span>
 
-                                <lable for="passingyear4">Passing Year:</lable>
-                                <input type="text" id="passingyear4" name="e_passingyear[]" value=""><span
-                                    id="span25"></span>
+                                    <lable for="passingyear4">Passing Year:</lable>
+                                    <input type="text" id="passingyear4" name="e_passingyear[]"
+                                        value="<%=UeduDtl[0][3].passingyear%>"><span id="span25"></span>
 
-                                <label for="percentage4">Percentage: </label>
-                                <input type="text" id="percentage4" name="e_percentage[]" value=""><span
-                                    id="span26"></span>
+                                    <label for="percentage4">Percentage: </label>
+                                    <input type="text" id="percentage4" name="e_percentage[]"
+                                        value="<%=UeduDtl[0][3].percentage%>"><span id="span26"></span>
 
                                     <%}%>
+                                        <%if(!UeduDtl[0][3]){%>
+
+                                            <label for="coursename4">Name of Board: </label>
+
+                                            <select id="coursename4" name="e_nameofboard[]">
+                                                <option value="">-- Select --</option>
+                                                <option value="5">SSC Details</option>
+                                                <option value="6">HSC Details</option>
+                                                <option value="7">Bechelor Details</option>
+                                                <option value="8">Master Details</option>
+                                                <option value="15">BCA Details</option>
+                                                <option value="16">MCA Details</option>
+                                            </select>
+                                            <span id="span23"></span>
+
+                                            <lable for="passingyear4">Passing Year:</lable>
+                                            <input type="text" id="passingyear4" name="e_passingyear[]" value=""><span
+                                                id="span25"></span>
+
+                                            <label for="percentage4">Percentage: </label>
+                                            <input type="text" id="percentage4" name="e_percentage[]" value=""><span
+                                                id="span26"></span>
+
+                                            <%}%>
 
                             </div>
 
@@ -370,114 +406,129 @@
 
                                 <%if(UworkDtl[0][0]){%>
 
-                                <input type="text" name="workRecordId[]" value="<%=UworkDtl[0][0].id%>" hidden>
+                                    <input type="text" name="workRecordId[]" value="<%=UworkDtl[0][0].id%>" hidden>
 
-                                <label for="companyname1">Company Name: </label>
-                                <input type="text" id="companyname1" name="w_companyname[]" value="<%=UworkDtl[0][0].companyname%>"><span
-                                    id="span27"></span>
-
-                                <label for="designation1">Designation: </label>
-                                <input type="text" id="designation1" name="w_designation[]" value="<%=UworkDtl[0][0].designation%>"><span
-                                    id="span28"></span>
-
-                                <label for="from1">From: </label>
-                                <input type="text" id="from1" name="w_from[]" value="<%=JSON.stringify(UworkDtl[0][0].work_from).slice(1,11)%>"><span id="span29"></span>
-
-                                <label for="to1">To: </label>
-                                <input type="text" id="to1" name="w_to[]" value="<%=JSON.stringify(UworkDtl[0][0].work_to).slice(1,11)%>"><span id="span30"></span>
-                                <%}%>
-
-                                <%if(!UworkDtl[0][0]){%>
                                     <label for="companyname1">Company Name: </label>
-                                <input type="text" id="companyname1" name="w_companyname[]" value=""><span
-                                    id="span27"></span>
+                                    <input type="text" id="companyname1" name="w_companyname[]"
+                                        value="<%=UworkDtl[0][0].companyname%>"><span id="span27"></span>
 
-                                <label for="designation1">Designation: </label>
-                                <input type="text" id="designation1" name="w_designation[]" value=""><span
-                                    id="span28"></span>
+                                    <label for="designation1">Designation: </label>
+                                    <input type="text" id="designation1" name="w_designation[]"
+                                        value="<%=UworkDtl[0][0].designation%>"><span id="span28"></span>
 
-                                <label for="from1">From: </label>
-                                <input type="text" id="from1" name="w_from[]" value=""><span id="span29"></span>
+                                    <label for="from1">From: </label>
+                                    <input type="text" id="from1" name="w_from[]"
+                                        value="<%=JSON.stringify(UworkDtl[0][0].work_from).slice(1,11)%>"><span
+                                        id="span29"></span>
 
-                                <label for="to1">To: </label>
-                                <input type="text" id="to1" name="w_to[]" value=""><span id="span30"></span>
-                                <%}%>
+                                    <label for="to1">To: </label>
+                                    <input type="text" id="to1" name="w_to[]"
+                                        value="<%=JSON.stringify(UworkDtl[0][0].work_to).slice(1,11)%>"><span
+                                        id="span30"></span>
+                                    <%}%>
+
+                                        <%if(!UworkDtl[0][0]){%>
+                                            <label for="companyname1">Company Name: </label>
+                                            <input type="text" id="companyname1" name="w_companyname[]" value=""><span
+                                                id="span27"></span>
+
+                                            <label for="designation1">Designation: </label>
+                                            <input type="text" id="designation1" name="w_designation[]" value=""><span
+                                                id="span28"></span>
+
+                                            <label for="from1">From: </label>
+                                            <input type="text" id="from1" name="w_from[]" value=""><span
+                                                id="span29"></span>
+
+                                            <label for="to1">To: </label>
+                                            <input type="text" id="to1" name="w_to[]" value=""><span id="span30"></span>
+                                            <%}%>
                             </div><br>
 
                             <div name="two">
 
                                 <%if(UworkDtl[0][1]){%>
 
-                                <input type="text" name="workRecordId[]" value="<%=UworkDtl[0][1].id%>" hidden>
+                                    <input type="text" name="workRecordId[]" value="<%=UworkDtl[0][1].id%>" hidden>
 
-                                <label for="companyname2">Company Name: </label>
-                                <input type="text" id="companyname2" name="w_companyname[]" value="<%=UworkDtl[0][1].companyname%>"><span
-                                    id="span31"></span>
-
-                                <label for="designation2">Designation: </label>
-                                <input type="text" id="designation2" name="w_designation[]" value="<%=UworkDtl[0][1].designation%>"><span
-                                    id="span32"></span>
-
-                                <label for="from2">From: </label>
-                                <input type="text" id="from2" name="w_from[]" value="<%=JSON.stringify(UworkDtl[0][1].work_from).slice(1,11)%>"><span id="span33"></span>
-
-                                <label for="to2">To: </label>
-                                <input type="text" id="to2" name="w_to[]" value="<%=JSON.stringify(UworkDtl[0][1].work_to).slice(1,11)%>"><span id="span34"></span>
-                                
-                                <%}%>
-                                <%if(!UworkDtl[0][1]){%>
                                     <label for="companyname2">Company Name: </label>
-                                    <input type="text" id="companyname2" name="w_companyname[]" value=""><span
-                                        id="span31"></span>
-    
+                                    <input type="text" id="companyname2" name="w_companyname[]"
+                                        value="<%=UworkDtl[0][1].companyname%>"><span id="span31"></span>
+
                                     <label for="designation2">Designation: </label>
-                                    <input type="text" id="designation2" name="w_designation[]" value=""><span
-                                        id="span32"></span>
-    
+                                    <input type="text" id="designation2" name="w_designation[]"
+                                        value="<%=UworkDtl[0][1].designation%>"><span id="span32"></span>
+
                                     <label for="from2">From: </label>
-                                    <input type="text" id="from2" name="w_from[]" value=""><span id="span33"></span>
-    
+                                    <input type="text" id="from2" name="w_from[]"
+                                        value="<%=JSON.stringify(UworkDtl[0][1].work_from).slice(1,11)%>"><span
+                                        id="span33"></span>
+
                                     <label for="to2">To: </label>
-                                    <input type="text" id="to2" name="w_to[]" value=""><span id="span34"></span>
-                                <%}%>
+                                    <input type="text" id="to2" name="w_to[]"
+                                        value="<%=JSON.stringify(UworkDtl[0][1].work_to).slice(1,11)%>"><span
+                                        id="span34"></span>
+
+                                    <%}%>
+                                        <%if(!UworkDtl[0][1]){%>
+                                            <label for="companyname2">Company Name: </label>
+                                            <input type="text" id="companyname2" name="w_companyname[]" value=""><span
+                                                id="span31"></span>
+
+                                            <label for="designation2">Designation: </label>
+                                            <input type="text" id="designation2" name="w_designation[]" value=""><span
+                                                id="span32"></span>
+
+                                            <label for="from2">From: </label>
+                                            <input type="text" id="from2" name="w_from[]" value=""><span
+                                                id="span33"></span>
+
+                                            <label for="to2">To: </label>
+                                            <input type="text" id="to2" name="w_to[]" value=""><span id="span34"></span>
+                                            <%}%>
                             </div><br>
 
 
                             <div name="three">
 
                                 <%if(UworkDtl[0][2]){%>
-                                <input type="text" name="workRecordId[]" value="<%=UworkDtl[0][2].id%>" hidden>
+                                    <input type="text" name="workRecordId[]" value="<%=UworkDtl[0][2].id%>" hidden>
 
-                                <label for="companyname3">Company Name: </label>
-                                <input type="text" id="companyname3" name="w_companyname[]" value="<%=UworkDtl[0][2].companyname%>"><span
-                                    id="span35"></span>
-
-                                <label for="designation3">Designation: </label>
-                                <input type="text" id="designation3" name="w_designation[]" value="<%=UworkDtl[0][2].designation%>"><span
-                                    id="span36"></span>
-
-                                <label for="from3">From: </label>
-                                <input type="text" id="from3" name="w_from[]" value="<%=JSON.stringify(UworkDtl[0][2].work_from).slice(1,11)%>"><span id="span37"></span>
-
-                                <label for="to3">To: </label>
-                                <input type="text" id="to3" name="w_to[]" value="<%=JSON.stringify(UworkDtl[0][2].work_to).slice(1,11)%>"><span id="span38"></span>
-                                <%}%>
-
-                                <%if(!UworkDtl[0][2]){%>
                                     <label for="companyname3">Company Name: </label>
-                                    <input type="text" id="companyname3" name="w_companyname[]" value=""><span
-                                        id="span35"></span>
-    
+                                    <input type="text" id="companyname3" name="w_companyname[]"
+                                        value="<%=UworkDtl[0][2].companyname%>"><span id="span35"></span>
+
                                     <label for="designation3">Designation: </label>
-                                    <input type="text" id="designation3" name="w_designation[]" value=""><span
-                                        id="span36"></span>
-    
+                                    <input type="text" id="designation3" name="w_designation[]"
+                                        value="<%=UworkDtl[0][2].designation%>"><span id="span36"></span>
+
                                     <label for="from3">From: </label>
-                                    <input type="text" id="from3" name="w_from[]" value=""><span id="span37"></span>
-    
+                                    <input type="text" id="from3" name="w_from[]"
+                                        value="<%=JSON.stringify(UworkDtl[0][2].work_from).slice(1,11)%>"><span
+                                        id="span37"></span>
+
                                     <label for="to3">To: </label>
-                                    <input type="text" id="to3" name="w_to[]" value=""><span id="span38"></span>
-                                <%}%>
+                                    <input type="text" id="to3" name="w_to[]"
+                                        value="<%=JSON.stringify(UworkDtl[0][2].work_to).slice(1,11)%>"><span
+                                        id="span38"></span>
+                                    <%}%>
+
+                                        <%if(!UworkDtl[0][2]){%>
+                                            <label for="companyname3">Company Name: </label>
+                                            <input type="text" id="companyname3" name="w_companyname[]" value=""><span
+                                                id="span35"></span>
+
+                                            <label for="designation3">Designation: </label>
+                                            <input type="text" id="designation3" name="w_designation[]" value=""><span
+                                                id="span36"></span>
+
+                                            <label for="from3">From: </label>
+                                            <input type="text" id="from3" name="w_from[]" value=""><span
+                                                id="span37"></span>
+
+                                            <label for="to3">To: </label>
+                                            <input type="text" id="to3" name="w_to[]" value=""><span id="span38"></span>
+                                            <%}%>
 
                             </div><br>
 
@@ -500,35 +551,44 @@
 
                                 <%if(UlangDtl[0][0]){%>
 
-                                <input type="text" name="languageId[]" value="<%=UlangDtl[0][0].id%>" hidden>
+                                    <input type="text" name="languageId[]" value="<%=UlangDtl[0][0].id%>" hidden>
 
-                                <input type="checkbox" id="hindi1" name="languageName[]" value="9" <%if(UlangDtl[0][0].lang_id == 9){%>checked<%}%>>
-                                <label for="hindi1">Hindi</label><span id="span39"></span>
+                                    <input type="checkbox" id="hindi1" name="languageName[]" value="9"
+                                        <%if(UlangDtl[0][0].lang_id==9){%>checked<%}%>>
+                                        <label for="hindi1">Hindi</label><span id="span39"></span>
 
-                                <input type="checkbox" id="read1" name="read[]" value="12" <%if(UlangDtl[0][0].read_id == 12){%>checked<%}%>><span id="span40"></span>
-                                <label for="read1">Read</label>
+                                        <input type="checkbox" id="read1" name="read[]" value="12"
+                                            <%if(UlangDtl[0][0].read_id==12){%>checked<%}%>><span id="span40"></span>
+                                            <label for="read1">Read</label>
 
-                                <input type="checkbox" id="write1" name="write[]" value="13" <%if(UlangDtl[0][0].write_id == 13){%>checked<%}%>><span id="span41"></span>
-                                <label for="write1">Write</label>
+                                            <input type="checkbox" id="write1" name="write[]" value="13"
+                                                <%if(UlangDtl[0][0].write_id==13){%>checked<%}%>><span
+                                                    id="span41"></span>
+                                                <label for="write1">Write</label>
 
-                                <input type="checkbox" id="speak1" name="speak[]" value="14" <%if(UlangDtl[0][0].speak_id == 14){%>checked<%}%>>
-                                <label for="speak1">Speak</label><span id="span42"></span>
+                                                <input type="checkbox" id="speak1" name="speak[]" value="14"
+                                                    <%if(UlangDtl[0][0].speak_id==14){%>checked<%}%>>
+                                                    <label for="speak1">Speak</label><span id="span42"></span>
 
-                                <%}%>
+                                                    <%}%>
 
-                                <%if(!UlangDtl[0][0]){%>
-                                    <input type="checkbox" id="hindi1" name="languageName[]" value="9">
-                                    <label for="hindi1">Hindi</label><span id="span39"></span>
-    
-                                    <input type="checkbox" id="read1" name="read[]" value="12"><span id="span40"></span>
-                                    <label for="read1">Read</label>
-    
-                                    <input type="checkbox" id="write1" name="write[]" value="13"><span id="span41"></span>
-                                    <label for="write1">Write</label>
-    
-                                    <input type="checkbox" id="speak1" name="speak[]" value="14">
-                                    <label for="speak1">Speak</label><span id="span42"></span>
-                                    <%}%>
+                                                        <%if(!UlangDtl[0][0]){%>
+                                                            <input type="checkbox" id="hindi1" name="languageName[]"
+                                                                value="9">
+                                                            <label for="hindi1">Hindi</label><span id="span39"></span>
+
+                                                            <input type="checkbox" id="read1" name="read[]"
+                                                                value="12"><span id="span40"></span>
+                                                            <label for="read1">Read</label>
+
+                                                            <input type="checkbox" id="write1" name="write[]"
+                                                                value="13"><span id="span41"></span>
+                                                            <label for="write1">Write</label>
+
+                                                            <input type="checkbox" id="speak1" name="speak[]"
+                                                                value="14">
+                                                            <label for="speak1">Speak</label><span id="span42"></span>
+                                                            <%}%>
 
                             </div><br>
 
@@ -538,37 +598,47 @@
 
                                 <%if(UlangDtl[0][1]){%>
 
-                                <input type="text" name="languageId[]" value="<%=UlangDtl[0][1].id%>" hidden>
+                                    <input type="text" name="languageId[]" value="<%=UlangDtl[0][1].id%>" hidden>
 
-                                <input type="checkbox" id="english1" name="languageName[]" value="10" <%if(UlangDtl[0][1].lang_id == 10){%>checked<%}%>>
-                                <label for="english1">English</label><span id="span43"></span>
+                                    <input type="checkbox" id="english1" name="languageName[]" value="10"
+                                        <%if(UlangDtl[0][1].lang_id==10){%>checked<%}%>>
+                                        <label for="english1">English</label><span id="span43"></span>
 
-                                <input type="checkbox" id="read2" name="read[]" value="12" <%if(UlangDtl[0][1].read_id == 12){%>checked<%}%>><span id="span44"></span>
-                                <label for="read2">Read</label>
+                                        <input type="checkbox" id="read2" name="read[]" value="12"
+                                            <%if(UlangDtl[0][1].read_id==12){%>checked<%}%>><span id="span44"></span>
+                                            <label for="read2">Read</label>
 
-                                <input type="checkbox" id="write2" name="write[]" value="13"  <%if(UlangDtl[0][1].write_id == 13){%>checked<%}%> ><span id="span45"></span>
-                                <label for="write2">Write</label>
+                                            <input type="checkbox" id="write2" name="write[]" value="13"
+                                                <%if(UlangDtl[0][1].write_id==13){%>checked<%}%> ><span
+                                                    id="span45"></span>
+                                                <label for="write2">Write</label>
 
-                                <input type="checkbox" id="speak2" name="speak[]" value="14" <%if(UlangDtl[0][1].speak_id == 14){%>checked<%}%>>
-                                <label for="speak2">Speak</label><span id="span46"></span>
+                                                <input type="checkbox" id="speak2" name="speak[]" value="14"
+                                                    <%if(UlangDtl[0][1].speak_id==14){%>checked<%}%>>
+                                                    <label for="speak2">Speak</label><span id="span46"></span>
 
-                                <%}%>
+                                                    <%}%>
 
-                                <%if(!UlangDtl[0][1]){%>
+                                                        <%if(!UlangDtl[0][1]){%>
 
-                                <input type="checkbox" id="english1" name="languageName[]" value="10">
-                                <label for="english1">English</label><span id="span43"></span>
+                                                            <input type="checkbox" id="english1" name="languageName[]"
+                                                                value="10">
+                                                            <label for="english1">English</label><span
+                                                                id="span43"></span>
 
-                                <input type="checkbox" id="read2" name="read[]" value="12"><span id="span44"></span>
-                                <label for="read2">Read</label>
+                                                            <input type="checkbox" id="read2" name="read[]"
+                                                                value="12"><span id="span44"></span>
+                                                            <label for="read2">Read</label>
 
-                                <input type="checkbox" id="write2" name="write[]" value="13"><span id="span45"></span>
-                                <label for="write2">Write</label>
+                                                            <input type="checkbox" id="write2" name="write[]"
+                                                                value="13"><span id="span45"></span>
+                                                            <label for="write2">Write</label>
 
-                                <input type="checkbox" id="speak2" name="speak[]" value="14">
-                                <label for="speak2">Speak</label><span id="span46"></span>
+                                                            <input type="checkbox" id="speak2" name="speak[]"
+                                                                value="14">
+                                                            <label for="speak2">Speak</label><span id="span46"></span>
 
-                                <%}%>
+                                                            <%}%>
 
 
                             </div><br>
@@ -578,35 +648,45 @@
 
                                 <%if(UlangDtl[0][2]){%>
 
-                                <input type="text" name="languageId[]" value="<%=UlangDtl[0][2].id%>" hidden>
+                                    <input type="text" name="languageId[]" value="<%=UlangDtl[0][2].id%>" hidden>
 
-                                <input type="checkbox" id="gujarati1" name="languageName[]" value="11" <%if(UlangDtl[0][2].lang_id == 11){%>checked<%}%>>
-                                <label for="gujarati1">Gujarati</label><span id="span47"></span>
+                                    <input type="checkbox" id="gujarati1" name="languageName[]" value="11"
+                                        <%if(UlangDtl[0][2].lang_id==11){%>checked<%}%>>
+                                        <label for="gujarati1">Gujarati</label><span id="span47"></span>
 
-                                <input type="checkbox" id="read3" name="read[]" value="12" <%if(UlangDtl[0][2].read_id == 12){%>checked<%}%>><span id="span48"></span>
-                                <label for="read3">Read</label>
+                                        <input type="checkbox" id="read3" name="read[]" value="12"
+                                            <%if(UlangDtl[0][2].read_id==12){%>checked<%}%>><span id="span48"></span>
+                                            <label for="read3">Read</label>
 
-                                <input type="checkbox" id="write3" name="write[]" value="13" <%if(UlangDtl[0][2].write_id == 13){%>checked<%}%>><span id="span49"></span>
-                                <label for="write3">Write</label>
+                                            <input type="checkbox" id="write3" name="write[]" value="13"
+                                                <%if(UlangDtl[0][2].write_id==13){%>checked<%}%>><span
+                                                    id="span49"></span>
+                                                <label for="write3">Write</label>
 
-                                <input type="checkbox" id="speak3" name="speak[]" value="14" <%if(UlangDtl[0][2].speak_id == 14){%>checked<%}%>>
-                                <label for="speak3">Speak</label><span id="span50"></span>
+                                                <input type="checkbox" id="speak3" name="speak[]" value="14"
+                                                    <%if(UlangDtl[0][2].speak_id==14){%>checked<%}%>>
+                                                    <label for="speak3">Speak</label><span id="span50"></span>
 
-                                <%}%>
+                                                    <%}%>
 
-                                <%if(!UlangDtl[0][2]){%>
-                                    <input type="checkbox" id="gujarati1" name="languageName[]" value="11">
-                                    <label for="gujarati1">Gujarati</label><span id="span47"></span>
-    
-                                    <input type="checkbox" id="read3" name="read[]" value="12"><span id="span48"></span>
-                                    <label for="read3">Read</label>
-    
-                                    <input type="checkbox" id="write3" name="write[]" value="13"><span id="span49"></span>
-                                    <label for="write3">Write</label>
-    
-                                    <input type="checkbox" id="speak3" name="speak[]" value="14">
-                                    <label for="speak3">Speak</label><span id="span50"></span>    
-                                <%}%>
+                                                        <%if(!UlangDtl[0][2]){%>
+                                                            <input type="checkbox" id="gujarati1" name="languageName[]"
+                                                                value="11">
+                                                            <label for="gujarati1">Gujarati</label><span
+                                                                id="span47"></span>
+
+                                                            <input type="checkbox" id="read3" name="read[]"
+                                                                value="12"><span id="span48"></span>
+                                                            <label for="read3">Read</label>
+
+                                                            <input type="checkbox" id="write3" name="write[]"
+                                                                value="13"><span id="span49"></span>
+                                                            <label for="write3">Write</label>
+
+                                                            <input type="checkbox" id="speak3" name="speak[]"
+                                                                value="14">
+                                                            <label for="speak3">Speak</label><span id="span50"></span>
+                                                            <%}%>
 
 
                             </div><br>
@@ -632,39 +712,47 @@
 
                                 <%if(UtechDtl[0][0]){%>
 
-                                <input type="text" name="techrecord[]" value="<%=UtechDtl[0][0].id%>" hidden>
+                                    <input type="text" name="techrecord[]" value="<%=UtechDtl[0][0].id%>" hidden>
 
-                                <input type="checkbox" id="php" name="tech[]" value="1"  <%if(UtechDtl[0][0].technologies_id == 1){%>checked<%}%>>
-                                <label for="php">PHP</label><span id="span51"></span>
+                                    <input type="checkbox" id="php" name="tech[]" value="1"
+                                        <%if(UtechDtl[0][0].technologies_id==1){%>checked<%}%>>
+                                        <label for="php">PHP</label><span id="span51"></span>
 
-                                <input type="radio" id="beginer1" name="php" value="12" <%if(UtechDtl[0][0].skilllevel_id == 12){%>checked<%}%>><span id="span52"></span>
-                                <label for="beginer1">Beginer</label>
+                                        <input type="radio" id="beginer1" name="php" value="12"
+                                            <%if(UtechDtl[0][0].skilllevel_id==12){%>checked<%}%>><span
+                                                id="span52"></span>
+                                            <label for="beginer1">Beginer</label>
 
-                                <input type="radio" id="mideator1" name="php" value="13" <%if(UtechDtl[0][0].skilllevel_id == 13){%>checked<%}%>><span id="span53"></span>
-                                <label for="mideator1">Mideator</label>
+                                            <input type="radio" id="mideator1" name="php" value="13"
+                                                <%if(UtechDtl[0][0].skilllevel_id==13){%>checked<%}%>><span
+                                                    id="span53"></span>
+                                                <label for="mideator1">Mideator</label>
 
-                                <input type="radio" id="expert1" name="php" value="14"  <%if(UtechDtl[0][0].skilllevel_id == 14){%>checked<%}%>>
-                                <label for="expert1">Expert</label>
+                                                <input type="radio" id="expert1" name="php" value="14"
+                                                    <%if(UtechDtl[0][0].skilllevel_id==14){%>checked<%}%>>
+                                                    <label for="expert1">Expert</label>
 
-                                <span id="span54"></span>
-                                <%}%>
+                                                    <span id="span54"></span>
+                                                    <%}%>
 
-                                <%if(!UtechDtl[0][0]){%>
-                                    <input type="checkbox" id="php" name="tech[]" value="1">
-                                    <label for="php">PHP</label><span id="span51"></span>
-    
-                                    <input type="radio" id="beginer1" name="php" value="12"><span id="span52"></span>
-                                    <label for="beginer1">Beginer</label>
-    
-                                    <input type="radio" id="mideator1" name="php" value="13"><span id="span53"></span>
-                                    <label for="mideator1">Mideator</label>
-    
-                                    <input type="radio" id="expert1" name="php" value="14">
-                                    <label for="expert1">Expert</label>
-    
-                                    <span id="span54"></span>
-        
-                                <%}%>
+                                                        <%if(!UtechDtl[0][0]){%>
+                                                            <input type="checkbox" id="php" name="tech[]" value="1">
+                                                            <label for="php">PHP</label><span id="span51"></span>
+
+                                                            <input type="radio" id="beginer1" name="php"
+                                                                value="12"><span id="span52"></span>
+                                                            <label for="beginer1">Beginer</label>
+
+                                                            <input type="radio" id="mideator1" name="php"
+                                                                value="13"><span id="span53"></span>
+                                                            <label for="mideator1">Mideator</label>
+
+                                                            <input type="radio" id="expert1" name="php" value="14">
+                                                            <label for="expert1">Expert</label>
+
+                                                            <span id="span54"></span>
+
+                                                            <%}%>
 
 
                             </div><br>
@@ -675,38 +763,42 @@
 
                                 <%if(UtechDtl[0][1]){%>
 
-                                <input type="text" name="techrecord[]" value="<%=UtechDtl[0][1].id%>" hidden>
+                                    <input type="text" name="techrecord[]" value="<%=UtechDtl[0][1].id%>" hidden>
 
-                                <input type="checkbox" id="mysql" name="tech[]" value="2" <%if(UtechDtl[0][1].technologies_id == 2){%>checked<%}%>>
-                                <label for="mysql">Mysql</label><span id="span55"></span>
+                                    <input type="checkbox" id="mysql" name="tech[]" value="2"
+                                        <%if(UtechDtl[0][1].technologies_id==2){%>checked<%}%>>
+                                        <label for="mysql">Mysql</label><span id="span55"></span>
 
-                                <input type="radio" id="beginer2" name="mysql" value="12" <%if(UtechDtl[0][1].skilllevel_id == 12){%>checked<%}%>>
-                                <label for="beginer2">Beginer</label>
+                                        <input type="radio" id="beginer2" name="mysql" value="12"
+                                            <%if(UtechDtl[0][1].skilllevel_id==12){%>checked<%}%>>
+                                            <label for="beginer2">Beginer</label>
 
-                                <input type="radio" id="mideator2" name="mysql" value="13" <%if(UtechDtl[0][1].skilllevel_id == 13){%>checked<%}%>>
-                                <label for="mideator2">Mideator</label>
+                                            <input type="radio" id="mideator2" name="mysql" value="13"
+                                                <%if(UtechDtl[0][1].skilllevel_id==13){%>checked<%}%>>
+                                                <label for="mideator2">Mideator</label>
 
-                                <input type="radio" id="expert2" name="mysql" value="14" <%if(UtechDtl[0][1].skilllevel_id == 14){%>checked<%}%>>
-                                <label for="expert2">Expert</label>
+                                                <input type="radio" id="expert2" name="mysql" value="14"
+                                                    <%if(UtechDtl[0][1].skilllevel_id==14){%>checked<%}%>>
+                                                    <label for="expert2">Expert</label>
 
-                                <span id="span56"></span>
-                                <%}%>
+                                                    <span id="span56"></span>
+                                                    <%}%>
 
-                                <%if(!UtechDtl[0][1]){%>
-                                    <input type="checkbox" id="mysql" name="tech[]" value="2">
-                                    <label for="mysql">Mysql</label><span id="span55"></span>
-    
-                                    <input type="radio" id="beginer2" name="mysql" value="12">
-                                    <label for="beginer2">Beginer</label>
-    
-                                    <input type="radio" id="mideator2" name="mysql" value="13">
-                                    <label for="mideator2">Mideator</label>
-    
-                                    <input type="radio" id="expert2" name="mysql" value="14">
-                                    <label for="expert2">Expert</label>
-    
-                                    <span id="span56"></span>
-                                <%}%>
+                                                        <%if(!UtechDtl[0][1]){%>
+                                                            <input type="checkbox" id="mysql" name="tech[]" value="2">
+                                                            <label for="mysql">Mysql</label><span id="span55"></span>
+
+                                                            <input type="radio" id="beginer2" name="mysql" value="12">
+                                                            <label for="beginer2">Beginer</label>
+
+                                                            <input type="radio" id="mideator2" name="mysql" value="13">
+                                                            <label for="mideator2">Mideator</label>
+
+                                                            <input type="radio" id="expert2" name="mysql" value="14">
+                                                            <label for="expert2">Expert</label>
+
+                                                            <span id="span56"></span>
+                                                            <%}%>
 
                             </div><br>
 
@@ -714,37 +806,43 @@
                             <div name="tlaravel">
 
                                 <%if(UtechDtl[0][2]){%>
-                                <input type="text" name="techrecord[]" value="<%=UtechDtl[0][2].id%>" hidden>
+                                    <input type="text" name="techrecord[]" value="<%=UtechDtl[0][2].id%>" hidden>
 
-                                <input type="checkbox" id="laravel" name="tech[]" value="3" <%if(UtechDtl[0][2].technologies_id == 3){%>checked<%}%>>
-                                <label for="laravel">Laravel</label><span id="span57"></span>
+                                    <input type="checkbox" id="laravel" name="tech[]" value="3"
+                                        <%if(UtechDtl[0][2].technologies_id==3){%>checked<%}%>>
+                                        <label for="laravel">Laravel</label><span id="span57"></span>
 
-                                <input type="radio" id="beginer3" name="laravel" value="12" <%if(UtechDtl[0][2].skilllevel_id == 12){%>checked<%}%>>
-                                <label for="beginer3">Beginer</label>
+                                        <input type="radio" id="beginer3" name="laravel" value="12"
+                                            <%if(UtechDtl[0][2].skilllevel_id==12){%>checked<%}%>>
+                                            <label for="beginer3">Beginer</label>
 
-                                <input type="radio" id="mideator3" name="laravel" value="13" <%if(UtechDtl[0][2].skilllevel_id == 13){%>checked<%}%>>
-                                <label for="mideator3">Mideator</label>
+                                            <input type="radio" id="mideator3" name="laravel" value="13"
+                                                <%if(UtechDtl[0][2].skilllevel_id==13){%>checked<%}%>>
+                                                <label for="mideator3">Mideator</label>
 
-                                <input type="radio" id="expert3" name="laravel" value="14" <%if(UtechDtl[0][2].skilllevel_id == 14){%>checked<%}%>>
-                                <label for="expert3">Expert</label>
+                                                <input type="radio" id="expert3" name="laravel" value="14"
+                                                    <%if(UtechDtl[0][2].skilllevel_id==14){%>checked<%}%>>
+                                                    <label for="expert3">Expert</label>
 
-                                <span id="span58"></span>
-                                <%}%>
-                                <%if(!UtechDtl[0][2]){%>
-                                    <input type="checkbox" id="laravel" name="tech[]" value="3">
-                                <label for="laravel">Laravel</label><span id="span57"></span>
+                                                    <span id="span58"></span>
+                                                    <%}%>
+                                                        <%if(!UtechDtl[0][2]){%>
+                                                            <input type="checkbox" id="laravel" name="tech[]" value="3">
+                                                            <label for="laravel">Laravel</label><span
+                                                                id="span57"></span>
 
-                                <input type="radio" id="beginer3" name="laravel" value="12">
-                                <label for="beginer3">Beginer</label>
+                                                            <input type="radio" id="beginer3" name="laravel" value="12">
+                                                            <label for="beginer3">Beginer</label>
 
-                                <input type="radio" id="mideator3" name="laravel" value="13">
-                                <label for="mideator3">Mideator</label>
+                                                            <input type="radio" id="mideator3" name="laravel"
+                                                                value="13">
+                                                            <label for="mideator3">Mideator</label>
 
-                                <input type="radio" id="expert3" name="laravel" value="14">
-                                <label for="expert3">Expert</label>
+                                                            <input type="radio" id="expert3" name="laravel" value="14">
+                                                            <label for="expert3">Expert</label>
 
-                                <span id="span58"></span>
-                                <%}%>
+                                                            <span id="span58"></span>
+                                                            <%}%>
 
 
                             </div><br>
@@ -752,34 +850,38 @@
                             <div name="toracle">
 
                                 <%if(UtechDtl[0][3]){%>
-                                
-                                <input type="text" name="techrecord[]" value="<%=UtechDtl[0][3].id%>" hidden>
 
-                                <input type="checkbox" id="oracle" name="tech[]" value="4" <%if(UtechDtl[0][3].technologies_id == 4){%>checked<%}%> >
-                                <label for="oracle">Oracle</label><span id="span59"></span>
+                                    <input type="text" name="techrecord[]" value="<%=UtechDtl[0][3].id%>" hidden>
 
-                                <input type="radio" id="beginer4" name="oracle" value="12"  <%if(UtechDtl[0][3].skilllevel_id == 12){%>checked<%}%>>
-                                <label for="beginer4">Beginer</label>
+                                    <input type="checkbox" id="oracle" name="tech[]" value="4"
+                                        <%if(UtechDtl[0][3].technologies_id==4){%>checked<%}%> >
+                                        <label for="oracle">Oracle</label><span id="span59"></span>
 
-                                <input type="radio" id="mideator4" name="oracle" value="13" <%if(UtechDtl[0][3].skilllevel_id == 13){%>checked<%}%>>
-                                <label for="mideator4">Mideator</label>
+                                        <input type="radio" id="beginer4" name="oracle" value="12"
+                                            <%if(UtechDtl[0][3].skilllevel_id==12){%>checked<%}%>>
+                                            <label for="beginer4">Beginer</label>
 
-                                <input type="radio" id="expert4" name="oracle" value="14" <%if(UtechDtl[0][3].skilllevel_id == 14){%>checked<%}%>>
-                                <label for="expert4">Expert</label><span id="span60"></span>
-                                <%}%>
-                                <%if(!UtechDtl[0][3]){%>
-                                    <input type="checkbox" id="oracle" name="tech[]" value="4">
-                                <label for="oracle">Oracle</label><span id="span59"></span>
+                                            <input type="radio" id="mideator4" name="oracle" value="13"
+                                                <%if(UtechDtl[0][3].skilllevel_id==13){%>checked<%}%>>
+                                                <label for="mideator4">Mideator</label>
 
-                                <input type="radio" id="beginer4" name="oracle" value="12">
-                                <label for="beginer4">Beginer</label>
+                                                <input type="radio" id="expert4" name="oracle" value="14"
+                                                    <%if(UtechDtl[0][3].skilllevel_id==14){%>checked<%}%>>
+                                                    <label for="expert4">Expert</label><span id="span60"></span>
+                                                    <%}%>
+                                                        <%if(!UtechDtl[0][3]){%>
+                                                            <input type="checkbox" id="oracle" name="tech[]" value="4">
+                                                            <label for="oracle">Oracle</label><span id="span59"></span>
 
-                                <input type="radio" id="mideator4" name="oracle" value="13">
-                                <label for="mideator4">Mideator</label>
+                                                            <input type="radio" id="beginer4" name="oracle" value="12">
+                                                            <label for="beginer4">Beginer</label>
 
-                                <input type="radio" id="expert4" name="oracle" value="14">
-                                <label for="expert4">Expert</label><span id="span60"></span>
-                                <%}%>
+                                                            <input type="radio" id="mideator4" name="oracle" value="13">
+                                                            <label for="mideator4">Mideator</label>
+
+                                                            <input type="radio" id="expert4" name="oracle" value="14">
+                                                            <label for="expert4">Expert</label><span id="span60"></span>
+                                                            <%}%>
 
                             </div><br>
 
@@ -805,31 +907,34 @@
 
                             <div name="reference1">
                                 <%if(UrefDtl[0][0]){%>
-                                <input type="text" name="referenceRecord[]" value="<%=UrefDtl[0][0].referencecontact_id%>" hidden>
+                                    <input type="text" name="referenceRecord[]"
+                                        value="<%=UrefDtl[0][0].referencecontact_id%>" hidden>
 
-                                <label for="name1">Name: </label>
-                                <input type="text" id="name1" name="ref_name[]" value="<%=UrefDtl[0][0].name%>"><span id="span61"></span>
-
-                                <label for="contactno1">Contact No: </label>
-                                <input type="text" id="contactno1" name="ref_contactno[]" value="<%=UrefDtl[0][0].contactno%>"><span
-                                    id="span62"></span>
-
-                                <label for="relation1">Relation: </label>
-                                <input type="text" id="relation1" name="ref_relation[]" value="<%=UrefDtl[0][0].relation%>"><span
-                                    id="span63"></span>
-                                <%}%>
-                                <%if(!UrefDtl[0][0]){%>
                                     <label for="name1">Name: </label>
-                                <input type="text" id="name1" name="ref_name[]" value=""><span id="span61"></span>
+                                    <input type="text" id="name1" name="ref_name[]"
+                                        value="<%=UrefDtl[0][0].name%>"><span id="span61"></span>
 
-                                <label for="contactno1">Contact No: </label>
-                                <input type="text" id="contactno1" name="ref_contactno[]" value=""><span
-                                    id="span62"></span>
+                                    <label for="contactno1">Contact No: </label>
+                                    <input type="text" id="contactno1" name="ref_contactno[]"
+                                        value="<%=UrefDtl[0][0].contactno%>"><span id="span62"></span>
 
-                                <label for="relation1">Relation: </label>
-                                <input type="text" id="relation1" name="ref_relation[]" value=""><span
-                                    id="span63"></span>
-                                <%}%>
+                                    <label for="relation1">Relation: </label>
+                                    <input type="text" id="relation1" name="ref_relation[]"
+                                        value="<%=UrefDtl[0][0].relation%>"><span id="span63"></span>
+                                    <%}%>
+                                        <%if(!UrefDtl[0][0]){%>
+                                            <label for="name1">Name: </label>
+                                            <input type="text" id="name1" name="ref_name[]" value=""><span
+                                                id="span61"></span>
+
+                                            <label for="contactno1">Contact No: </label>
+                                            <input type="text" id="contactno1" name="ref_contactno[]" value=""><span
+                                                id="span62"></span>
+
+                                            <label for="relation1">Relation: </label>
+                                            <input type="text" id="relation1" name="ref_relation[]" value=""><span
+                                                id="span63"></span>
+                                            <%}%>
 
                             </div><br>
 
@@ -839,32 +944,35 @@
 
                                 <%if(UrefDtl[0][1]){%>
 
-                                <input type="text" name="referenceRecord[]" value="<%=UrefDtl[0][1].referencecontact_id%>" hidden>
+                                    <input type="text" name="referenceRecord[]"
+                                        value="<%=UrefDtl[0][1].referencecontact_id%>" hidden>
 
-                                <label for="name2">Name: </label>
-                                <input type="text" id="name2" name="ref_name[]" value="<%=UrefDtl[0][1].name%>"><span id="span64"></span>
+                                    <label for="name2">Name: </label>
+                                    <input type="text" id="name2" name="ref_name[]"
+                                        value="<%=UrefDtl[0][1].name%>"><span id="span64"></span>
 
-                                <label for="contactno2">Contact No: </label>
-                                <input type="text" id="contactno2" name="ref_contactno[]" value="<%=UrefDtl[0][1].contactno%>"><span
-                                    id="span65"></span>
+                                    <label for="contactno2">Contact No: </label>
+                                    <input type="text" id="contactno2" name="ref_contactno[]"
+                                        value="<%=UrefDtl[0][1].contactno%>"><span id="span65"></span>
 
-                                <label for="relation2">Relation: </label>
-                                <input type="text" id="relation2" name="ref_relation[]" value="<%=UrefDtl[0][1].relation%>"><span
-                                    id="span66"></span>
-                                
-                                <%}%>
-                                <%if(!UrefDtl[0][1]){%>
-                                <label for="name2">Name: </label>
-                                <input type="text" id="name2" name="ref_name[]" value=""><span id="span64"></span>
+                                    <label for="relation2">Relation: </label>
+                                    <input type="text" id="relation2" name="ref_relation[]"
+                                        value="<%=UrefDtl[0][1].relation%>"><span id="span66"></span>
 
-                                <label for="contactno2">Contact No: </label>
-                                <input type="text" id="contactno2" name="ref_contactno[]" value=""><span
-                                    id="span65"></span>
+                                    <%}%>
+                                        <%if(!UrefDtl[0][1]){%>
+                                            <label for="name2">Name: </label>
+                                            <input type="text" id="name2" name="ref_name[]" value=""><span
+                                                id="span64"></span>
 
-                                <label for="relation2">Relation: </label>
-                                <input type="text" id="relation2" name="ref_relation[]" value=""><span
-                                    id="span66"></span>
-                                <%}%>
+                                            <label for="contactno2">Contact No: </label>
+                                            <input type="text" id="contactno2" name="ref_contactno[]" value=""><span
+                                                id="span65"></span>
+
+                                            <label for="relation2">Relation: </label>
+                                            <input type="text" id="relation2" name="ref_relation[]" value=""><span
+                                                id="span66"></span>
+                                            <%}%>
 
                             </div><br>
 
@@ -886,34 +994,41 @@
 
                             <label for="preferedlocation">Prefered Location: </label>
                             <select name="preferedlocation" id="preferedlocation">
-                                <option value="Amdavad" <%if(UprefDtl[0][0].prefered_location == "Amdavad"){%>selected<%}%>>Amdavad</option>
-                                <option value="Anand" <%if(UprefDtl[0][0].prefered_location == "Anand"){%>selected<%}%>>Anand </option>
-                                <option value="Modasa" <%if(UprefDtl[0][0].prefered_location == "Modasa"){%>selected<%}%>>Modasa</option>
-                                <option value="Lunavada" <%if(UprefDtl[0][0].prefered_location == "Lunavada"){%>selected<%}%>>Lunavada</option>
+                                <option value="Amdavad" <%if(UprefDtl[0][0].prefered_location=="Amdavad" ){%>selected
+                                    <%}%>>Amdavad</option>
+                                <option value="Anand" <%if(UprefDtl[0][0].prefered_location=="Anand" ){%>selected<%}%>
+                                        >Anand </option>
+                                <option value="Modasa" <%if(UprefDtl[0][0].prefered_location=="Modasa" ){%>selected<%}%>
+                                        >Modasa</option>
+                                <option value="Lunavada" <%if(UprefDtl[0][0].prefered_location=="Lunavada" ){%>selected
+                                    <%}%>>Lunavada</option>
                             </select><span id="span67"></span><br><br>
 
 
 
                             <label for="noticeperiod">Notice Period: </label>
-                            <input type="text" id="noticeperiod" name="noticeperiod" value="<%=UprefDtl[0][0].noticeperiod%>"><span
-                                id="span68"></span><br><br>
+                            <input type="text" id="noticeperiod" name="noticeperiod"
+                                value="<%=UprefDtl[0][0].noticeperiod%>"><span id="span68"></span><br><br>
 
 
                             <label for="expectedctc">Expected CTC: </label>
-                            <input type="text" id="expectedctc" name="expectedctc" value="<%=UprefDtl[0][0].expectedctc%>"><span
-                                id="span69"></span><br><br>
+                            <input type="text" id="expectedctc" name="expectedctc"
+                                value="<%=UprefDtl[0][0].expectedctc%>"><span id="span69"></span><br><br>
 
 
                             <label for="currentctc">Current CTC: </label>
-                            <input type="text" id="currentctc" name="currentctc" value="<%=UprefDtl[0][0].currentctc%>"><span
-                                id="span70"></span><br><br>
+                            <input type="text" id="currentctc" name="currentctc"
+                                value="<%=UprefDtl[0][0].currentctc%>"><span id="span70"></span><br><br>
 
                             <label for="department">Department: </label>
                             <select name="department" id="department">
-                                <option value="10" <%if(UprefDtl[0][0].department_id === 10){%>selected<%}%>>Development</option>
-                                <option value="8" <%if(UprefDtl[0][0].department_id === 8){%>selected<%}%> >UI/UX Designer</option>
-                                <option value="11" <%if(UprefDtl[0][0].department_id === 11){%>selected<%}%>>Marketing</option>
-                                <option value="6" <%if(UprefDtl[0][0].department_id === 6){%>selected<%}%>>SEO</option>
+                                <option value="10" <%if(UprefDtl[0][0].department_id===10){%>selected<%}%>>Development
+                                </option>
+                                <option value="8" <%if(UprefDtl[0][0].department_id===8){%>selected<%}%> >UI/UX Designer
+                                </option>
+                                <option value="11" <%if(UprefDtl[0][0].department_id===11){%>selected<%}%>>Marketing
+                                </option>
+                                <option value="6" <%if(UprefDtl[0][0].department_id===6){%>selected<%}%>>SEO</option>
                             </select><span id="span71"></span><br>
 
 
@@ -1547,22 +1662,22 @@
         }
 
         async function submit() {
-                let formData = document.getElementById("myform");
-                let data = new FormData(formData);
-                const params = new URLSearchParams(data);
-                const jobdata = await new Response(params).text();
-                console.log(jobdata);
+            let formData = document.getElementById("myform");
+            let data = new FormData(formData);
+            const params = new URLSearchParams(data);
+            const jobdata = await new Response(params).text();
+            console.log(jobdata);
 
-                console.log("Insert data!");
+            console.log("Insert data!");
 
-                let data2 = await fetch("http://localhost:7000/task11/UpdateData", {
-                    method: "POST",
-                    headers: {
-                        'Content-type': "application/x-www-form-urlencoded"
-                    },
-                    body: jobdata
-                });
-            }
+            let data2 = await fetch("http://localhost:7000/task11/UpdateData", {
+                method: "POST",
+                headers: {
+                    'Content-type': "application/x-www-form-urlencoded"
+                },
+                body: jobdata
+            });
+        }
 
 
 
@@ -1818,7 +1933,7 @@
             }
         }
 
- 
+
 
         var educationSection = document.getElementById("edu_dtl");
 

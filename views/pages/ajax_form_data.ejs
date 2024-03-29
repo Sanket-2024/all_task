@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+            body{
+                margin: 0px;
+                padding: 0px;
+            }
+            table,tr,td{
+                border: 1px solid black;
+                border-collapse: collapse;
+                font-size: 10px;
+            }
+            .container{
+                max-width: 1170px;
+                margin: 0 auto;
+                
+            }
+            .section{
+                margin-top: 25px;
+            }
+        </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </head>
+    <body>
+        <p>Data inserted Successfully.</p>
+        
+
+        <section class="section">
+            <div class="container">
+
+
+                <div id="f">
+                    <a href="?page=1" <%if(Number(p)==1){%>onclick='return false;' style="pointer-events: none"<%}%>><i
+                                class="fa-solid fa-angles-left"></i></a>
+                    <a href="?page=<%=Number(p)-1%>" <%if(Number(p)==1){%> onclick='return false;'
+                        style="pointer-events: none"<%}%>><i class="fa-solid fa-angle-left"></i></a>
+    
+                    <span class="pages">
+                        <%=p%>
+                    </span>
+    
+                    <a href="?page=<%=Number(p)+1%>" <%if(Number(p)==lastpage){%> onclick='return false;'
+                        style="pointer-events: none"<%}%>><i class="fa-solid fa-angle-right"></i></a>
+                    <a href="?page=<%=lastpage%>" <%if(Number(p)==lastpage){%> onclick='return false;'
+                        style="pointer-events: none"<%}%>><i class="fa-solid fa-angles-right"></i></a>
+                </div>
+
+    
+                <table>
+                    <tr class="header">
+                        <td>Employee Id</td>
+                        <td>First Name</td>
+                        <td>Last Name</td>
+                        <td>Date of Birth</td>
+                        <td>Email</td>
+                        <td>Phone number</td>
+                        <td>Current Address</td>
+                        <td>Permanent Address</td>
+                        <td>Designation</td>
+                        <td>Gender</td>
+                        <td>Relationship</td>
+                        <td>City</td>
+                        <td>Zipcode</td>
+                    </tr>
+                    <%for(let i=0; i< sd[0].length; i++){%>
+                        <tr>
+                            <td>
+                                <%=sd[0][i].emp_id%>
+                            </td>
+                            <td>
+                                <%=sd[0][i].firstname%>
+                            </td>
+                            <td>
+                                <%=sd[0][i].lastname%>
+                            </td>
+                            <td>
+                                <%=sd[0][i].dob%>
+                            </td>
+                            <td>
+                                <%=sd[0][i].email%>
+                            </td>
+                            <td>
+                                <%=sd[0][i].phoneno%>
+                            </td>
+                            <td>
+                                <%=sd[0][i].address1%>
+                            </td>
+                            <td>
+                                <%= sd[0][i].address2%>
+                            </td>
+                            <td>
+                                <%= sd[0][i].designation%>
+                            </td>
+                            <td>
+                                <%= sd[0][i].gender_id%>
+                            </td>
+                            <td>
+                                <%= sd[0][i].relationship_id%>
+                            </td>
+                            <td>
+                                <%= sd[0][i].city%>
+                            </td>
+                            <td>
+                                <%= sd[0][i].zipcode%>
+                            </td>
+                            <td><a href="/task11/UpdateData?page=<%=p%>&id=<%=sd[0][i].emp_id%>" target="_blank">View</a></td>
+                        </tr>
+                    <%}%>
+                </table>
+    
+            </div>
+        </section>
+
+    </body>
+</html>

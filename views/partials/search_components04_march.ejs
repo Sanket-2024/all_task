@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            
+            .col{
+                width: 50%;
+                font-weight: bold;
+                
+            }
+            .row{
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                padding: 0 10px;
+            }
+            .col button{
+                padding: 5 10px;
+                font-size: larger;
+                font-weight: bold;
+            }
+            body{
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            #col2 div{
+                
+                float: right;
+            }
+            #col1{
+                width: 50%;
+                float: left;
+                color: black;
+            }
+        </style>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </head>
+    <body>
+
+        <div >
+            <div class="row">
+                <div class="col" id="col1">
+                    <!-- Total Number Of Entries: 100000 -->
+                    <!--result, p, stuid, name, lastname, dob, contact, email, address1, address2, age, created_date, operator, maxlength-->
+                    
+                </div>
+                <div class="col" id="col2">
+                    <div>
+                    <a href="?page=1&name=<%=name%>&lastname=<%=lastname%>&dob=<%=dob%>&contact=<%=contact%>&email=<%=email%>&address1=<%=address1%>&address2=<%=address2%>&age=<%=age%>&created_date=<%=created_date%>&operator=<%=operator%>"<%if(Number(p==1)){%>onclick='return false;' style="pointer-events: none"<%}%>><i class="fa-solid fa-angles-left"></i></a>
+                    <a href="?page=<%=Number(p)-1%>&name=<%=name%>&lastname=<%=lastname%>&dob=<%=dob%>&contact=<%=contact%>&email=<%=email%>&address1=<%=address1%>&address2=<%=address2%>&age=<%=age%>&created_date=<%=created_date%>&operator=<%=operator%>" <%if(Number(p==1)){%> onclick='return false;' style="pointer-events: none"<%}%>><i class="fa-solid fa-angle-left"></i></a>
+
+                    <span class="pages" style="color: black"><%=p%></span>
+
+                    <a href="?page=<%=Number(p)+1%>&name=<%=name%>&lastname=<%=lastname%>&dob=<%=dob%>&contact=<%=contact%>&email=<%=email%>&address1=<%=address1%>&address2=<%=address2%>&age=<%=age%>&created_date=<%=created_date%>&operator=<%=operator%>" <%if(Number(p==maxlength)){%> onclick='return false;' style="pointer-events: none"<%}%>><i class="fa-solid fa-angle-right"></i></a>
+                    <a href="?page=<%=maxlength%>&name=<%=name%>&lastname=<%=lastname%>&dob=<%=dob%>&contact=<%=contact%>&email=<%=email%>&address1=<%=address1%>&address2=<%=address2%>&age=<%=age%>&created_date=<%=created_date%>&operator=<%=operator%>" <%if(Number(p==maxlength)){%> onclick='return false;' style="pointer-events: none"<%}%>><i class="fa-solid fa-angles-right"></i></a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

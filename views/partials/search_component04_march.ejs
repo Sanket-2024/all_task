@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .col{
+                width: 50%;
+                font-weight: bold;
+                
+            }
+            .row{
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                padding: 0 10px;
+            }
+            .col button{
+                padding: 5 10px;
+                font-size: larger;
+                font-weight: bold;
+            }
+            body{
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            #col2{
+                float: right;
+            }
+            #comp_col1{
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                font-size: 15px;
+                font-style: italic;
+                margin-bottom: 20px;
+            }
+            #comp_col1 button{
+                border: none;
+                background-color: orange;
+                border-radius: 8px;
+                padding: 10px 20px;
+                font-weight: normal;
+                color: white;
+            }
+            #go{
+                background-color: orange;
+                border-radius: 8px;
+                padding: 10px 20px;
+                font-weight: normal;
+                color: white;
+                border: none;
+                font-size: 15px;
+            }
+            #field{
+                border: none;
+                font-size: 15px;
+                padding: 10px 20px;
+                background-color: white;
+                border-radius: 8px;
+            }
+            #demo input{
+                border: none;
+                font-size: 15px;
+                padding: 10px 20px;
+                background-color: white;
+                border-radius: 8px;
+                margin: 10px;
+            }
+            
+        </style>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="row">
+                <div class="col" id="comp_col1">
+                  
+                    <form action="/?page=1" method="get">
+                        <input type="search" value="" name="stuid" id="field" tabindex="0" placeholder="ex. 254">
+                        <input type="submit" value="Go" id="go">   
+                                             
+                    </form>
+                    
+                    <button onclick="fun()">See More</button>
+
+                </div>     
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="form">
+                <form action="" method="get" id="demo" style="visibility: hidden">
+                    <%if(p){%>                    
+                    <input type="text" name="page" value="<%=p%>" hidden><%}%>
+                    <input type="text" name="name" value="" placeholder="first name">
+                    <input type="text" name="lastname" value="" placeholder="last name">
+                    <input type="text" name="dob" value="" placeholder="Date of Birth">
+                    <input type="text" name="contact" value="" placeholder="Contact">
+                    <input type="text" name="email" value="" placeholder="Email">
+                    <input type="text" name="address1" value="" placeholder="Permanent Adddress">
+                    <input type="text" name="address2" value="" placeholder="Current Address">
+                    <input type="text" name="age" value="" placeholder="Age">
+                    <input type="text" name="created_date" value="" placeholder="Created_Date">
+                    <select name="operator" id="sort">
+                        <option value="AND">AND</option>
+                        <option value="OR">OR</option>
+                    </select> 
+                    <input type="submit" value="Search" id ="submit">
+                </form>
+            </div>
+        </div>
+
+        <script>
+            function fun(){
+                
+                let s = document.getElementById("demo");
+                console.log(s);
+                s.style.visibility="visible";
+                console.log(s.style.visibility);
+            }
+        </script>
+        
+    </body>
+</html>
